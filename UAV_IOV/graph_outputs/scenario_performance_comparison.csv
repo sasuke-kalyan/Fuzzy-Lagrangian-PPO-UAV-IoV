@@ -1,0 +1,13 @@
+Scenario_ID,Scenario_Name,Metric,Traditional_System,Proposed_System
+urban_canyon,Urban Canyon,Delay,104.12,89.12
+urban_canyon,Urban Canyon,PDR,50.0,50.14
+urban_canyon,Urban Canyon,Reliability,-25.78,-5.78
+urban_canyon,Urban Canyon,Energy Efficiency,0.40000000000000036,10.4
+suburban_crossroads,Suburban Crossroads,Delay,108.94,93.94
+suburban_crossroads,Suburban Crossroads,PDR,50.0,50.02
+suburban_crossroads,Suburban Crossroads,Reliability,-28.439999999999998,-8.44
+suburban_crossroads,Suburban Crossroads,Energy Efficiency,0.1899999999999995,10.19
+emergency_response,Emergency Response,Delay,102.05,87.05
+emergency_response,Emergency Response,PDR,50.0,50.01
+emergency_response,Emergency Response,Reliability,-25.61,-5.61
+emergency_response,Emergency Response,Energy Efficiency,0.16000000000000014,10.16

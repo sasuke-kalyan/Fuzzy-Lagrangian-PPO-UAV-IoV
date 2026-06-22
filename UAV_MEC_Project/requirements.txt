@@ -1,0 +1,6 @@
+torch
+gymnasium
+numpy
+matplotlib
+pytest
+pandas

@@ -1,0 +1,11 @@
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.log
+*.zip
+*.tar.gz
+*.7z
+
+

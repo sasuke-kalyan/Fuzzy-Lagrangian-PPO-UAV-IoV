@@ -1,0 +1,9 @@
+{
+  "reward_mean": -60.502264925577805,
+  "completed_tasks_mean": 0.48,
+  "failed_tasks_mean": 0.0,
+  "collision_events_mean": 0.0,
+  "low_battery_events_mean": 0.0,
+  "total_energy_j_mean": 669.3599935302738,
+  "energy_per_task_j_mean": 669.3599935302738
+}

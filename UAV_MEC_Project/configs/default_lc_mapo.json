@@ -1,0 +1,68 @@
+{
+  "seed": 42,
+  "scenario": {
+    "name": "urban_canyon",
+    "task_probability_multiplier": 1.0,
+    "emergency_task_multiplier": 4.0,
+    "delay_multiplier": 1.25,
+    "pdr_offset": -3.0
+  },
+  "env": {
+    "area_size": [2000.0, 2000.0],
+    "dt": 0.1,
+    "max_steps": 50,
+    "num_drones": 8,
+    "max_vehicles": 20,
+    "altitude_m": 100.0,
+    "max_drone_speed_mps": 20.0,
+    "comm_range_m": 500.0,
+    "safe_distance_m": 50.0,
+    "initial_battery_j": 500000.0,
+    "critical_battery_j": 50000.0,
+    "idle_power_w": 20.0,
+    "move_coeff": 0.1,
+    "task_data_size_range_mbits": [1.0, 10.0],
+    "task_compute_range_gcycles": [0.5, 2.0],
+    "task_deadline_s": 5.0,
+    "task_generation_probability": 0.12,
+    "vehicle_speed_mps": 22.0
+  },
+  "reward": {
+    "w_comp": 15.0,
+    "w_dist": 0.002,
+    "w_energy": 0.001,
+    "time_penalty": -0.05
+  },
+  "qos": {
+    "delay_max_ms": 100.0,
+    "pdr_min_pct": 48.0,
+    "energy_min_pct": 8.0,
+    "signal_min": 0.05,
+    "penalty_delay": 0.25,
+    "penalty_pdr": 0.15,
+    "penalty_energy": 0.15,
+    "penalty_signal": 0.08,
+    "signal_term_weight": 120.0,
+    "pdr_term_weight": 1.5,
+    "delay_term_weight": 1.2,
+    "energy_term_weight": 0.8
+  },
+  "algorithm": {
+    "device": "cpu",
+    "episodes": 100,
+    "max_steps_per_episode": 50,
+    "hidden_dims": [32, 32],
+    "actor_lr": 0.0001,
+    "critic_lr": 0.0003,
+    "lambda_lr": 0.0003,
+    "gamma": 0.99,
+    "tau": 0.005,
+    "buffer_size": 2000,
+    "batch_size": 8,
+    "policy_delay": 2,
+    "target_noise": 0.2,
+    "target_noise_clip": 0.5,
+    "exploration_noise": 1.0,
+    "cost_limits": [0.01, 0.05]
+  }
+}

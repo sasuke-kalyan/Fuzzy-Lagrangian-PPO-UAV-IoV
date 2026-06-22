@@ -1,0 +1,22 @@
+# Setup from the main UAV_MEC_QOS folder:
+#   python3 -m venv .venv
+#   .venv/bin/python -m pip install --upgrade pip
+#
+# Smaller CPU-only PyTorch install, recommended for normal laptops:
+#   .venv/bin/python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
+#   .venv/bin/python -m pip install -r requirements.txt
+#
+# If you need GPU/CUDA training, skip the CPU-only torch command above and let
+# pip install torch from PyPI or install the CUDA wheel matching your system.
+numpy>=1.24
+pandas>=2.0
+matplotlib>=3.7
+networkx>=3.0
+scikit-fuzzy>=0.5.0
+gymnasium>=0.29
+stable-baselines3>=2.3
+torch>=2.0
+tensorboard>=2.14
+tqdm>=4.66
+rich>=13.0
+openpyxl>=3.1

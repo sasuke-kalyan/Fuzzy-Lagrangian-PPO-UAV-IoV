@@ -1,0 +1,19 @@
+Scenario_ID,Scenario_Name,Method,Avg_Reward_Per_Step,Avg_Episode_Reward,Std_Episode_Reward,Reward_vs_Proposed_pct,Avg_Delay_ms,Avg_PDR_pct,Avg_Signal,Avg_Energy,Avg_Reliability,Out_Of_Range_Rate_pct,High_Latency_Risk_pct,Weak_Signal_Risk_pct,Low_Reliability_Risk_pct,Episodes,Decision_Points,Focus
+urban_canyon,Urban Canyon,Random,166.8,8340.12,1495.95,39.51,80.35,50.53,0.1144,29.96,-1.15,75.0,64.2,75.0,69.2,20,1000,collision_avoidance
+urban_canyon,Urban Canyon,Nearest UAV,143.44,7172.11,2688.39,19.97,80.22,50.41,0.1117,25.23,-1.3,71.6,64.0,71.6,67.7,20,1000,collision_avoidance
+urban_canyon,Urban Canyon,Strongest Signal,169.52,8476.13,1337.55,41.78,77.1,50.41,0.1114,30.03,-0.07,72.1,55.5,72.1,61.8,20,1000,collision_avoidance
+urban_canyon,Urban Canyon,Energy-Aware Greedy,116.59,5829.51,3457.95,-2.49,80.54,50.41,0.1103,20.2,-1.5,69.9,65.7,69.9,66.7,20,1000,collision_avoidance
+urban_canyon,Urban Canyon,Reward-Aware Proposed,119.56,5978.2,3505.5,0.0,81.92,50.41,0.1107,21.02,-2.03,71.6,68.9,71.6,70.4,20,1000,collision_avoidance
+urban_canyon,Urban Canyon,Trained PPO Model,177.61,8880.44,1494.14,48.55,75.14,50.82,0.1285,30.62,1.78,70.9,52.9,70.9,60.8,20,1000,collision_avoidance
+suburban_crossroads,Suburban Crossroads,Random,165.9,8295.13,1444.67,38.97,80.68,50.51,0.1098,30.04,-1.53,76.2,63.6,76.2,69.8,20,1000,energy_efficiency
+suburban_crossroads,Suburban Crossroads,Nearest UAV,142.17,7108.55,2567.31,19.09,79.95,50.39,0.1108,25.13,-1.24,71.8,63.2,71.8,67.1,20,1000,energy_efficiency
+suburban_crossroads,Suburban Crossroads,Strongest Signal,166.26,8313.08,1384.35,39.27,77.19,50.39,0.1106,29.57,-0.15,72.3,55.4,72.3,62.0,20,1000,energy_efficiency
+suburban_crossroads,Suburban Crossroads,Energy-Aware Greedy,116.43,5821.35,3426.42,-2.47,81.28,50.39,0.11,20.36,-1.81,71.0,67.1,71.0,68.5,20,1000,energy_efficiency
+suburban_crossroads,Suburban Crossroads,Reward-Aware Proposed,119.38,5968.85,3405.18,0.0,82.71,50.39,0.1086,21.27,-2.46,72.7,70.1,72.7,71.8,20,1000,energy_efficiency
+suburban_crossroads,Suburban Crossroads,Trained PPO Model,176.93,8846.46,1471.56,48.21,76.06,50.78,0.1261,30.83,1.27,73.2,54.1,73.2,62.9,20,1000,energy_efficiency
+emergency_response,Emergency Response,Random,167.85,8392.73,1417.72,38.35,80.25,50.51,0.1104,29.9,-1.32,74.5,62.4,74.5,69.1,20,1000,dynamic_adaptation
+emergency_response,Emergency Response,Nearest UAV,143.51,7175.65,2554.0,18.29,78.15,50.39,0.1225,24.22,0.06,69.0,60.3,69.0,64.8,20,1000,dynamic_adaptation
+emergency_response,Emergency Response,Strongest Signal,167.34,8366.89,1427.42,37.92,75.88,50.39,0.122,28.72,0.94,69.8,53.8,69.8,61.0,20,1000,dynamic_adaptation
+emergency_response,Emergency Response,Energy-Aware Greedy,118.31,5915.53,3421.97,-2.49,81.05,50.39,0.1103,20.28,-1.71,71.2,66.6,71.2,68.3,20,1000,dynamic_adaptation
+emergency_response,Emergency Response,Reward-Aware Proposed,121.33,6066.34,3405.45,0.0,81.91,50.39,0.1116,21.01,-1.99,71.6,68.7,71.6,70.6,20,1000,dynamic_adaptation
+emergency_response,Emergency Response,Trained PPO Model,179.05,8952.63,1467.9,47.58,76.14,50.77,0.1252,30.9,1.19,73.2,54.1,73.2,63.7,20,1000,dynamic_adaptation

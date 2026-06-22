@@ -1,0 +1,16 @@
+Scenario_ID,Scenario_Name,Method,Avg_Reward,Reward_vs_Proposed_pct,Avg_Delay_ms,Avg_PDR_pct,Avg_Signal,Avg_Energy,Avg_Reliability,Delay_Violation_Rate_pct,PDR_Violation_Rate_pct,Energy_Violation_Rate_pct,Signal_Violation_Rate_pct,Out_Of_Range_Rate_pct,High_Latency_Risk_pct,Weak_Signal_Risk_pct,Low_Reliability_Risk_pct,Decision_Points,Focus
+urban_canyon,Urban Canyon,Random,32.25,-75.93,89.12,50.14,0.0959,10.4,-5.78,0.0,0.0,0.0,0.0,84.36,77.99,84.36,83.62,20000,collision_avoidance
+suburban_crossroads,Suburban Crossroads,Random,22.79,-71.81,93.94,50.02,0.0825,10.19,-8.44,0.0,0.0,0.0,0.0,86.73,86.71,86.73,88.2,15000,energy_efficiency
+emergency_response,Emergency Response,Random,31.21,-70.11,87.05,50.01,0.084,10.16,-5.61,0.0,0.0,0.0,0.0,83.35,75.71,83.36,80.19,11670,dynamic_adaptation
+urban_canyon,Urban Canyon,Nearest UAV,133.87,-0.09,48.05,51.1,0.3632,10.43,24.49,0.0,0.0,0.0,0.0,14.52,4.64,14.52,12.86,20000,collision_avoidance
+suburban_crossroads,Suburban Crossroads,Nearest UAV,80.54,-0.34,70.02,50.14,0.235,10.16,8.81,0.0,0.0,0.0,0.0,36.74,36.81,36.75,41.19,15000,energy_efficiency
+emergency_response,Emergency Response,Nearest UAV,104.3,-0.13,54.98,50.07,0.2657,10.16,16.33,0.0,0.0,0.0,0.0,12.18,9.71,12.18,14.81,11670,dynamic_adaptation
+urban_canyon,Urban Canyon,Strongest Signal,129.94,-3.03,51.22,51.1,0.3632,10.4,23.22,0.0,0.0,0.0,0.0,14.52,14.06,14.52,14.44,20000,collision_avoidance
+suburban_crossroads,Suburban Crossroads,Strongest Signal,78.76,-2.55,71.59,50.14,0.235,10.19,8.18,0.0,0.0,0.0,0.0,36.75,38.23,36.75,41.22,15000,energy_efficiency
+emergency_response,Emergency Response,Strongest Signal,102.17,-2.17,56.79,50.07,0.2657,10.17,15.6,0.0,0.0,0.0,0.0,12.18,13.14,12.18,19.68,11670,dynamic_adaptation
+urban_canyon,Urban Canyon,Energy-Aware Greedy,133.4,-0.44,48.3,51.08,0.3611,10.48,24.27,0.0,0.0,0.0,0.0,15.04,5.03,15.04,13.4,20000,collision_avoidance
+suburban_crossroads,Suburban Crossroads,Energy-Aware Greedy,80.57,-0.31,70.15,50.14,0.2342,10.24,8.72,0.0,0.0,0.0,0.0,37.06,37.11,37.07,41.49,15000,energy_efficiency
+emergency_response,Emergency Response,Energy-Aware Greedy,104.0,-0.41,55.15,50.07,0.2643,10.19,16.19,0.0,0.0,0.0,0.0,12.52,9.83,12.52,15.19,11670,dynamic_adaptation
+urban_canyon,Urban Canyon,Reward-Aware Proposed,133.99,0.0,48.02,51.1,0.363,10.45,24.5,0.0,0.0,0.0,0.0,14.63,4.58,14.63,12.86,20000,collision_avoidance
+suburban_crossroads,Suburban Crossroads,Reward-Aware Proposed,80.82,0.0,69.97,50.14,0.2348,10.22,8.82,0.0,0.0,0.0,0.0,36.82,36.77,36.83,41.13,15000,energy_efficiency
+emergency_response,Emergency Response,Reward-Aware Proposed,104.43,0.0,54.86,50.07,0.2655,10.16,16.37,0.0,0.0,0.0,0.0,12.18,9.44,12.18,14.65,11670,dynamic_adaptation

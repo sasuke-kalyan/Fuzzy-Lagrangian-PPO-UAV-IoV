@@ -1,0 +1,902 @@
+[
+  {
+    "episode": 0,
+    "reward": -72.18552892370627,
+    "completed_tasks": 1,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1524.9639060060779
+  },
+  {
+    "episode": 1,
+    "reward": -59.517701147668575,
+    "completed_tasks": 3,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1581.4000765016185
+  },
+  {
+    "episode": 2,
+    "reward": -55.421487904091926,
+    "completed_tasks": 3,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1550.0036511622347
+  },
+  {
+    "episode": 3,
+    "reward": -59.69143541238645,
+    "completed_tasks": 2,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1549.4748105797994
+  },
+  {
+    "episode": 4,
+    "reward": -43.3615790168222,
+    "completed_tasks": 3,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1540.6310187753295
+  },
+  {
+    "episode": 5,
+    "reward": -50.38587953562816,
+    "completed_tasks": 2,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1472.1304816730863
+  },
+  {
+    "episode": 6,
+    "reward": -58.30325767873516,
+    "completed_tasks": 2,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1543.3627049802717
+  },
+  {
+    "episode": 7,
+    "reward": -77.45448342058229,
+    "completed_tasks": 1,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1593.4903480724959
+  },
+  {
+    "episode": 8,
+    "reward": 24.935513089640814,
+    "completed_tasks": 7,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1416.459871784966
+  },
+  {
+    "episode": 9,
+    "reward": -27.914401107626205,
+    "completed_tasks": 4,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1505.2150572111575
+  },
+  {
+    "episode": 10,
+    "reward": -67.82118949729829,
+    "completed_tasks": 2,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1598.7038863363748
+  },
+  {
+    "episode": 11,
+    "reward": -85.5955328439039,
+    "completed_tasks": 1,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1595.643882111916
+  },
+  {
+    "episode": 12,
+    "reward": -56.04264519654773,
+    "completed_tasks": 2,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1532.5291076805581
+  },
+  {
+    "episode": 13,
+    "reward": -44.31426537934349,
+    "completed_tasks": 3,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1581.3916305641783
+  },
+  {
+    "episode": 14,
+    "reward": -56.007502802732276,
+    "completed_tasks": 3,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1585.8897045877493
+  },
+  {
+    "episode": 15,
+    "reward": -11.958806205295954,
+    "completed_tasks": 4,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1350.1245951885305
+  },
+  {
+    "episode": 16,
+    "reward": -70.57284407884393,
+    "completed_tasks": 2,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1505.1510093859272
+  },
+  {
+    "episode": 17,
+    "reward": -33.39879544386738,
+    "completed_tasks": 4,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1591.0753053175706
+  },
+  {
+    "episode": 18,
+    "reward": -48.14178273176849,
+    "completed_tasks": 3,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1610.6868302792204
+  },
+  {
+    "episode": 19,
+    "reward": -42.39791991851476,
+    "completed_tasks": 3,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1522.4363522305653
+  },
+  {
+    "episode": 20,
+    "reward": -83.69069222639368,
+    "completed_tasks": 1,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1559.2838554220186
+  },
+  {
+    "episode": 21,
+    "reward": -71.37199644561454,
+    "completed_tasks": 1,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1527.1392983977341
+  },
+  {
+    "episode": 22,
+    "reward": -91.56685471847793,
+    "completed_tasks": 0,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1597.6381962611051
+  },
+  {
+    "episode": 23,
+    "reward": -78.47684519908988,
+    "completed_tasks": 1,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1614.0120234307078
+  },
+  {
+    "episode": 24,
+    "reward": -81.15397659567034,
+    "completed_tasks": 0,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1480.5159633461017
+  },
+  {
+    "episode": 25,
+    "reward": -47.25070203244266,
+    "completed_tasks": 3,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1570.0239776330873
+  },
+  {
+    "episode": 26,
+    "reward": -94.04562587058723,
+    "completed_tasks": 0,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1550.7318581360394
+  },
+  {
+    "episode": 27,
+    "reward": -59.79265157341052,
+    "completed_tasks": 2,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1577.8680040745692
+  },
+  {
+    "episode": 28,
+    "reward": -51.06161342319199,
+    "completed_tasks": 3,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1607.5395859117143
+  },
+  {
+    "episode": 29,
+    "reward": -67.1517086325748,
+    "completed_tasks": 2,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1612.3578787906004
+  },
+  {
+    "episode": 30,
+    "reward": -90.44003885057458,
+    "completed_tasks": 1,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1575.6963670540888
+  },
+  {
+    "episode": 31,
+    "reward": -83.58052835674009,
+    "completed_tasks": 1,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1613.1490079852
+  },
+  {
+    "episode": 32,
+    "reward": -64.76041184204038,
+    "completed_tasks": 2,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1583.5208355706634
+  },
+  {
+    "episode": 33,
+    "reward": -23.530519386197497,
+    "completed_tasks": 5,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1620.9674452795389
+  },
+  {
+    "episode": 34,
+    "reward": -92.01850638053867,
+    "completed_tasks": 0,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1562.2665734097654
+  },
+  {
+    "episode": 35,
+    "reward": -43.032623279255496,
+    "completed_tasks": 3,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1535.7520024000294
+  },
+  {
+    "episode": 36,
+    "reward": -54.952419943615595,
+    "completed_tasks": 2,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1473.4176853148183
+  },
+  {
+    "episode": 37,
+    "reward": -46.06312911990794,
+    "completed_tasks": 3,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1567.9900360456465
+  },
+  {
+    "episode": 38,
+    "reward": -40.96551720030542,
+    "completed_tasks": 4,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1595.9616888308174
+  },
+  {
+    "episode": 39,
+    "reward": -35.846212656421365,
+    "completed_tasks": 4,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1599.987238330543
+  },
+  {
+    "episode": 40,
+    "reward": -46.15147656081487,
+    "completed_tasks": 3,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1524.2346632318627
+  },
+  {
+    "episode": 41,
+    "reward": -65.24347582027757,
+    "completed_tasks": 2,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1601.327047084204
+  },
+  {
+    "episode": 42,
+    "reward": 39.010441938316745,
+    "completed_tasks": 7,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1285.7491627574625
+  },
+  {
+    "episode": 43,
+    "reward": -88.49068026635297,
+    "completed_tasks": 1,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1632.6101369584464
+  },
+  {
+    "episode": 44,
+    "reward": -24.44971749672602,
+    "completed_tasks": 4,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1494.8895395727059
+  },
+  {
+    "episode": 45,
+    "reward": -0.8076109747733093,
+    "completed_tasks": 6,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1570.880689128764
+  },
+  {
+    "episode": 46,
+    "reward": -89.96701213148106,
+    "completed_tasks": 0,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1549.681717662675
+  },
+  {
+    "episode": 47,
+    "reward": -19.062911635113625,
+    "completed_tasks": 4,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1460.3434893616823
+  },
+  {
+    "episode": 48,
+    "reward": -33.88142471790577,
+    "completed_tasks": 4,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1596.6428728129808
+  },
+  {
+    "episode": 49,
+    "reward": -76.33024519241957,
+    "completed_tasks": 0,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1446.8136433473003
+  },
+  {
+    "episode": 50,
+    "reward": -39.72283327712324,
+    "completed_tasks": 4,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1622.7795204093902
+  },
+  {
+    "episode": 51,
+    "reward": -50.43957426031077,
+    "completed_tasks": 3,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1608.7179981037411
+  },
+  {
+    "episode": 52,
+    "reward": -56.96174566100166,
+    "completed_tasks": 1,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1407.9975988678639
+  },
+  {
+    "episode": 53,
+    "reward": -52.092004777925425,
+    "completed_tasks": 3,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1517.1538715533568
+  },
+  {
+    "episode": 54,
+    "reward": -58.924044333366496,
+    "completed_tasks": 2,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1534.1881016770585
+  },
+  {
+    "episode": 55,
+    "reward": -92.49634268182989,
+    "completed_tasks": 0,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1593.5692595886926
+  },
+  {
+    "episode": 56,
+    "reward": -46.96217192901079,
+    "completed_tasks": 3,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1593.2423178047256
+  },
+  {
+    "episode": 57,
+    "reward": -76.49001486843319,
+    "completed_tasks": 1,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1567.6039339849299
+  },
+  {
+    "episode": 58,
+    "reward": -55.525134247260446,
+    "completed_tasks": 2,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1516.622024970418
+  },
+  {
+    "episode": 59,
+    "reward": -35.452211441264154,
+    "completed_tasks": 3,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1461.0735018110329
+  },
+  {
+    "episode": 60,
+    "reward": -46.56951750743438,
+    "completed_tasks": 2,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1358.5464838748003
+  },
+  {
+    "episode": 61,
+    "reward": -34.46333632876004,
+    "completed_tasks": 4,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1525.2568762453748
+  },
+  {
+    "episode": 62,
+    "reward": -73.61985096434317,
+    "completed_tasks": 1,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1501.9675414916103
+  },
+  {
+    "episode": 63,
+    "reward": -1.8674371633899487,
+    "completed_tasks": 5,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1456.2638845813524
+  },
+  {
+    "episode": 64,
+    "reward": -83.09204661473163,
+    "completed_tasks": 1,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1589.1348868263835
+  },
+  {
+    "episode": 65,
+    "reward": -77.65982927096596,
+    "completed_tasks": 1,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1572.577577240351
+  },
+  {
+    "episode": 66,
+    "reward": -29.84455196284358,
+    "completed_tasks": 2,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1272.4371557146812
+  },
+  {
+    "episode": 67,
+    "reward": -66.38503802836217,
+    "completed_tasks": 1,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1496.7694431571065
+  },
+  {
+    "episode": 68,
+    "reward": -45.64458534838785,
+    "completed_tasks": 2,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1375.4100249015244
+  },
+  {
+    "episode": 69,
+    "reward": -0.4865913076300996,
+    "completed_tasks": 5,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1394.545104016819
+  },
+  {
+    "episode": 70,
+    "reward": -46.22064510514898,
+    "completed_tasks": 3,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1542.5387361304151
+  },
+  {
+    "episode": 71,
+    "reward": -31.468715302386553,
+    "completed_tasks": 3,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1413.944733538897
+  },
+  {
+    "episode": 72,
+    "reward": -60.75371221413096,
+    "completed_tasks": 2,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1568.1128794141546
+  },
+  {
+    "episode": 73,
+    "reward": -86.51517961884147,
+    "completed_tasks": 1,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1623.0877914489085
+  },
+  {
+    "episode": 74,
+    "reward": -5.984212412846453,
+    "completed_tasks": 6,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1592.311762822033
+  },
+  {
+    "episode": 75,
+    "reward": -62.98520987640944,
+    "completed_tasks": 2,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1583.640296331289
+  },
+  {
+    "episode": 76,
+    "reward": -68.65983847495386,
+    "completed_tasks": 2,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1583.0222518093256
+  },
+  {
+    "episode": 77,
+    "reward": -79.97190731236032,
+    "completed_tasks": 1,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1584.7953433661976
+  },
+  {
+    "episode": 78,
+    "reward": -62.55847557662427,
+    "completed_tasks": 2,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1576.0737974494523
+  },
+  {
+    "episode": 79,
+    "reward": -47.8431605262626,
+    "completed_tasks": 3,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1597.0666999686473
+  },
+  {
+    "episode": 80,
+    "reward": -80.02703112112172,
+    "completed_tasks": 1,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1570.2468803990826
+  },
+  {
+    "episode": 81,
+    "reward": -76.31114974993555,
+    "completed_tasks": 1,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1540.2897645839969
+  },
+  {
+    "episode": 82,
+    "reward": -3.5470577939958647,
+    "completed_tasks": 5,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1454.722085377694
+  },
+  {
+    "episode": 83,
+    "reward": -88.04516180560266,
+    "completed_tasks": 0,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1560.8464827266944
+  },
+  {
+    "episode": 84,
+    "reward": -85.18058090874051,
+    "completed_tasks": 1,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1607.2218389163002
+  },
+  {
+    "episode": 85,
+    "reward": -37.8124131082853,
+    "completed_tasks": 4,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1603.1523508390117
+  },
+  {
+    "episode": 86,
+    "reward": -44.90766903346006,
+    "completed_tasks": 3,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1561.6169399541986
+  },
+  {
+    "episode": 87,
+    "reward": -97.54641867358359,
+    "completed_tasks": 0,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1594.1658812252015
+  },
+  {
+    "episode": 88,
+    "reward": -77.21513155504141,
+    "completed_tasks": 1,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1584.189248522855
+  },
+  {
+    "episode": 89,
+    "reward": -71.51170418710849,
+    "completed_tasks": 1,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1541.270318700285
+  },
+  {
+    "episode": 90,
+    "reward": -103.2473322990956,
+    "completed_tasks": 0,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1580.875740868062
+  },
+  {
+    "episode": 91,
+    "reward": -75.51102556090997,
+    "completed_tasks": 1,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1526.682085568169
+  },
+  {
+    "episode": 92,
+    "reward": -36.13641672753491,
+    "completed_tasks": 4,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1583.4495949665438
+  },
+  {
+    "episode": 93,
+    "reward": -54.93995697947355,
+    "completed_tasks": 2,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1498.4626252255023
+  },
+  {
+    "episode": 94,
+    "reward": -15.523741211675144,
+    "completed_tasks": 3,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1273.909699223967
+  },
+  {
+    "episode": 95,
+    "reward": -25.94325046994494,
+    "completed_tasks": 4,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1519.0684936265761
+  },
+  {
+    "episode": 96,
+    "reward": -74.56595803706753,
+    "completed_tasks": 1,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1544.9273669015079
+  },
+  {
+    "episode": 97,
+    "reward": -32.93533900967524,
+    "completed_tasks": 4,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1557.1777700512162
+  },
+  {
+    "episode": 98,
+    "reward": -32.91408984671597,
+    "completed_tasks": 4,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1578.1489592647908
+  },
+  {
+    "episode": 99,
+    "reward": -80.82775227922325,
+    "completed_tasks": 1,
+    "failed_tasks": 0,
+    "collision_events": 0,
+    "low_battery_events": 0,
+    "total_energy_j": 1615.1436976802754
+  }
+]

@@ -1,0 +1,7 @@
+{
+  "scenario": {
+    "name": "suburban_crossroads",
+    "task_probability_multiplier": 0.75,
+    "emergency_task_multiplier": 1.0
+  }
+}

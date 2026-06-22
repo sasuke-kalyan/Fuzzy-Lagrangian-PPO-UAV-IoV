@@ -1,0 +1,10 @@
+Scenario,Algorithm,Average Reward,Completed Tasks,Energy (J),Energy per Task,Collision Events,Low Battery Events,Average Delay (ms),Average PDR (%),Average Signal,Average Energy (%),QoS Penalty
+Urban Canyon,MADDPG,680.557,41.15,1659.563,40.33,6.0,0.0,119.415,48.371,0.027,99.959,4.855
+Urban Canyon,LC-MAPO,1109.009,52.35,1475.95,28.194,0.46,0.0,115.015,50.327,0.067,99.963,3.754
+Urban Canyon,Greedy-PPO,2428.232,89.06,1569.422,17.622,0.0,0.0,102.354,55.954,0.179,99.961,0.588
+Suburban Crossroads,MADDPG,-1488.802,5.2,2265.822,435.735,6.76,0.0,139.081,45.544,0.011,99.943,10.142
+Suburban Crossroads,LC-MAPO,-1396.595,9.18,1645.558,179.255,0.55,0.0,138.647,45.71,0.014,99.959,10.008
+Suburban Crossroads,Greedy-PPO,-1296.272,9.23,1596.395,172.957,0.0,0.0,137.266,46.239,0.025,99.96,9.583
+Emergency Response,MADDPG,1757.74,2.27,1761.305,775.905,0.0,0.0,99.228,50.429,0.009,99.956,0.003
+Emergency Response,LC-MAPO,1793.005,2.29,1333.25,582.205,0.0,0.0,98.782,50.677,0.014,99.967,0.003
+Emergency Response,Greedy-PPO,1949.367,2.36,1510.728,640.139,0.0,0.0,96.755,51.803,0.036,99.962,0.001

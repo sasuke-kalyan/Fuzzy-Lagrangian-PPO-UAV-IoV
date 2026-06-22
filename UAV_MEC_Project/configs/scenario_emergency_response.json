@@ -1,0 +1,7 @@
+{
+  "scenario": {
+    "name": "emergency_response",
+    "task_probability_multiplier": 0.4,
+    "emergency_task_multiplier": 5.0
+  }
+}

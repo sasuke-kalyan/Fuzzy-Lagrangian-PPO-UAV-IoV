@@ -1,0 +1,4 @@
+Scenario_ID,Scenario_Name,Vehicles,Avg_Delay_ms,Avg_PDR_pct,Avg_Signal,Avg_Energy,Avg_Reliability,Records,Focus
+urban_canyon,Urban Canyon,20,89.12,50.14,0.0959,10.4,-5.78,160000,collision_avoidance
+suburban_crossroads,Suburban Crossroads,15,93.94,50.02,0.0825,10.19,-8.44,120000,energy_efficiency
+emergency_response,Emergency Response,15,87.05,50.01,0.084,10.16,-5.61,93360,dynamic_adaptation

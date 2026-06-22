@@ -1,0 +1,708 @@
+{
+  "scenario_id": "emergency_response",
+  "scenario_name": "Emergency Response",
+  "n_episodes": 100,
+  "steps_per_episode": 50,
+  "records": [
+    {
+      "Episode": 1,
+      "Total Reward": 7604.2089,
+      "Average Reward": 152.0842,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.5888
+    },
+    {
+      "Episode": 2,
+      "Total Reward": 9314.46,
+      "Average Reward": 186.2892,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0566
+    },
+    {
+      "Episode": 3,
+      "Total Reward": 8973.3875,
+      "Average Reward": 179.4678,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0476
+    },
+    {
+      "Episode": 4,
+      "Total Reward": 9095.4922,
+      "Average Reward": 181.9098,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0513
+    },
+    {
+      "Episode": 5,
+      "Total Reward": 10422.2809,
+      "Average Reward": 208.4456,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.1576
+    },
+    {
+      "Episode": 6,
+      "Total Reward": 7771.2526,
+      "Average Reward": 155.4251,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0593
+    },
+    {
+      "Episode": 7,
+      "Total Reward": 9961.9931,
+      "Average Reward": 199.2399,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0525
+    },
+    {
+      "Episode": 8,
+      "Total Reward": 8049.9372,
+      "Average Reward": 160.9987,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0596
+    },
+    {
+      "Episode": 9,
+      "Total Reward": 8829.4828,
+      "Average Reward": 176.5897,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.1471
+    },
+    {
+      "Episode": 10,
+      "Total Reward": 7597.4596,
+      "Average Reward": 151.9492,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0498
+    },
+    {
+      "Episode": 11,
+      "Total Reward": 7434.9988,
+      "Average Reward": 148.7,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0625
+    },
+    {
+      "Episode": 12,
+      "Total Reward": 8829.5734,
+      "Average Reward": 176.5915,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0571
+    },
+    {
+      "Episode": 13,
+      "Total Reward": 8541.5738,
+      "Average Reward": 170.8315,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.165
+    },
+    {
+      "Episode": 14,
+      "Total Reward": 10231.9779,
+      "Average Reward": 204.6396,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0553
+    },
+    {
+      "Episode": 15,
+      "Total Reward": 8308.5697,
+      "Average Reward": 166.1714,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0513
+    },
+    {
+      "Episode": 16,
+      "Total Reward": 8091.6182,
+      "Average Reward": 161.8324,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.056
+    },
+    {
+      "Episode": 17,
+      "Total Reward": 11372.6405,
+      "Average Reward": 227.4528,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.152
+    },
+    {
+      "Episode": 18,
+      "Total Reward": 7372.8437,
+      "Average Reward": 147.4569,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0513
+    },
+    {
+      "Episode": 19,
+      "Total Reward": 7840.7257,
+      "Average Reward": 156.8145,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.1349
+    },
+    {
+      "Episode": 20,
+      "Total Reward": 10078.4253,
+      "Average Reward": 201.5685,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0799
+    },
+    {
+      "Episode": 21,
+      "Total Reward": 11124.0703,
+      "Average Reward": 222.4814,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.1612
+    },
+    {
+      "Episode": 22,
+      "Total Reward": 10706.3444,
+      "Average Reward": 214.1269,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0573
+    },
+    {
+      "Episode": 23,
+      "Total Reward": 10312.7183,
+      "Average Reward": 206.2544,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0554
+    },
+    {
+      "Episode": 24,
+      "Total Reward": 12993.3775,
+      "Average Reward": 259.8675,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0549
+    },
+    {
+      "Episode": 25,
+      "Total Reward": 10799.3115,
+      "Average Reward": 215.9862,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.1543
+    },
+    {
+      "Episode": 26,
+      "Total Reward": 10580.5369,
+      "Average Reward": 211.6107,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0512
+    },
+    {
+      "Episode": 27,
+      "Total Reward": 9599.1013,
+      "Average Reward": 191.982,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0523
+    },
+    {
+      "Episode": 28,
+      "Total Reward": 7094.2688,
+      "Average Reward": 141.8854,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0495
+    },
+    {
+      "Episode": 29,
+      "Total Reward": 7738.4324,
+      "Average Reward": 154.7686,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.1548
+    },
+    {
+      "Episode": 30,
+      "Total Reward": 13419.1683,
+      "Average Reward": 268.3834,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0557
+    },
+    {
+      "Episode": 31,
+      "Total Reward": 12043.1525,
+      "Average Reward": 240.8631,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0611
+    },
+    {
+      "Episode": 32,
+      "Total Reward": 12873.9019,
+      "Average Reward": 257.478,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.066
+    },
+    {
+      "Episode": 33,
+      "Total Reward": 9295.9312,
+      "Average Reward": 185.9186,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.1603
+    },
+    {
+      "Episode": 34,
+      "Total Reward": 8918.4008,
+      "Average Reward": 178.368,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0636
+    },
+    {
+      "Episode": 35,
+      "Total Reward": 11665.0149,
+      "Average Reward": 233.3003,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0511
+    },
+    {
+      "Episode": 36,
+      "Total Reward": 6993.9354,
+      "Average Reward": 139.8787,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0487
+    },
+    {
+      "Episode": 37,
+      "Total Reward": 13313.4206,
+      "Average Reward": 266.2684,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.1479
+    },
+    {
+      "Episode": 38,
+      "Total Reward": 9996.0172,
+      "Average Reward": 199.9203,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0524
+    },
+    {
+      "Episode": 39,
+      "Total Reward": 11399.9496,
+      "Average Reward": 227.999,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0513
+    },
+    {
+      "Episode": 40,
+      "Total Reward": 10453.4242,
+      "Average Reward": 209.0685,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.051
+    },
+    {
+      "Episode": 41,
+      "Total Reward": 9071.9608,
+      "Average Reward": 181.4392,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.1566
+    },
+    {
+      "Episode": 42,
+      "Total Reward": 9899.9242,
+      "Average Reward": 197.9985,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0641
+    },
+    {
+      "Episode": 43,
+      "Total Reward": 7529.8612,
+      "Average Reward": 150.5972,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0516
+    },
+    {
+      "Episode": 44,
+      "Total Reward": 9961.1645,
+      "Average Reward": 199.2233,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0612
+    },
+    {
+      "Episode": 45,
+      "Total Reward": 8401.3746,
+      "Average Reward": 168.0275,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.1541
+    },
+    {
+      "Episode": 46,
+      "Total Reward": 9636.7475,
+      "Average Reward": 192.7349,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0551
+    },
+    {
+      "Episode": 47,
+      "Total Reward": 9906.1848,
+      "Average Reward": 198.1237,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0555
+    },
+    {
+      "Episode": 48,
+      "Total Reward": 10176.282,
+      "Average Reward": 203.5256,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0578
+    },
+    {
+      "Episode": 49,
+      "Total Reward": 12563.0449,
+      "Average Reward": 251.2609,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.1574
+    },
+    {
+      "Episode": 50,
+      "Total Reward": 7986.4612,
+      "Average Reward": 159.7292,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0547
+    },
+    {
+      "Episode": 51,
+      "Total Reward": 8175.8951,
+      "Average Reward": 163.5179,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0516
+    },
+    {
+      "Episode": 52,
+      "Total Reward": 10258.0306,
+      "Average Reward": 205.1606,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0533
+    },
+    {
+      "Episode": 53,
+      "Total Reward": 8323.9509,
+      "Average Reward": 166.479,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.1584
+    },
+    {
+      "Episode": 54,
+      "Total Reward": 11385.2375,
+      "Average Reward": 227.7047,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0533
+    },
+    {
+      "Episode": 55,
+      "Total Reward": 7167.9092,
+      "Average Reward": 143.3582,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0517
+    },
+    {
+      "Episode": 56,
+      "Total Reward": 12239.6378,
+      "Average Reward": 244.7928,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0625
+    },
+    {
+      "Episode": 57,
+      "Total Reward": 9734.1457,
+      "Average Reward": 194.6829,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.1534
+    },
+    {
+      "Episode": 58,
+      "Total Reward": 7545.5889,
+      "Average Reward": 150.9118,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0472
+    },
+    {
+      "Episode": 59,
+      "Total Reward": 8465.1866,
+      "Average Reward": 169.3037,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0477
+    },
+    {
+      "Episode": 60,
+      "Total Reward": 11964.411,
+      "Average Reward": 239.2882,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0511
+    },
+    {
+      "Episode": 61,
+      "Total Reward": 12523.1765,
+      "Average Reward": 250.4635,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.1565
+    },
+    {
+      "Episode": 62,
+      "Total Reward": 11065.8113,
+      "Average Reward": 221.3162,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0632
+    },
+    {
+      "Episode": 63,
+      "Total Reward": 10006.9135,
+      "Average Reward": 200.1383,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0631
+    },
+    {
+      "Episode": 64,
+      "Total Reward": 7432.259,
+      "Average Reward": 148.6452,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0598
+    },
+    {
+      "Episode": 65,
+      "Total Reward": 10433.4191,
+      "Average Reward": 208.6684,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.1592
+    },
+    {
+      "Episode": 66,
+      "Total Reward": 8546.0824,
+      "Average Reward": 170.9216,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0525
+    },
+    {
+      "Episode": 67,
+      "Total Reward": 7525.9086,
+      "Average Reward": 150.5182,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0474
+    },
+    {
+      "Episode": 68,
+      "Total Reward": 10080.1049,
+      "Average Reward": 201.6021,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0499
+    },
+    {
+      "Episode": 69,
+      "Total Reward": 10860.6777,
+      "Average Reward": 217.2136,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.1486
+    },
+    {
+      "Episode": 70,
+      "Total Reward": 9139.8995,
+      "Average Reward": 182.798,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0523
+    },
+    {
+      "Episode": 71,
+      "Total Reward": 11803.0571,
+      "Average Reward": 236.0611,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0521
+    },
+    {
+      "Episode": 72,
+      "Total Reward": 7721.1751,
+      "Average Reward": 154.4235,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0616
+    },
+    {
+      "Episode": 73,
+      "Total Reward": 8525.7354,
+      "Average Reward": 170.5147,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.162
+    },
+    {
+      "Episode": 74,
+      "Total Reward": 8336.2073,
+      "Average Reward": 166.7241,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0603
+    },
+    {
+      "Episode": 75,
+      "Total Reward": 10145.6428,
+      "Average Reward": 202.9129,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0505
+    },
+    {
+      "Episode": 76,
+      "Total Reward": 11602.7733,
+      "Average Reward": 232.0555,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0531
+    },
+    {
+      "Episode": 77,
+      "Total Reward": 8012.6645,
+      "Average Reward": 160.2533,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.1551
+    },
+    {
+      "Episode": 78,
+      "Total Reward": 10215.2588,
+      "Average Reward": 204.3052,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0537
+    },
+    {
+      "Episode": 79,
+      "Total Reward": 8260.5357,
+      "Average Reward": 165.2107,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0499
+    },
+    {
+      "Episode": 80,
+      "Total Reward": 9623.3863,
+      "Average Reward": 192.4677,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0609
+    },
+    {
+      "Episode": 81,
+      "Total Reward": 11621.8005,
+      "Average Reward": 232.436,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.1719
+    },
+    {
+      "Episode": 82,
+      "Total Reward": 7533.9156,
+      "Average Reward": 150.6783,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0619
+    },
+    {
+      "Episode": 83,
+      "Total Reward": 8142.7387,
+      "Average Reward": 162.8548,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0562
+    },
+    {
+      "Episode": 84,
+      "Total Reward": 9149.6524,
+      "Average Reward": 182.993,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0532
+    },
+    {
+      "Episode": 85,
+      "Total Reward": 8389.1986,
+      "Average Reward": 167.784,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.1569
+    },
+    {
+      "Episode": 86,
+      "Total Reward": 8788.1531,
+      "Average Reward": 175.7631,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0562
+    },
+    {
+      "Episode": 87,
+      "Total Reward": 8928.4723,
+      "Average Reward": 178.5694,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0611
+    },
+    {
+      "Episode": 88,
+      "Total Reward": 9386.4362,
+      "Average Reward": 187.7287,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0619
+    },
+    {
+      "Episode": 89,
+      "Total Reward": 12887.1164,
+      "Average Reward": 257.7423,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.171
+    },
+    {
+      "Episode": 90,
+      "Total Reward": 7096.7738,
+      "Average Reward": 141.9355,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0511
+    },
+    {
+      "Episode": 91,
+      "Total Reward": 13135.793,
+      "Average Reward": 262.7159,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0543
+    },
+    {
+      "Episode": 92,
+      "Total Reward": 12351.1609,
+      "Average Reward": 247.0232,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0527
+    },
+    {
+      "Episode": 93,
+      "Total Reward": 8028.0755,
+      "Average Reward": 160.5615,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.1524
+    },
+    {
+      "Episode": 94,
+      "Total Reward": 9404.4086,
+      "Average Reward": 188.0882,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0508
+    },
+    {
+      "Episode": 95,
+      "Total Reward": 8028.4862,
+      "Average Reward": 160.5697,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0592
+    },
+    {
+      "Episode": 96,
+      "Total Reward": 13843.932,
+      "Average Reward": 276.8786,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0622
+    },
+    {
+      "Episode": 97,
+      "Total Reward": 8132.6432,
+      "Average Reward": 162.6529,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.1748
+    },
+    {
+      "Episode": 98,
+      "Total Reward": 10424.0156,
+      "Average Reward": 208.4803,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0602
+    },
+    {
+      "Episode": 99,
+      "Total Reward": 10854.3429,
+      "Average Reward": 217.0869,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0585
+    },
+    {
+      "Episode": 100,
+      "Total Reward": 11406.0975,
+      "Average Reward": 228.122,
+      "Scenario": "Emergency Response",
+      "Training Time": 0.0598
+    }
+  ]
+}

@@ -1,0 +1,708 @@
+{
+  "scenario_id": "urban_canyon",
+  "scenario_name": "Urban Canyon",
+  "n_episodes": 100,
+  "steps_per_episode": 50,
+  "records": [
+    {
+      "Episode": 1,
+      "Total Reward": 12535.3253,
+      "Average Reward": 250.7065,
+      "Scenario": "Urban Canyon",
+      "Training Time": 1.5936
+    },
+    {
+      "Episode": 2,
+      "Total Reward": 6914.8955,
+      "Average Reward": 138.2979,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0563
+    },
+    {
+      "Episode": 3,
+      "Total Reward": 9010.5808,
+      "Average Reward": 180.2116,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0559
+    },
+    {
+      "Episode": 4,
+      "Total Reward": 8940.4231,
+      "Average Reward": 178.8085,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0532
+    },
+    {
+      "Episode": 5,
+      "Total Reward": 8489.163,
+      "Average Reward": 169.7833,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.1409
+    },
+    {
+      "Episode": 6,
+      "Total Reward": 10164.6489,
+      "Average Reward": 203.293,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0518
+    },
+    {
+      "Episode": 7,
+      "Total Reward": 8389.8829,
+      "Average Reward": 167.7977,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0521
+    },
+    {
+      "Episode": 8,
+      "Total Reward": 10000.7154,
+      "Average Reward": 200.0143,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0505
+    },
+    {
+      "Episode": 9,
+      "Total Reward": 8119.8345,
+      "Average Reward": 162.3967,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.147
+    },
+    {
+      "Episode": 10,
+      "Total Reward": 11840.8564,
+      "Average Reward": 236.8171,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.059
+    },
+    {
+      "Episode": 11,
+      "Total Reward": 8124.6801,
+      "Average Reward": 162.4936,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0526
+    },
+    {
+      "Episode": 12,
+      "Total Reward": 10246.1368,
+      "Average Reward": 204.9227,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0526
+    },
+    {
+      "Episode": 13,
+      "Total Reward": 14273.2995,
+      "Average Reward": 285.466,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.1526
+    },
+    {
+      "Episode": 14,
+      "Total Reward": 7328.9381,
+      "Average Reward": 146.5788,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0519
+    },
+    {
+      "Episode": 15,
+      "Total Reward": 10198.9395,
+      "Average Reward": 203.9788,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0542
+    },
+    {
+      "Episode": 16,
+      "Total Reward": 12687.9159,
+      "Average Reward": 253.7583,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0515
+    },
+    {
+      "Episode": 17,
+      "Total Reward": 8042.889,
+      "Average Reward": 160.8578,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.1715
+    },
+    {
+      "Episode": 18,
+      "Total Reward": 8180.1863,
+      "Average Reward": 163.6037,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.059
+    },
+    {
+      "Episode": 19,
+      "Total Reward": 8105.7462,
+      "Average Reward": 162.1149,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0559
+    },
+    {
+      "Episode": 20,
+      "Total Reward": 9819.573,
+      "Average Reward": 196.3915,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0719
+    },
+    {
+      "Episode": 21,
+      "Total Reward": 10574.1742,
+      "Average Reward": 211.4835,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.168
+    },
+    {
+      "Episode": 22,
+      "Total Reward": 9172.9662,
+      "Average Reward": 183.4593,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0485
+    },
+    {
+      "Episode": 23,
+      "Total Reward": 8494.7189,
+      "Average Reward": 169.8944,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0521
+    },
+    {
+      "Episode": 24,
+      "Total Reward": 11050.0376,
+      "Average Reward": 221.0008,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0519
+    },
+    {
+      "Episode": 25,
+      "Total Reward": 11245.6459,
+      "Average Reward": 224.9129,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.1611
+    },
+    {
+      "Episode": 26,
+      "Total Reward": 9121.015,
+      "Average Reward": 182.4203,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0516
+    },
+    {
+      "Episode": 27,
+      "Total Reward": 13674.7571,
+      "Average Reward": 273.4951,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0556
+    },
+    {
+      "Episode": 28,
+      "Total Reward": 13025.5413,
+      "Average Reward": 260.5108,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0527
+    },
+    {
+      "Episode": 29,
+      "Total Reward": 10377.6422,
+      "Average Reward": 207.5528,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.1492
+    },
+    {
+      "Episode": 30,
+      "Total Reward": 7766.3806,
+      "Average Reward": 155.3276,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0494
+    },
+    {
+      "Episode": 31,
+      "Total Reward": 10894.4866,
+      "Average Reward": 217.8897,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0552
+    },
+    {
+      "Episode": 32,
+      "Total Reward": 12702.5429,
+      "Average Reward": 254.0509,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0538
+    },
+    {
+      "Episode": 33,
+      "Total Reward": 7650.2696,
+      "Average Reward": 153.0054,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.1536
+    },
+    {
+      "Episode": 34,
+      "Total Reward": 7373.7611,
+      "Average Reward": 147.4752,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0543
+    },
+    {
+      "Episode": 35,
+      "Total Reward": 9459.5782,
+      "Average Reward": 189.1916,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0528
+    },
+    {
+      "Episode": 36,
+      "Total Reward": 7470.9626,
+      "Average Reward": 149.4193,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0539
+    },
+    {
+      "Episode": 37,
+      "Total Reward": 8313.5354,
+      "Average Reward": 166.2707,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.14
+    },
+    {
+      "Episode": 38,
+      "Total Reward": 7745.9688,
+      "Average Reward": 154.9194,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0536
+    },
+    {
+      "Episode": 39,
+      "Total Reward": 8560.5913,
+      "Average Reward": 171.2118,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0514
+    },
+    {
+      "Episode": 40,
+      "Total Reward": 7355.915,
+      "Average Reward": 147.1183,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0497
+    },
+    {
+      "Episode": 41,
+      "Total Reward": 8597.6254,
+      "Average Reward": 171.9525,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.1505
+    },
+    {
+      "Episode": 42,
+      "Total Reward": 9183.8975,
+      "Average Reward": 183.6779,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0493
+    },
+    {
+      "Episode": 43,
+      "Total Reward": 9904.6807,
+      "Average Reward": 198.0936,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0484
+    },
+    {
+      "Episode": 44,
+      "Total Reward": 7674.2934,
+      "Average Reward": 153.4859,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0497
+    },
+    {
+      "Episode": 45,
+      "Total Reward": 7501.601,
+      "Average Reward": 150.032,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.1658
+    },
+    {
+      "Episode": 46,
+      "Total Reward": 11106.6766,
+      "Average Reward": 222.1335,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0644
+    },
+    {
+      "Episode": 47,
+      "Total Reward": 8900.0607,
+      "Average Reward": 178.0012,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0496
+    },
+    {
+      "Episode": 48,
+      "Total Reward": 13036.2075,
+      "Average Reward": 260.7241,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0508
+    },
+    {
+      "Episode": 49,
+      "Total Reward": 7849.5571,
+      "Average Reward": 156.9911,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.1542
+    },
+    {
+      "Episode": 50,
+      "Total Reward": 11496.7221,
+      "Average Reward": 229.9344,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0579
+    },
+    {
+      "Episode": 51,
+      "Total Reward": 9228.3155,
+      "Average Reward": 184.5663,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0584
+    },
+    {
+      "Episode": 52,
+      "Total Reward": 7540.301,
+      "Average Reward": 150.806,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0574
+    },
+    {
+      "Episode": 53,
+      "Total Reward": 11155.5603,
+      "Average Reward": 223.1112,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.1643
+    },
+    {
+      "Episode": 54,
+      "Total Reward": 7833.1608,
+      "Average Reward": 156.6632,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0497
+    },
+    {
+      "Episode": 55,
+      "Total Reward": 10360.779,
+      "Average Reward": 207.2156,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0489
+    },
+    {
+      "Episode": 56,
+      "Total Reward": 7468.7958,
+      "Average Reward": 149.3759,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0481
+    },
+    {
+      "Episode": 57,
+      "Total Reward": 9334.1935,
+      "Average Reward": 186.6839,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.1411
+    },
+    {
+      "Episode": 58,
+      "Total Reward": 10719.2442,
+      "Average Reward": 214.3849,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0572
+    },
+    {
+      "Episode": 59,
+      "Total Reward": 9124.1452,
+      "Average Reward": 182.4829,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0622
+    },
+    {
+      "Episode": 60,
+      "Total Reward": 10891.9832,
+      "Average Reward": 217.8397,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0569
+    },
+    {
+      "Episode": 61,
+      "Total Reward": 9021.5963,
+      "Average Reward": 180.4319,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.1557
+    },
+    {
+      "Episode": 62,
+      "Total Reward": 9710.2394,
+      "Average Reward": 194.2048,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0533
+    },
+    {
+      "Episode": 63,
+      "Total Reward": 8491.2903,
+      "Average Reward": 169.8258,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0519
+    },
+    {
+      "Episode": 64,
+      "Total Reward": 8063.2742,
+      "Average Reward": 161.2655,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0477
+    },
+    {
+      "Episode": 65,
+      "Total Reward": 8358.8519,
+      "Average Reward": 167.177,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.1508
+    },
+    {
+      "Episode": 66,
+      "Total Reward": 13963.5652,
+      "Average Reward": 279.2713,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0596
+    },
+    {
+      "Episode": 67,
+      "Total Reward": 9166.373,
+      "Average Reward": 183.3275,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0589
+    },
+    {
+      "Episode": 68,
+      "Total Reward": 8187.8453,
+      "Average Reward": 163.7569,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.058
+    },
+    {
+      "Episode": 69,
+      "Total Reward": 10746.7822,
+      "Average Reward": 214.9356,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.165
+    },
+    {
+      "Episode": 70,
+      "Total Reward": 8821.7127,
+      "Average Reward": 176.4343,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0583
+    },
+    {
+      "Episode": 71,
+      "Total Reward": 9049.1354,
+      "Average Reward": 180.9827,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0562
+    },
+    {
+      "Episode": 72,
+      "Total Reward": 6927.2965,
+      "Average Reward": 138.5459,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0536
+    },
+    {
+      "Episode": 73,
+      "Total Reward": 8995.2015,
+      "Average Reward": 179.904,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.1628
+    },
+    {
+      "Episode": 74,
+      "Total Reward": 11628.2,
+      "Average Reward": 232.564,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0574
+    },
+    {
+      "Episode": 75,
+      "Total Reward": 8544.1151,
+      "Average Reward": 170.8823,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0578
+    },
+    {
+      "Episode": 76,
+      "Total Reward": 10454.1779,
+      "Average Reward": 209.0836,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0612
+    },
+    {
+      "Episode": 77,
+      "Total Reward": 9388.2451,
+      "Average Reward": 187.7649,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.1626
+    },
+    {
+      "Episode": 78,
+      "Total Reward": 9008.261,
+      "Average Reward": 180.1652,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0583
+    },
+    {
+      "Episode": 79,
+      "Total Reward": 9586.8587,
+      "Average Reward": 191.7372,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0602
+    },
+    {
+      "Episode": 80,
+      "Total Reward": 9746.0002,
+      "Average Reward": 194.92,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0591
+    },
+    {
+      "Episode": 81,
+      "Total Reward": 7736.0945,
+      "Average Reward": 154.7219,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.1614
+    },
+    {
+      "Episode": 82,
+      "Total Reward": 7515.4689,
+      "Average Reward": 150.3094,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0574
+    },
+    {
+      "Episode": 83,
+      "Total Reward": 8782.6528,
+      "Average Reward": 175.6531,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0569
+    },
+    {
+      "Episode": 84,
+      "Total Reward": 11019.6834,
+      "Average Reward": 220.3937,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0587
+    },
+    {
+      "Episode": 85,
+      "Total Reward": 9075.2113,
+      "Average Reward": 181.5042,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.1673
+    },
+    {
+      "Episode": 86,
+      "Total Reward": 10654.1758,
+      "Average Reward": 213.0835,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0591
+    },
+    {
+      "Episode": 87,
+      "Total Reward": 8250.7295,
+      "Average Reward": 165.0146,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.05
+    },
+    {
+      "Episode": 88,
+      "Total Reward": 6692.2647,
+      "Average Reward": 133.8453,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0544
+    },
+    {
+      "Episode": 89,
+      "Total Reward": 8359.5692,
+      "Average Reward": 167.1914,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.163
+    },
+    {
+      "Episode": 90,
+      "Total Reward": 8239.5616,
+      "Average Reward": 164.7912,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.056
+    },
+    {
+      "Episode": 91,
+      "Total Reward": 9298.4315,
+      "Average Reward": 185.9686,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0595
+    },
+    {
+      "Episode": 92,
+      "Total Reward": 11229.1477,
+      "Average Reward": 224.583,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0622
+    },
+    {
+      "Episode": 93,
+      "Total Reward": 7498.9354,
+      "Average Reward": 149.9787,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.162
+    },
+    {
+      "Episode": 94,
+      "Total Reward": 6549.7925,
+      "Average Reward": 130.9959,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.053
+    },
+    {
+      "Episode": 95,
+      "Total Reward": 7907.0106,
+      "Average Reward": 158.1402,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0576
+    },
+    {
+      "Episode": 96,
+      "Total Reward": 12740.0897,
+      "Average Reward": 254.8018,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0593
+    },
+    {
+      "Episode": 97,
+      "Total Reward": 10372.1331,
+      "Average Reward": 207.4427,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.1651
+    },
+    {
+      "Episode": 98,
+      "Total Reward": 9462.5268,
+      "Average Reward": 189.2505,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0616
+    },
+    {
+      "Episode": 99,
+      "Total Reward": 8215.2802,
+      "Average Reward": 164.3056,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0574
+    },
+    {
+      "Episode": 100,
+      "Total Reward": 9085.8581,
+      "Average Reward": 181.7172,
+      "Scenario": "Urban Canyon",
+      "Training Time": 0.0553
+    }
+  ]
+}
