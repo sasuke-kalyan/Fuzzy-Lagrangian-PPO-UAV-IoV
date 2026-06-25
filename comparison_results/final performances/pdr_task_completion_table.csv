@@ -1,0 +1,4 @@
+Scenario,Base Paper (LC-MAPO),Proposed (Fuzzy LP-PPO),Change vs Base,Result
+Urban Canyon,50.33,50.82,0.49 % higher,Proposed better
+Suburban Crossroads,45.71,50.78,5.07 % higher,Proposed better
+Emergency Response,50.68,50.77,0.09 % higher,Proposed better

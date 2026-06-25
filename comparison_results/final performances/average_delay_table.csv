@@ -1,0 +1,4 @@
+Scenario,Base Paper (LC-MAPO),Proposed (Fuzzy LP-PPO),Change vs Base,Result
+Urban Canyon,114.00,75.14,38.86 ms lower,Proposed better
+Suburban Crossroads,143.00,76.06,66.94 ms lower,Proposed better
+Emergency Response,101.50,76.14,25.36 ms lower,Proposed better

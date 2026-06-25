@@ -1,4 +1,5 @@
 from pathlib import Path
+import hashlib
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -34,7 +35,9 @@ WINDOW = 12
 
 
 def make_convergence_curve(final_value, metric_type, method, scenario):
-    rng = np.random.default_rng(abs(hash(method + scenario + metric_type)) % 10000)
+    seed_text = f"{method}|{scenario}|{metric_type}".encode("utf-8")
+    seed = int(hashlib.sha256(seed_text).hexdigest()[:8], 16)
+    rng = np.random.default_rng(seed)
     t = np.linspace(0, 1, len(EPISODES))
 
     if metric_type == "delay":

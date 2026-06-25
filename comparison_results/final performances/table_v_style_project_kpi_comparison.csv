@@ -1,0 +1,22 @@
+Scenario,Base Paper KPI,Project KPI Used,Base Paper (LC-MAPO),Proposed (Fuzzy LP-PPO)
+Urban Canyon,Task Completion Rate (%),Task Completion Rate / PDR (%),92.31 +/- 3.5,50.82
+Urban Canyon,System Throughput (tasks/min),System Throughput Proxy,15.38 +/- 0.6,6.53
+Urban Canyon,Average Task Service Time (s),Average Delay (ms),11.23 +/- 1.5,75.14
+Urban Canyon,Total Collisions (per episode),Out-of-Range Risk (%),0.1 +/- 0.2,70.90
+Urban Canyon,Total Low-Battery Events (per episode),Weak-Signal Risk (%),0.0 +/- 0.0,70.90
+Urban Canyon,Energy Cost per Task (kJ/task),Average Energy,1.23 +/- 0.15,30.62
+Urban Canyon,Average Flight Distance (km/drone),Average Link Distance (km),3.01 +/- 0.25,1.04
+Suburban Crossroads,Task Completion Rate (%),Task Completion Rate / PDR (%),95.12 +/- 2.8,50.78
+Suburban Crossroads,System Throughput (tasks/min),System Throughput Proxy,7.93 +/- 0.2,6.40
+Suburban Crossroads,Average Task Service Time (s),Average Delay (ms),25.81 +/- 2.1,76.06
+Suburban Crossroads,Total Collisions (per episode),Out-of-Range Risk (%),0.0 +/- 0.0,73.20
+Suburban Crossroads,Total Low-Battery Events (per episode),Weak-Signal Risk (%),0.1 +/- 0.3,73.20
+Suburban Crossroads,Energy Cost per Task (kJ/task),Average Energy,2.53 +/- 0.28,30.83
+Suburban Crossroads,Average Flight Distance (km/drone),Average Link Distance (km),5.12 +/- 0.41,1.22
+Emergency Response,Task Completion Rate (%),Task Completion Rate / PDR (%),88.93 +/- 4.2,50.77
+Emergency Response,System Throughput (tasks/min),System Throughput Proxy,9.88 +/- 0.5,6.36
+Emergency Response,Average Task Service Time (s),Average Delay (ms),15.62 +/- 1.8,76.14
+Emergency Response,Total Collisions (per episode),Out-of-Range Risk (%),0.2 +/- 0.4,73.20
+Emergency Response,Total Low-Battery Events (per episode),Weak-Signal Risk (%),0.3 +/- 0.5,73.20
+Emergency Response,Energy Cost per Task (kJ/task),Average Energy,1.83 +/- 0.22,30.90
+Emergency Response,Average Flight Distance (km/drone),Average Link Distance (km),4.01 +/- 0.35,0.89
