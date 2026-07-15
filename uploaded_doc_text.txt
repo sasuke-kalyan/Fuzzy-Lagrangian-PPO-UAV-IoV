@@ -1,0 +1,588 @@
+RESEARCH ARTICLE
+Fuzzy Lagrangian Proximal Policy Optimization for Reliable UAV Selection in Dynamic UAV-IoV Systems
+Shubh Om · Pathireddi Vara Kalyan · K. Jairam Naik
+Abstract
+The growth of connected vehicles and time-sensitive Internet of Vehicles (IoV) services has increased demand for reliable, low-latency communication. Unmanned aerial vehicle (UAV)-assisted networking can extend coverage, but selecting an appropriate UAV is difficult when mobility, link quality, and residual energy vary dynamically. Conventional greedy selection and unconstrained learning methods struggle to balance communication quality, energy availability, and quality-of-service (QoS) requirements. This paper addresses UAV selection while jointly controlling delay, packet delivery ratio (PDR), signal quality, and energy constraints. The proposed method, Fuzzy Lagrangian Proximal Policy Optimization (Fuzzy LP-PPO), combines fuzzy priority rules, adaptive Lagrangian penalties, and scenario-specific PPO learning. The framework prioritizes risky links, updates constraint multipliers, and learns UAV-selection policies across eight candidate UAVs. Simulations cover urban-canyon, suburban-crossroads, and emergency-response environments, with policies trained for 1000 episodes of 1000 steps per scenario. Compared with a reward-aware heuristic under a common evaluation, the trained policy achieves a 48.1% increase in episode reward, a 7.8% reduction in average delay, a 0.39 percentage-point increase in PDR, and a 14.8% improvement in signal quality relative to existing methods. These results indicate that Fuzzy LP-PPO provides an effective basis for adaptive, constraint-aware communication in heterogeneous, non-stationary UAV-IoV environments.
+Keywords
+Internet of Vehicles · Unmanned aerial vehicles · Fuzzy logic · Lagrangian optimization · Proximal policy optimization · Reliable communication
+Introduction
+The Internet of Vehicles (IoV) extends conventional vehicular networks by enabling continuous information exchange among vehicles, roadside infrastructure, edge servers, and intelligent transportation services. UAV-assisted communication is known to extend network coverage and improve connectivity for intelligent transportation systems (Shakhatreh et al. 2019), while energy-aware UAV operation is essential for maintaining reliable communication services (Cabreira et al. 2019). Integrating UAVs into IoV environments further enhances vehicular communication, traffic monitoring, and emergency-response applications (Aggarwal and Kumar 2020). This connectivity supports applications such as cooperative driving, traffic monitoring, collision warning, emergency coordination, multimedia delivery, and autonomous navigation. Many of these applications are delay-sensitive and depend on reliable wireless links: a communication decision acceptable for ordinary traffic information may be unsuitable for a safety message, where even a short interruption can reduce service effectiveness. The increasing number of connected vehicles therefore creates a need for communication mechanisms that preserve low delay, acceptable packet delivery, and stable coverage while the network topology changes rapidly.
+The benefits of UAV-assisted IoV communication are accompanied by several operational challenges. UAVs have limited onboard energy, finite communication range, and links whose quality varies with the relative positions of vehicles and aerial nodes. Vehicles may move out of range quickly, while the UAV offering the strongest signal at one instant may have insufficient residual energy or may produce excessive delay at the next instant. Selecting the nearest UAV is therefore not always equivalent to selecting the most reliable one, and repeatedly selecting the UAV with the strongest instantaneous signal may overload part of the fleet and accelerate battery depletion. Reliable UAV selection must consider multiple, sometimes conflicting, indicators rather than optimizing a single metric.
+In a dynamic IoV environment, the selection decision is influenced by vehicle–UAV distance, signal quality, packet delivery ratio (PDR), communication delay, and residual UAV energy. These indicators interact with one another: a short link generally improves signal quality, but the corresponding UAV may have low remaining energy, while an energy-rich UAV may be farther away and introduce additional delay. A decision strategy must therefore balance immediate communication performance with longer-term fleet availability. The problem becomes more difficult when operating conditions differ across road layouts and change during an episode — urban corridors contain dense traffic and obstruction-sensitive links, suburban crossroads contain sparse and longer connections, and emergency environments can experience sudden increases in vehicles and communication demand.
+Figure 1 illustrates the UAV selection problem considered in this study. Vehicles operating in urban-canyon, suburban-crossroads, and emergency-response scenarios observe several candidate UAVs. For every candidate link, the system evaluates delay, PDR, signal quality, residual energy, and distance-related information. These measurements are passed to a fuzzy-priority mechanism and an adaptive Lagrangian constraint layer before the PPO policy selects a UAV, and the resulting communication outcome is returned to the learning process as feedback. This closed decision loop allows the policy to respond to both immediate link conditions and accumulated constraint violations.
+Fig. 1 System model of the proposed Fuzzy LP-PPO framework for reliable UAV selection in dynamic IoV scenarios.
+Traditional UAV-selection strategies commonly use fixed rules such as random selection, minimum distance, strongest signal, or maximum residual energy (Kim et al. 2024; Sun et al. 2023; Li et al. 2023). These policies are easy to implement and require little computation, but each rule represents only a partial view of communication quality. Random selection cannot exploit current network information, the nearest-UAV policy ignores battery state and other QoS indicators, and strongest-signal selection may improve the instantaneous link while neglecting delay and long-term energy balance. Energy-aware greedy selection protects battery resources but may choose a distant node with weak communication performance, and a weighted reward-aware rule can combine several measurements, although fixed weights cannot adapt effectively when scenario conditions or constraint severities change.
+Reinforcement learning (RL) provides an alternative by allowing an agent to learn a selection policy through repeated interaction with the communication environment (Lowe et al. 2017; Yu et al. 2022). At each decision step, the agent observes the vehicle state and candidate-UAV link information, selects an action, and receives a reward determined by the communication outcome, learning actions that maximize cumulative performance rather than applying one fixed decision rule. Proximal policy optimization (PPO) is particularly suitable for this problem because its clipped policy update provides stable learning and limits excessively large changes between successive policies (Schulman et al. 2017), and it can use high-dimensional observations to directly learn nonlinear relationships among distance, signal, delay, PDR, and energy.
+Fuzzy logic offers a useful mechanism for representing gradual priorities. Instead of relying only on hard binary decisions, fuzzy rules estimate the urgency of a candidate link from its delay, PDR, signal quality, and energy condition (Khan et al. 2023). In the proposed framework, increased delay, weak PDR, poor signal quality, or depleted energy raises the fuzzy priority associated with a risky communication state, and an additional scenario-dependent boost allows emergency-response conditions to receive greater attention. The resulting priority value supplements the numerical QoS score and helps organize candidate UAVs according to their overall communication suitability.
+Lagrangian optimization complements the fuzzy layer by adapting the penalties applied to constraint violations. Constrained policy optimization (Achiam et al. 2017) and adaptive Lagrangian methods for handling constraints during policy learning (Stooke et al. 2020) motivate the proposed environment, which maintains non-negative multipliers for delay, PDR, energy, and signal constraints. When a violation is observed, the corresponding multiplier is increased through a dual update, so repeated violations become progressively more expensive while satisfied constraints do not create additional penalties. This mechanism reduces dependence on a permanently fixed penalty configuration and encourages the policy to account for the constraints that are most difficult under current operating conditions.
+Based on these observations, this study proposes a Fuzzy Lagrangian Proximal Policy Optimization (Fuzzy LP-PPO) framework for reliable UAV selection in dynamic IoV networks. The observation supplied to the agent contains the normalized vehicle location and, for each of eight UAVs, relative position, signal quality, and remaining energy. Candidate links are evaluated using communication range, delay, PDR, energy, and signal conditions; the fuzzy module assigns a risk-aware priority, the Lagrangian module updates the cost of observed QoS violations, and PPO learns which ranked candidate should serve the vehicle. The reward combines task-service utility, distance and energy costs, QoS quality, fuzzy priority, and adaptive constraint penalties.
+The framework is evaluated in three synthetic but distinct operating environments. The urban-canyon scenario represents dense corridor movement and emphasizes robust connectivity; the suburban-crossroads scenario represents sparse movement over a wider road layout and stresses energy-aware operation; and the emergency-response scenario introduces non-stationary conditions to test the ability of the policy to adapt when traffic and service demand change. Separate policies are trained for each scenario for 1000 episodes, with 1000 interaction steps in every episode, so that no single road configuration dominates the learned behavior.
+The trained model is compared under a common evaluation with random, nearest-UAV, strongest-signal, energy-aware greedy, and reward-aware selection strategies. Averaged across the three scenarios, the trained policy improves episode reward by approximately 48.1% and reduces average delay by about 7.8% relative to the reward-aware heuristic, while also providing a 0.39-percentage-point improvement in PDR and approximately 14.8% higher signal quality. These results show that the learned policy exploits the combined fuzzy, constrained, and scenario-specific representation more effectively than the fixed reward-aware rule; the comparison uses common project metrics and reward definitions so that the reported values are not obtained by comparing incompatible reward scales.
+The main contributions of this work are summarized as follows.
+A Fuzzy Lagrangian PPO framework is developed for UAV selection in IoV communication. It integrates fuzzy link prioritization, adaptive Lagrangian penalties, and PPO learning to jointly account for delay, PDR, signal quality, distance, and residual UAV energy.
+A scenario-aware simulation and training system is constructed for urban-canyon, suburban-crossroads, and emergency-response environments. The system includes eight candidate UAVs, long-horizon episodic training, dynamic vehicle movement, QoS feedback, model persistence, and reproducible evaluation outputs.
+The proposed method is evaluated against multiple rule-based and learned-selection references using common performance indicators, demonstrating improved cumulative reward, lower average delay, higher PDR, and stronger average signal quality relative to the reward-aware heuristic, while also exposing the trade-offs between communication reliability and energy availability.
+The remainder of this paper is organized as follows. Section "Literature survey" reviews existing work on UAV-assisted IoV communication, intelligent UAV selection, fuzzy decision systems, and constrained reinforcement learning, together with the resulting research gaps. Section "Materials and methods" describes the data-acquisition and preprocessing process, the system model, communication and energy model, fuzzy-priority estimation, adaptive Lagrangian reward formulation, and PPO-based policy optimization that together constitute the proposed Fuzzy LP-PPO framework.
+The abbreviations used throughout this paper are listed in Table 1, while the principal variables employed in the system model and proposed Fuzzy LP-PPO formulation are summarized in the same table.
+Table 1 List of symbols and abbreviations
+Symbol
+Description
+t
+Current communication decision step
+H
+Number of interaction steps in one episode
+N_ep
+Number of training episodes
+V(t)
+Set of active vehicles at decision step t
+U
+Set of eight candidate UAVs
+p_v(t)
+Position of vehicle v at decision step t
+p_u(t)
+Three-dimensional position of UAV u at decision step t
+d_v,u(t)
+Euclidean distance between vehicle v and UAV u
+R_comm
+Maximum UAV communication range
+S_v,u(t)
+Signal-quality value of the vehicle–UAV link
+D_v,u(t)
+Communication delay of the vehicle–UAV link
+P_v,u(t)
+Packet delivery ratio of the vehicle–UAV link
+E_u(t)
+Residual energy of UAV u
+s_t
+State observed by the PPO agent at step t
+a_t
+UAV-selection action chosen at step t
+r_t
+Immediate reward obtained after action a_t
+π_θ(a_t | s_t)
+PPO policy parameterized by θ
+V_φ(s_t)
+State-value function parameterized by φ
+F_v,u(t)
+Fuzzy priority assigned to candidate link (v,u)
+g_i(t)
+Violation magnitude of QoS constraint i
+λ_i(t)
+Adaptive Lagrangian multiplier for constraint i
+η_λ
+Learning rate used for Lagrangian multiplier updates
+γ
+Reward discount factor
+ε
+PPO clipping parameter
+A_t
+Generalized advantage estimate at step t
+Literature survey
+This section reviews the principal methods related to reliable UAV selection and communication optimization in the IoV. The existing literature can be broadly grouped into conventional optimization and heuristic methods, reinforcement-learning-based methods, multi-agent and safe reinforcement learning, and hybrid fuzzy–learning approaches. These categories are closely connected to the present work because UAV-assisted IoV communication requires decisions that are adaptive, computationally feasible, and responsive to multiple QoS and energy constraints.
+Conventional optimization and heuristic methods for UAV-IoV communication
+Early studies on vehicular task allocation and communication-resource management commonly formulated the decision problem using mathematical optimization. Mixed-integer programming, successive convex approximation, Lyapunov optimization, alternating direction methods, game theory, and matching-based techniques have been applied to user association, trajectory planning, power allocation, and task offloading (Chen et al. 2016; Wang et al. 2022; Zhang et al. 2022; Khan et al. 2023). These approaches can provide theoretically grounded solutions when the system model, channel conditions, and traffic processes are known accurately, and are particularly useful for static or slowly varying environments in which optimization can be completed before network conditions change.
+However, UAV-assisted IoV networks are characterized by rapid vehicle mobility, time-varying links, limited aerial energy, and changing service demand. The resulting optimization problems are generally non-convex and involve coupled decisions — a change in UAV position affects distance and signal quality, which changes delay and PDR and can subsequently influence the preferred UAV. Solving a large optimization problem at every communication step can therefore introduce significant computational overhead, and model-based approaches become less reliable when the assumed mobility or communication model differs from actual network conditions.
+Low-complexity heuristic methods provide a practical alternative. A nearest-UAV policy selects the aerial node with the smallest vehicle–UAV distance, strongest-signal selection chooses the UAV with the highest instantaneous link quality, energy-aware methods prioritize UAVs with greater residual energy, and greedy methods choose the candidate with the highest immediate utility. These strategies are computationally inexpensive and easy to deploy, but a policy based on one indicator cannot fully represent the trade-off among delay, PDR, signal quality, distance, and energy availability, and greedy policies optimize the current decision without accounting for its long-term effect on cumulative reward or fleet availability.
+AI and reinforcement-learning-based approaches for UAV-IoV communication
+Reinforcement learning has been increasingly used to address dynamic decision problems for vehicular communication and task offloading. A standard RL agent observes the network state, selects a communication or resource-allocation action, and improves its policy using the reward received from the environment. Unlike conventional optimization, RL does not require an explicit closed-form model of every transition and can learn nonlinear decision rules from repeated interactions (Sutton and Barto 2018).
+Value-based approaches such as Q-learning and deep Q-networks (DQN) are suitable when the action space is discrete. In UAV-assisted communication, a DQN can associate every action with the selection of a particular UAV and estimate the long-term value of that choice; dueling DQN, double DQN, and prioritized replay have been used to improve value estimation and training efficiency (Wang et al. 2016; van Hasselt et al. 2016; Schaul et al. 2016). However, value-based methods become difficult to scale when communication, trajectory, and resource decisions are optimized jointly, and they do not inherently enforce QoS or energy constraints.
+Policy-gradient and actor–critic methods directly optimize a parameterized policy. Deep deterministic policy gradient (DDPG) and twin delayed DDPG (TD3) are frequently adopted for continuous decisions such as UAV motion, transmission power, and resource allocation (Lillicrap et al. 2016; Fujimoto et al. 2018); TD3 reduces overestimation through twin critics, delayed actor updates, and target-policy smoothing. These mechanisms improve learning stability, but deterministic off-policy algorithms remain sensitive to exploration noise and hyperparameter selection, and penalties for unsafe or poor-QoS behavior are usually embedded manually in a single reward function.
+PPO constrains the magnitude of each policy update using a clipped surrogate objective (Schulman et al. 2017). Its stable updates and straightforward implementation make it effective for high-dimensional and stochastic environments, and it is well suited to the discrete UAV-selection problem considered in this work because it can learn a probability distribution over candidate UAVs while avoiding excessively large changes in the learned policy. Ordinary PPO, however, still treats QoS requirements as fixed reward terms, so a static penalty that performs well in one scenario may be too weak or too severe in another.
+Multi-agent reinforcement learning (MARL) extends RL to systems in which several agents interact with a shared environment. Value-decomposition methods such as VDN and QMIX combine local value functions into a global team value and support decentralized execution (Sunehag et al. 2017; Rashid et al. 2018), while COMA uses a counterfactual baseline to estimate the contribution of individual agents to the common reward (Foerster et al. 2018). These methods are useful for cooperative problems but may struggle with large joint state and action spaces. Actor–critic MARL methods commonly use centralized training with decentralized execution: MADDPG assigns a separate actor to each agent and trains centralized critics using joint state and action information (Lowe et al. 2017), reducing the non-stationarity observed by individual agents during training, though unconstrained MADDPG focuses primarily on reward maximization and may learn aggressive policies that violate collision, battery, or QoS requirements. MAPPO applies PPO-style updates to cooperative multi-agent systems (Yu et al. 2022), and HAPPO extends trust-region ideas to sequential multi-agent policy updates (Kuba et al. 2021); although these methods improve coordination and stability, their computational complexity exceeds that of a single-policy selector, and a full MARL architecture is not required for the centralized selection problem considered here.
+Safety and QoS constraints are critical when learned policies are deployed in transportation and aerial networks. Safe RL commonly models the problem as a constrained Markov decision process in which the policy maximizes expected reward while maintaining one or more expected costs below predefined limits (Altman 1999). Constrained policy optimization (CPO) restricts each policy update so that the new policy remains within an approximately feasible region (Achiam et al. 2017), while reward-constrained policy optimization (RCPO) introduces Lagrangian multipliers that adapt the weight assigned to constraint costs (Tessler et al. 2018). Lagrangian methods are attractive because they transform a constrained objective into a form that can be optimized using standard policy-gradient updates. The LC-MAPO method applies this principle to drone-aided IoV task offloading, combining Lagrangian safety constraints with a TD3-style multi-agent actor–critic framework that uses centralized critics, decentralized actors, twin reward and cost critics, delayed policy updates, and target-policy smoothing; collision events and low-battery operation are represented as separate costs whose multipliers adapt during training, and LC-MAPO achieves a strong balance between task-processing efficiency and operational safety compared with unconstrained MADDPG and a greedy strategy. However, LC-MAPO addresses a broader multi-drone trajectory and task-offloading problem requiring multiple actor networks and several centralized reward and cost critics, and its safety formulation focuses principally on collision avoidance and battery management, whereas the present work concentrates on selecting a reliable communication UAV using link-level delay, PDR, signal quality, distance, and residual energy.
+Fuzzy-logic systems are widely used when communication indicators are uncertain or do not have sharp boundaries. A fuzzy controller can describe a link as having low, medium, or high delay and combine this assessment with linguistic descriptions of signal, PDR, and energy (Zadeh 1965; Khan et al. 2023). Unlike hard thresholds, fuzzy membership functions provide gradual transitions between safe and risky states; fuzzy decision systems are interpretable and computationally light, but a fixed rule base does not learn long-term behavior from experience. Hybrid methods combine fuzzy reasoning with learning or optimization to obtain both interpretability and adaptability — a fuzzy module can guide initial decisions, shape the reward, or prioritize candidate actions, while RL learns a policy from long-term interaction (Khan et al. 2023). This combination can also alleviate the cold-start problem because the agent begins with informative behavior rather than unrestricted random exploration; however, fuzzy–RL methods still require a mechanism for adapting the strength of multiple constraints, since fixed fuzzy rules alone cannot ensure that repeated delay, PDR, signal, or energy violations become increasingly expensive during training.
+Table 3 lists 20 recent and representative studies with their methodology, evaluation environment, reported result, merits, and limitations. Some papers report relative improvements instead of a single percentage value; in those cases, the dominant reported result is stated directly.
+Table 2 Detailed review of 20 recent and representative papers
+Paper
+Methodology
+Dataset / Environment
+Result
+Merits
+Limitations
+Uddin et al. 2025
+Survey of DRL-based task offloading in vehicular edge computing.
+Vehicular edge computing, incl. EC, nearby vehicles, and UAV-assisted settings.
+DRL reported as more adaptive than static offloading for dynamic ITS workloads.
+Recent taxonomy and reward-design guidance.
+Survey only; no new UAV-selection algorithm.
+Li et al. 2025
+Hierarchical SAC-based partial offloading with high- and low-altitude UAV layers.
+Simulated UAV-assisted vehicular edge computing.
+Outperformed baselines in task completion, efficiency, and convergence.
+Handles heterogeneous UAV resources and dynamic conditions.
+Optimizes offloading/trajectory, not direct fuzzy UAV association.
+Alagha et al. 2025
+Two-sided UAV relay selection with decentralized PPO coordination and blockchain traceability.
+UAV-assisted IoV relay-selection simulation.
+Improved relay stability, coverage, and connectivity over baselines.
+Combines relay selection, coordination, and trust.
+Blockchain and multi-UAV coordination add overhead.
+Liu et al. 2024
+MADDPG-based task offloading considering V2V/RSU interference and load balancing.
+IoV with parked vehicles, moving vehicles, and RSUs.
+Reported lower energy and processing delay than popular offloading methods.
+Models wireless interference and effective communication duration.
+Does not focus on UAV-link feasibility or fuzzy QoS priority.
+Sun et al. 2024
+MINLP decomposition using splitting, KKT, and SCA for offloading/resource/trajectory control.
+Multi-UAV-assisted MEC simulation.
+Superior delay, energy, and offloaded-task performance vs benchmarks.
+Strong optimization baseline with multiple objectives.
+Complex solver pipeline; less adaptive online than RL.
+Kim et al. 2024
+Cooperative MADRL with graph-attention actors for UAV-aided MEC.
+UAV-aided MEC with ground IoT devices.
+Reported better MEC performance than conventional methods.
+Scalable message/solution action design.
+Heavier graph-attention MARL than the proposed centralized selector.
+Sun et al. 2023
+Knowledge-driven MARL with graph neural networks for IoV computation offloading.
+Cybertwin-enabled IoV with RSU offloading.
+Reported higher reward and scalability than competing methods.
+Uses topology knowledge to improve interpretability.
+RSU/cybertwin focus; no UAV energy-aware fuzzy priority.
+Li et al. 2023
+FlexEdge digital-twin PPO for UAV-aided vehicular edge computing.
+Digital-twin-driven UAV-aided VEC simulation.
+Quick convergence and reduced system energy consumption.
+Uses PPO for trajectory and resource adaptation.
+Single UAV-server focus and not constraint-price based.
+Tang and Wong 2020
+Distributed DQN/LSTM task offloading for MEC.
+50 mobile devices and five edge nodes.
+Reduced dropped tasks by 86.4–95.4% and delay by 18.0–30.1% vs baselines.
+Clear quantitative DRL offloading baseline.
+General MEC, not UAV-IoV selection.
+Schulman et al. 2017
+Clipped-surrogate PPO policy optimization.
+MuJoCo and Atari RL benchmarks.
+Stable policy updates with strong benchmark performance.
+Simple, stable actor–critic foundation.
+No built-in QoS constraint handling.
+Lowe et al. 2017
+MADDPG centralized training with decentralized execution.
+Cooperative and competitive multi-agent particle environments.
+Improved multi-agent learning stability over independent learners.
+Useful for multi-UAV coordination.
+Continuous multi-agent control more complex than single UAV selection.
+Yu et al. 2022
+MAPPO adaptation of PPO to cooperative multi-agent tasks.
+StarCraft Multi-Agent Challenge and other cooperative tasks.
+Demonstrated strong cooperative MARL performance.
+Stable PPO-style multi-agent baseline.
+Requires multi-agent training machinery not needed here.
+Achiam et al. 2017
+Constrained Policy Optimization for safe RL.
+Constrained control benchmarks.
+Maintained constraint satisfaction while optimizing reward.
+Important safe-RL foundation.
+Trust-region method harder to implement than PPO with multipliers.
+Stooke et al. 2020
+Responsive safety in policy optimization using Lagrangian methods.
+Safe RL benchmark environments.
+Improved response to safety violations during training.
+Supports adaptive constraint prices.
+Generic safe RL, not UAV-IoV specific.
+Duan et al. 2021
+DRL-based UAV trajectory/resource optimization for edge networks.
+UAV-enabled edge-computing simulation.
+Reported delay/energy gains against heuristic baselines.
+Shows UAV mobility and communication can be learned jointly.
+Trajectory emphasis; limited fuzzy interpretability.
+Chen et al. 2021
+Deep RL for vehicular edge computation offloading.
+Dynamic vehicular edge simulation.
+Reported lower service delay than greedy/local methods.
+Directly addresses time-varying vehicle demand.
+Usually assumes fixed reward weights.
+Wang et al. 2022
+Multi-agent RL for vehicular edge resource allocation.
+Multi-vehicle VEC simulation.
+Reported improved latency and load distribution.
+Handles distributed vehicle decisions.
+Constraint satisfaction is implicit rather than Lagrangian.
+Zhang et al. 2022
+UAV-assisted vehicular communication resource optimization.
+UAV-aided vehicular network simulation.
+Reported throughput/reliability improvements over static allocation.
+Relevant UAV communication-management baseline.
+Optimization is often scenario-specific.
+Khan et al. 2023
+Fuzzy decision support for UAV/IoT communication selection.
+Simulated uncertain wireless-link environment.
+Reported more interpretable link ranking under uncertain QoS.
+Matches gradual risk reasoning used in this work.
+Rules alone do not learn long-term policy returns.
+Recent safe-MARL UAV-IoV study 2024
+Lagrangian-constrained multi-agent actor–critic for drone-aided IoV task offloading.
+Drone-aided IoV task-offloading simulation.
+Reported improved task efficiency while reducing constraint violations.
+Closest safe-learning motivation for Fuzzy LP-PPO.
+Uses full MARL offloading control, whereas this work targets centralized UAV selection.
+Table 3 Comparison of related UAV-IoV decision and learning methods
+Method or family
+Decision mechanism
+Main strength
+Principal limitation for this project
+Nearest-UAV heuristic
+Minimizes instantaneous vehicle–UAV distance
+Simple and often reduces path loss
+Ignores PDR, residual energy, and long-term fleet balance
+Strongest-signal heuristic
+Maximizes instantaneous signal quality
+Improves immediate link strength
+Can overuse individual UAVs and neglect energy and delay
+Energy-aware greedy
+Prioritizes residual UAV energy
+Protects low-energy UAVs
+May select distant links with weak communication quality
+Reward-aware greedy
+Maximizes a fixed weighted QoS score
+Considers several metrics with low complexity
+Myopic and sensitive to manually fixed weights
+DQN and variants
+Learns action values for discrete UAV choices
+Supports nonlinear and adaptive selection
+No inherent constraint enforcement; scalability issues for joint actions
+DDPG/TD3
+Actor–critic learning for continuous control
+Suitable for trajectory, power, and resource decisions
+Sensitive to exploration and reward design
+MADDPG
+Centralized critics with decentralized continuous actors
+Supports cooperative multi-UAV control
+Unconstrained policies may violate safety or QoS requirements
+MAPPO/HAPPO
+PPO-based cooperative multi-agent policy learning
+Stable multi-agent updates and coordination
+Greater architectural and training complexity than required for centralized UAV selection
+CPO/RCPO
+Constrained or Lagrangian policy optimization
+Explicit treatment of safety costs
+Does not provide fuzzy handling of gradual link-quality uncertainty
+LC-MAPO
+Lagrangian-constrained TD3-style MARL
+Joint multi-drone efficiency and operational safety
+Designed for multi-agent trajectory/offloading; link-level QoS selection is not its primary objective
+Fuzzy-only selection
+Rule-based linguistic link prioritization
+Interpretable and computationally efficient
+Static rules do not learn long-term policies or adapt constraint prices
+Proposed Fuzzy LP-PPO
+Fuzzy ranking, adaptive Lagrangian penalties, and PPO learning
+Stable, constraint-aware selection using delay, PDR, signal quality, distance, and residual energy
+Current implementation assumes synthetic link models and centralized UAV selection
+The reviewed studies demonstrate substantial progress in UAV-assisted task offloading, resource allocation, multi-agent reinforcement learning, and safe policy optimization. Nevertheless, several challenges remain for the communication-selection problem considered in this work. Conventional heuristics employ fixed decision rules and cannot adapt to rapidly changing network conditions. Greedy weighted approaches and standard PPO-based methods rely on manually selected penalty coefficients, making them sensitive to reward design. Although constrained reinforcement-learning techniques improve policy safety, many require complex multi-agent architectures that are unnecessary when the primary objective is to select a single UAV from a known candidate set. Similarly, fuzzy-logic approaches effectively model uncertainty in communication quality but cannot optimize long-term decision policies on their own. These observations motivate the proposed Fuzzy LP-PPO framework, which combines fuzzy inference for interpreting uncertain communication conditions, adaptive Lagrangian multiplier updates for enforcing QoS constraints, and PPO for stable policy optimization, providing reliable and energy-aware UAV selection while maintaining low algorithmic complexity — well suited for dynamic urban-canyon, suburban-crossroads, and emergency-response IoV environments.
+The specific research gaps addressed in this work are summarized as follows.
+Fixed heuristic rules (nearest-UAV, strongest-signal, energy-aware, reward-aware) cannot adapt their priorities as delay, PDR, signal quality, and energy conditions change dynamically across scenarios.
+Conventional value-based and policy-gradient RL methods (DQN, DDPG/TD3, standard PPO) treat QoS requirements as static, manually weighted reward terms rather than as adaptive constraints.
+Multi-agent and safe-MARL frameworks (MADDPG, MAPPO/HAPPO, LC-MAPO) provide strong constraint handling but introduce architectural complexity that is unnecessary when the task is to select a single UAV from a known candidate fleet.
+Purely fuzzy-logic decision systems can represent gradual, uncertain link-quality risk but cannot learn long-term selection policies from experience.
+There is limited work that jointly evaluates delay, PDR, signal quality, distance, and residual UAV energy within a single, lightweight, constraint-aware learning framework validated across multiple distinct mobility scenarios (urban-canyon, suburban-crossroads, emergency-response).
+Few studies combine interpretable priority estimation with adaptive penalty pricing and stable policy optimization to reduce both cold-start exploration and dependence on fixed reward weights.
+Materials and methods
+This section begins by detailing the data-acquisition and scenario-generation process, followed by the preprocessing operations applied before the observation is presented to the learning agent. The methodology for reliable UAV selection is then presented, integrating the system model, mobility model, communication and energy model, fuzzy-priority estimation, adaptive Lagrangian constraint handling, and PPO-based policy optimization. By integrating these aspects, this section provides a comprehensive understanding of the overall Fuzzy LP-PPO framework and the specific sub-steps involved in reliable UAV selection for dynamic UAV-IoV systems.
+Data acquisition and scenario generation
+The proposed system uses a simulation-based data-acquisition process rather than a static, pre-recorded dataset, since the UAV-selection decision must respond to continuously changing vehicle positions, link quality, and UAV energy. At the beginning of every episode, the vehicle position, UAV positions, UAV altitude, and residual UAV energy are initialized using a seeded random generator. The operational region is a 2000 × 2000 m² area containing eight candidate UAVs; UAV altitude is sampled between 80 and 200 m, while initial UAV energy is sampled between 30 and 50 internal units.
+Three representative operating scenarios are generated to reflect distinct traffic and communication conditions. The urban-canyon scenario represents dense corridor movement and obstruction-sensitive links with approximately 20 vehicles; the suburban-crossroads scenario represents sparse movement, longer links, and energy-aware operation with approximately 15 vehicles; and the emergency-response scenario represents irregular mobility and non-stationary demand, also with approximately 15 vehicles, but with larger random displacements. At each decision step, the system acquires vehicle coordinates, UAV coordinates, relative position, distance, signal quality, delay, PDR, energy, scenario type, and the current Lagrangian multipliers.
+Table 4 Acquired data and preprocessing operations
+Input variable
+Raw range / unit
+Preprocessing
+Purpose
+Vehicle coordinates
+0–2000 m
+Divide by area size
+Vehicle location
+Relative UAV coordinates
+−2000–2000 m
+Clip and map to [0, 1]
+Relative geometry
+UAV altitude
+80–200 m
+Used in 3-D distance calculation
+Aerial geometry
+Signal quality
+0.05–1.00
+Already normalized
+Link strength
+Delay
+0–100 ms
+Threshold/fuzzy evaluation
+Responsiveness
+PDR
+50–100%
+Percentage form
+Reliability
+UAV energy
+0–50 units
+Multiply by two and clip
+Energy percentage
+Lagrangian multipliers
+0–10
+Clip after update
+Constraint importance
+Data preprocessing
+To ensure that measurements expressed in different units and ranges contribute consistently to the learning agent, preprocessing is applied before the state vector is constructed. Let L = 2000 m denote the side length of the operational region. The normalized vehicle coordinates are computed as in Equation (12), relative UAV coordinates are clipped and mapped to [0, 1] through Equations (13) and (14), and Equation (15) converts internal UAV energy into a percentage-compatible value.
+x̄_v(t) = x_v(t)/L,   ȳ_v(t) = y_v(t)/L                              (12)
+x̄_u,v(t) = ½[clip((x_u(t) − x_v(t))/L, −1, 1) + 1]                    (13)
+ȳ_u,v(t) = ½[clip((y_u(t) − y_v(t))/L, −1, 1) + 1]                    (14)
+E_u%(t) = min(100, max(0, 2·E_u(t)))                                 (15)
+The processed PPO observation is given by Equation (16). It contains two normalized vehicle features and four features for each of eight UAVs, producing a 34-dimensional observation.
+s_t = [ x̄_v, ȳ_v, { x̄_u,v, ȳ_u,v, S_v,u, E_u/50 }_(u=1..8) ]              (16)
+Proposed Fuzzy LP-PPO model methodology
+The proposed methodology is named Fuzzy Lagrangian Proximal Policy Optimization for Reliable UAV Selection in Dynamic Internet of Vehicles, abbreviated Fuzzy LP-PPO. The short name is used in algorithms, tables, and performance comparisons throughout this work. The methodology selects a suitable UAV for a moving vehicle by jointly considering vehicle–UAV distance, communication delay, packet delivery ratio (PDR), signal quality, and residual UAV energy. It combines fuzzy logic for gradual risk and urgency estimation, hard feasibility screening, adaptive Lagrangian multipliers, stable PPO learning, and scenario-specific training for urban-canyon, suburban-crossroads, and emergency-response environments.
+The framework consists of moving vehicular users, a fleet of candidate UAVs, a communication-quality evaluation module, a fuzzy decision system, an adaptive Lagrangian constraint handler, and a centralized PPO-based learning agent. The mobility model defines the movement behaviour of vehicles under different traffic scenarios, while the communication model computes distance, signal quality, delay, PDR, and UAV residual energy. These components jointly form the reinforcement-learning environment that interacts with the proposed agent during both training and evaluation, as illustrated in Fig. 1.
+System model
+A UAV-assisted IoV communication network is considered over a square operational region having dimensions 2000 × 2000 m². The network contains multiple moving vehicles together with eight candidate UAVs that provide aerial communication support whenever terrestrial communication becomes unreliable or unavailable. The candidate UAV set is defined by Equation (1), where U denotes the set of available UAVs participating in the communication process.
+U = {U₁, U₂, ..., U₈}                                                (1)
+At every communication decision instant, one representative active vehicle must be associated with one UAV from the candidate fleet. The objective is to maximize communication reliability while simultaneously reducing delay, improving packet delivery ratio, preserving UAV energy, and avoiding poor-quality communication links. Figure 2 illustrates the communication topology considered in the proposed framework — vehicles move inside the UAV-assisted IoV service region while observing multiple candidate aerial communication links. Dashed connections represent feasible vehicle-to-UAV (V2U) links, whereas the highlighted connection denotes the UAV selected by the proposed Fuzzy LP-PPO policy; after each communication decision, the measured QoS parameters are returned to the controller and used to update the learning policy.
+Fig. 2 UAV-IoV topology and communication-selection process of the proposed Fuzzy LP-PPO framework.
+Let p_v(t) = [x_v(t), y_v(t)] represent the two-dimensional position of vehicle v at decision instant t, and p_u(t) = [x_u(t), y_u(t), z_u(t)] represent the three-dimensional position of UAV u. Initially, the horizontal positions of vehicles and UAVs are generated randomly inside the operational region. UAV altitude is initialized between 80 m and 200 m, while every UAV starts with a residual energy value randomly selected between 30 and 50 internal energy units. Throughout one training episode, UAV positions remain fixed, whereas vehicle locations change according to the mobility model described below; at the beginning of every new episode, all positions and UAV energy levels are regenerated.
+The communication-selection problem is formulated as a Markov Decision Process (MDP). At each decision step t, the PPO agent observes the current state s_t, executes an action a_t, receives an immediate reward r_t, and then transitions to the next state s_(t+1). The observation vector contains normalized vehicle coordinates, relative UAV coordinates, signal-quality measurements, and normalized residual UAV energy, as given in Equation (2), producing a 34-dimensional observation consisting of two vehicle features and four communication features for each of the eight candidate UAVs. The action space of the proposed PPO agent is discrete, expressed as Equation (3), where every action corresponds to one position within the ranked list of candidate UAVs.
+s_t = [x̄_v, ȳ_v, {x̄_u,v, ȳ_u,v, S_v,u, Ē_u}_(u=1..8)]                    (2)
+A = {0, 1, 2, 3, 4, 5, 6, 7}                                          (3)
+Before the action selected by the PPO policy is executed, every UAV is evaluated using communication distance, signal quality, delay, PDR, and residual energy. Candidate UAVs satisfying the direct-selection conditions are retained and sorted according to their overall communication suitability, and the PPO agent subsequently selects one UAV from this ranked candidate list. If none of the UAVs satisfies all direct-selection requirements, the complete candidate fleet is retained to ensure that at least one feasible communication action always exists. A UAV is considered immediately feasible when the three-dimensional communication distance does not exceed 500 m, normalized residual energy remains above 20%, signal-quality score is at least 0.10, and communication delay does not exceed 95 ms. These preliminary feasibility checks eliminate clearly unsuitable communication links while allowing the adaptive Lagrangian mechanism to handle long-term QoS constraint violations during reinforcement learning.
+Vehicle mobility model
+The proposed communication-selection framework operates in dynamic IoV environments where vehicle positions continuously change throughout the communication process; consequently, communication distance, signal quality, PDR, and transmission delay also vary with time. Unlike trajectory-planning approaches that optimize complete vehicle routes, the proposed framework focuses on communication-aware UAV selection, so only vehicle positions are updated at every communication decision step while UAV positions remain fixed throughout one training episode — reflecting practical emergency-communication and temporary-UAV-deployment scenarios in which aerial platforms hover over predefined service regions.
+At the beginning of every episode, vehicle locations are initialized randomly inside the operational area. During each communication decision step, every vehicle performs a random movement whose magnitude depends on the current operating scenario. The vehicle position at the next communication instant is computed as in Equation (4), where Δp_v(t) denotes the random vehicle displacement during the current decision step, L represents the length of the simulation region, and clip(·) confines the updated position within the simulation boundaries. The displacement vector is generated independently for both horizontal coordinates at every decision instant, so the agent continuously observes changing communication conditions throughout one training episode.
+p_v(t+1) = clip( p_v(t) + Δp_v(t), 0, L )                              (4)
+Urban-canyon scenario: The urban-canyon scenario represents densely populated metropolitan road networks containing numerous buildings and frequent communication blockages. Approximately 20 moving vehicles are deployed within the simulation region; vehicle motion is relatively slow because of traffic congestion, intersections, and frequent stopping events, so communication links change gradually, although severe signal degradation may occur because of obstruction and multipath propagation. This scenario evaluates the capability of the proposed framework to maintain reliable communication in dense urban environments.
+Suburban-crossroads scenario: The suburban-crossroads scenario models moderately populated road networks with lower vehicle density and fewer communication obstacles. Approximately 15 vehicles move throughout the operational region with moderate velocities, and communication quality generally remains more stable than in urban environments because line-of-sight conditions occur more frequently. This scenario primarily evaluates communication efficiency together with UAV energy conservation under moderate traffic conditions.
+Emergency-response scenario: The emergency-response scenario represents disaster-relief or emergency communication situations in which communication demands vary rapidly and vehicle movement becomes less predictable. Approximately 15 vehicles are deployed inside the operational area, and their movement is generated using larger random displacements than in the previous scenarios, producing a rapidly changing communication topology that evaluates the adaptability of the proposed Fuzzy LP-PPO framework under highly dynamic operating conditions.
+Unlike traditional reinforcement-learning environments in which the state distribution remains relatively stationary, the continuously changing vehicle positions introduce time-varying communication distances, signal quality, packet delivery ratios, and transmission delays. Consequently, the proposed PPO agent must continuously adapt its UAV-selection strategy according to the evolving communication environment rather than relying on static communication patterns. The mobility model naturally produces diverse communication situations during training, thereby improving policy generalization across different traffic conditions; because every training episode begins with newly initialized vehicle positions and UAV energy levels, the learned policy becomes less sensitive to any particular network configuration and demonstrates improved robustness during unseen testing scenarios. The updated vehicle positions generated by the mobility model serve as direct inputs to the communication model presented next, where communication distance, signal quality, PDR, delay, and UAV energy consumption are computed before the fuzzy decision mechanism and adaptive Lagrangian PPO optimization are applied.
+Communication and energy model
+The communication model converts the positions of vehicles and UAVs into the communication measurements required for candidate selection, fuzzy inference, reward computation, and adaptive Lagrangian optimization. During every communication decision step, the environment evaluates communication distance, signal quality, communication delay, PDR, and residual UAV energy for each candidate UAV; these metrics collectively describe the instantaneous network state and serve as inputs to the proposed Fuzzy LP-PPO framework.
+The three-dimensional Euclidean distance between vehicle v and UAV u is calculated as in Equation (5), where x_v(t) and y_v(t) denote the horizontal coordinates of vehicle v, x_u(t) and y_u(t) represent the horizontal coordinates of UAV u, and z_u(t) denotes the UAV altitude. The maximum nominal communication range is fixed at R_comm = 500 m, and communication signal quality decreases linearly with increasing distance while maintaining a small constant value for UAVs located outside the communication range, as expressed in Equation (6). This normalized signal-quality model captures the primary influence of communication distance while avoiding the computational complexity associated with detailed wireless propagation, fading, and interference simulation, so performance improvements primarily reflect the effectiveness of the proposed decision framework rather than the characteristics of an advanced communication simulator.
+d_v,u(t) = √[(x_v(t) − x_u(t))² + (y_v(t) − y_u(t))² + z_u²(t)]        (5)
+S_v,u(t) = max(0.1, 1 − d_v,u(t)/R_comm)  if d_v,u(t) ≤ R_comm;  else 0.05     (6)
+Communication delay is modeled as a function of communication distance together with a small stochastic variation representing short-term channel fluctuations, as given in Equation (7), where D_v,u(t) denotes the communication delay in milliseconds and ξ_t is a uniformly distributed random variable introducing minor delay variations between communication links. The delay is limited to a maximum value of 100 ms, preventing unrealistic communication latency while maintaining consistent QoS evaluation throughout the learning process.
+D_v,u(t) = min(100, d_v,u(t)/10 + ξ_t),  ξ_t ∈ {1,2,...,9}             (7)
+Packet delivery ratio (PDR) is estimated using both communication signal quality and communication delay, as defined in Equation (8), where P_v,u(t) is expressed as a percentage. Higher signal-quality values increase successful packet delivery, whereas larger communication delays reduce overall transmission reliability; a lower bound of 50% prevents negative or physically unrealistic packet-delivery values and ensures numerical stability during reinforcement-learning optimization.
+P_v,u(t) = max(50, 100 × S_v,u(t) − D_v,u(t)/2)                        (8)
+UAV residual energy evolves according to Equation (9), where E_u(t) denotes the residual energy of UAV u at decision step t and e_u(t) represents the communication energy consumed during that decision, randomly selected from 1–3 units to introduce moderate variability in battery depletion; UAVs that are not selected during the current step retain their existing energy values. Since internal energy values are not directly comparable with other QoS metrics, residual UAV energy is converted into a normalized percentage representation, as given in Equation (10), before being used by the fuzzy inference system and adaptive constraint optimization module.
+E_u(t+1) = max(0, E_u(t) − e_u(t)),  e_u(t) ∈ {1,2,3}                   (9)
+E_u%(t) = min(100, max(0, 2 × E_u(t)))                                 (10)
+To encourage long-term communication reliability, four soft QoS constraints are monitored throughout reinforcement learning, corresponding to a maximum communication delay of 100 ms, a minimum PDR of 48%, a minimum normalized UAV energy of 8%, and a minimum communication signal quality of 0.05. The corresponding non-negative constraint-violation functions are defined in Equation (11); each violation function becomes zero whenever the corresponding communication requirement is satisfied, and otherwise produces a positive penalty proportional to the magnitude of the QoS violation. These values are forwarded to the adaptive Lagrangian optimization module, where the associated multipliers are updated during training, so that repeatedly violated communication constraints receive progressively larger penalties, encouraging the PPO agent to learn communication policies that simultaneously maximize reward and satisfy long-term QoS requirements.
+g_D=max(0,D_v,u−100);  g_P=max(0,48−P_v,u);  g_E=max(0,8−E_u%);  g_S=max(0,0.05−S_v,u)   (11)
+At the completion of every communication decision, the selected UAV, communication measurements, PDR, signal quality, delay, remaining UAV energy, received reward, selected action, and updated constraint multipliers are stored within the environment information record, supporting subsequent communication-performance analysis, convergence evaluation, energy-consumption assessment, and comparison with existing UAV-selection methods.
+Table 5 Main system and training parameters
+Parameter
+Value
+Operational area
+2000 × 2000 m²
+Number of candidate UAVs
+8
+UAV altitude range
+80–200 m
+Communication range
+500 m
+Initial UAV energy
+30–50 internal units
+Energy drain per selected step
+1–3 units
+Observation dimension
+34
+Action-space size
+8 discrete actions
+Training scenarios
+Urban canyon, suburban crossroads, emergency response
+Default training episodes
+1000 per scenario
+Steps per episode
+1000
+PPO learning rate
+3 × 10⁻⁴
+PPO batch size
+64
+PPO epochs per update
+10
+Discount factor (γ)
+0.99
+GAE parameter (λ_GAE)
+0.95
+PPO clipping parameter (ε)
+0.20
+Entropy coefficient
+0.02
+Actor network
+Two hidden layers, 128 neurons each
+Critic network
+Two hidden layers, 128 neurons each
+Lagrangian multiplier step size
+0.03
+Lagrangian multiplier range
+[0, 10]
+The complete Fuzzy LP-PPO architecture proceeds as follows: the communication module calculates link measurements, the hard mask removes clearly infeasible UAVs, the fuzzy module assigns continuous priority, the ranking module orders candidates, and PPO selects a ranked action; the reward and Lagrangian module then provides constraint-aware feedback. Table 7 summarizes the components of the proposed architecture.
+Table 6 Components of the proposed architecture
+Component
+Input
+Processing
+Output
+Scenario generator
+Scenario ID and seed
+Initialize mobility and UAVs
+Environment state
+Communication module
+Coordinates
+Distance, signal, delay, PDR
+Link measurements
+Hard mask
+Distance, delay, signal, energy
+Apply thresholds
+Feasible set
+Fuzzy module
+QoS, energy, scenario
+Estimate gradual risk
+Priority F_v,u
+Ranking module
+Measurements and priority
+Composite scoring
+Ranked UAV list
+PPO actor–critic
+State s_t
+Action probability/value
+Action and V_φ(s_t)
+Lagrangian module
+Violations
+Multiplier update
+Adaptive penalty
+Logging module
+Action and metrics
+Store records
+Evaluation output
+Algorithm for fuzzy-priority estimation and candidate ranking
+The fuzzy-priority module is the mechanism through which the proposed Fuzzy LP-PPO framework converts uncertain, gradually varying communication conditions into a single, actionable priority score — playing a role analogous to a composite risk index in other domains. Rather than assessing delay, PDR, signal quality, and residual energy independently through hard thresholds alone, the module estimates a continuous urgency value for every candidate vehicle–UAV link, allowing the ranking and reward mechanisms to distinguish between mildly degraded and severely degraded communication conditions.
+Equations (17)–(20) define four normalized risk components for delay, PDR, signal quality, and energy, each mapped to the interval [0, 1] using a linear proximity measure between an acceptable operating value and a problematic threshold. Equation (21) combines the four components into the overall fuzzy priority F_v,u(t), with an additional additive boost applied whenever the scenario indicator I_emg signals emergency-response conditions, allowing such situations to receive greater attention during candidate ranking.
+μ_D(t) = clip((D_v,u(t) − 55)/45, 0, 1)                                (17)
+μ_P(t) = clip((55 − P_v,u(t))/7, 0, 1)                                 (18)
+μ_S(t) = clip((0.18 − S_v,u(t))/0.13, 0, 1)                            (19)
+μ_E(t) = clip((35 − E_u%(t))/35, 0, 1)                                 (20)
+F_v,u(t) = clip[0.35μ_D + 0.25μ_P + 0.25μ_S + 0.15μ_E + 0.10·I_emg, 0, 1]     (21)
+Table 7 Fuzzy-priority inputs
+Fuzzy input
+Low risk
+Increasing risk
+Maximum risk
+Delay
+D ≤ 55 ms
+55–100 ms
+D ≥ 100 ms
+PDR
+P ≥ 55%
+48–55%
+P ≤ 48%
+Signal
+S ≥ 0.18
+0.05–0.18
+S ≤ 0.05
+Energy
+E% ≥ 35%
+0–35%
+E% = 0
+Emergency
+Normal
+—
+Emergency
+Each UAV is checked using the hard-feasibility condition in Equation (22); if no UAV passes the conditions, the entire fleet is retained so that the action set never becomes empty. Feasible candidates are scored using the composite ranking function in Equation (23), which combines signal quality, PDR, delay, normalized energy, fuzzy priority, and a small distance penalty, and PPO selects a position within the resulting ranked list as defined in Equation (24). This design mirrors the labeling and weighted-scoring strategy commonly used to convert multiple raw indicators into a single, ordinally meaningful index for downstream decision-making, while remaining tailored to the communication-selection problem addressed in this work.
+M_u(t) = 1 if d_v,u ≤ 500, E_u% ≥ 20, S_v,u ≥ 0.10, D_v,u ≤ 95; else 0        (22)
+C_v,u = 240·S_v,u + 2·P_v,u − 1.3·D_v,u + 2.5·E_u% + 35·F_v,u − 0.02·d_v,u   (23)
+a_t ∈ {0, 1, ..., 7}                                                  (24)
+Reward and adaptive Lagrangian formulation
+Although the fuzzy priority guides candidate ranking, the reward function used to train the PPO agent must remain scientifically grounded in the underlying communication objective rather than in the fuzzy score alone. The QoS score, task-service reward, adaptive constraint penalty, and final reward are defined in Equations (25)–(28); Equation (25) rewards high signal quality, high PDR, low delay, and high residual energy, Equation (26) rewards successful task service while penalizing distance and energy expenditure, and Equation (27) accumulates the adaptive Lagrangian penalty across the four monitored constraints. The final reward in Equation (28) combines the task-service reward, the QoS score, the fuzzy priority, and the adaptive constraint penalty, so that the agent is rewarded for both immediate communication quality and for avoiding constraint violations. The initial multipliers are given in Equation (29), and Equation (30) increases the multiplier associated with any observed violation through a dual-ascent update with step size η_λ = 0.03, so that repeated violations of a particular constraint become progressively more expensive during training while satisfied constraints do not accumulate additional penalty.
+Q_v,u(t) = 190·S_v,u(t) + 1.5·P_v,u(t) − 1.2·D_v,u(t) + 2.2·E_u%(t)             (25)
+R_task(t) = 15·N_t(t) − 0.002·d_v,u(t) − 0.08·e_u(t) − 0.05                    (26)
+Φ(t) = λ_D·g_D(t) + λ_P·g_P(t) + λ_E·g_E(t) + λ_S·g_S(t)                       (27)
+r_t = R_task(t) + Q_v,u(t) + 20·F_v,u(t) − Φ(t)                               (28)
+λ(0) = [0.35, 0.20, 0.60, 0.35]                                          (29)
+λ_i(t+1) = clip[λ_i(t) + η_λ·g_i(t), 0, 10],  η_λ = 0.03                    (30)
+Policy optimization with PPO
+The proposed model leverages the state representation derived from vehicle and UAV measurements, together with the fuzzy priority and adaptive Lagrangian penalty, to learn a UAV-selection policy through actor–critic PPO training. The actor network outputs the policy π_θ(a_t | s_t) over the discrete action space, as in Equation (31), and the critic network estimates the state-value function V_φ(s_t), as in Equation (32). During training, the probability ratio between the current and previous policy is computed as in Equation (33), the temporal-difference residual is computed as in Equation (34), and the generalized advantage estimate (GAE) is computed as in Equation (35).
+π_θ(a_t | s_t)                                                       (31)
+V_φ(s_t) = E[ Σ γᵏ r_(t+k) | s_t ]                                     (32)
+ρ_t(θ) = π_θ(a_t|s_t) / π_θ_old(a_t|s_t)                                (33)
+δ_t = r_t + γ·V_φ(s_(t+1)) − V_φ(s_t)                                    (34)
+Â_t = Σ (γλ_GAE)^l · δ_(t+l)                                              (35)
+The clipped surrogate objective in Equation (36) limits the magnitude of each policy update by clipping the probability ratio to the interval [1 − ε, 1 + ε], preventing excessively large or destabilizing updates. The critic loss in Equation (37) minimizes the squared error between the estimated value and the empirical return, and the total loss in Equation (38) combines the negative clipped objective, the weighted critic loss, and an entropy bonus that discourages premature convergence to a deterministic policy.
+L_clip(θ) = E[ min(ρ_t·Â_t, clip(ρ_t, 1−ε, 1+ε)·Â_t) ]                     (36)
+L_V(φ) = E[ (V_φ(s_t) − R̂_t)² ]                                           (37)
+L(θ,φ) = −L_clip(θ) + c_V·L_V(φ) − c_H·H[π_θ(·|s_t)]                       (38)
+Before ordinary PPO learning begins, a fuzzy-guided warm start reduces unstructured initial exploration: 800 states are sampled and the fuzzy-ranked best candidate is stored as action zero, and six behavior-cloning epochs minimize the warm-start loss in Equation (39). This warm start allows the agent to begin training with informative UAV-selection behavior rather than fully random exploration, which is particularly beneficial given the discrete, ranked action space and the presence of multiple competing QoS objectives.
+L_WS(θ) = −(1/N_WS)·Σ log π_θ(a_t^F | s_t),  a_t^F = 0                     (39)
+Integrated Fuzzy LP-PPO algorithm for UAV selection
+The complete Fuzzy LP-PPO methodology integrates fuzzy-priority estimation, hard feasibility screening, adaptive Lagrangian constraint handling, and PPO policy optimization into a single training and inference pipeline, summarized in Algorithms 1–3.
+Algorithm 1. Fuzzy-based candidate screening and ranking
+Input: p_v(t), {p_u(t)}, {E_u(t)}, I_emg(t)
+Output: Ranked candidate list C*
+1: C* ← ∅
+2: for each UAV u = 1, ..., 8 do
+3:    Compute distance, signal, delay, PDR and normalized energy
+4:    Compute μ_D, μ_P, μ_S and μ_E using Equations (17)–(20)
+5:    Compute F_v,u using Equation (21)
+6:    Evaluate feasibility M_u using Equation (22)
+7:    Compute C_v,u using Equation (23) and store candidate
+8: end for
+9: If at least one candidate is feasible, remove infeasible candidates
+10: Sort candidates by score, energy, signal and lower delay
+11: return C*
+Algorithm 2. Adaptive Fuzzy LP-PPO training
+Input: scenarios Ω, episodes N_ep, horizon H, actor θ, critic φ, η_λ
+Output: trained policies {π_θ*}
+1: for each scenario ω ∈ Ω do
+2:    Initialize actor, critic and λ = [0.35, 0.20, 0.60, 0.35]
+3:    Perform fuzzy-guided warm start
+4:    for episode = 1, ..., N_ep do
+5:       Reset environment and rollout buffer
+6:       for t = 0, ..., H−1 do
+7:          Observe s_t and execute Algorithm 1
+8:          Sample a_t ~ π_θ(a_t | s_t) and map it to the effective UAV
+9:          Execute communication and calculate r_t
+10:         Compute violations and update λ using Equation (30)
+11:         Update energy, vehicle position and next state
+12:         Store transition in the rollout buffer
+13:      end for
+14:      Compute GAE and update actor and critic
+15:      Record episode metrics
+16:   end for
+17:   Save scenario policy
+18: end for
+Algorithm 3. Online UAV selection
+Input: trained policy π_θ* and current network state
+Output: selected UAV u*
+1: Construct normalized observation s_t
+2: Execute Algorithm 1 to obtain C*
+3: Compute π_θ*(· | s_t)
+4: Select a_t = argmax_a π_θ*(a | s_t)
+5: Map a_t to effective UAV u*
+6: Establish communication and record QoS information
+7: return u*
+Algorithm 2 describes the complete training process, including fuzzy warm start, Lagrangian adaptation, and PPO optimization across all three scenarios, while Algorithm 3 describes the lightweight online decision process used once a scenario-specific policy has been trained: the trained actor network is queried once per communication decision, and the fuzzy-ranked candidate list from Algorithm 1 continues to be used at inference time to guarantee that the effective UAV mapped from the PPO action always corresponds to a communication-feasible candidate whenever one exists.
+Computational complexity
+The overall complexity of the Fuzzy LP-PPO methodology is determined by three core components: communication and fuzzy-priority evaluation, candidate ranking, and PPO policy inference. Let N_U denote the number of candidate UAVs. Communication and fuzzy evaluation require O(N_U) operations per decision, since every candidate is evaluated independently, while ranking the candidates by composite score requires O(N_U log N_U) operations, as given in Equation (40). If W_π denotes the number of actor-network parameters, the total deployment-time complexity of one UAV-selection decision is given by Equation (41). This complexity reflects the trade-off between the low per-decision cost of fuzzy screening and ranking and the fixed cost of a single forward pass through the trained actor network, and remains lightweight enough for repeated, real-time UAV-selection decisions in dynamic IoV environments. Table 9 summarizes the principal implementation parameters used throughout training and evaluation.
+O(N_U log N_U)                                                        (40)
+O(N_U log N_U + W_π)                                                  (41)
+Table 8 Principal implementation parameters
+Parameter
+Value
+Candidate UAVs
+8
+Observation dimension
+34
+Actions
+8
+Actor/Critic
+128–128 neurons
+PPO learning rate
+3 × 10⁻⁴
+γ / λ_GAE / ε
+0.99 / 0.95 / 0.20
+Entropy coefficient
+0.02
+Batch size / PPO epochs
+64 / 10
+Warm-start samples / epochs
+800 / 6
+Episodes / steps per scenario
+1000 / 1000
+Lagrangian step / range
+0.03 / [0, 10]

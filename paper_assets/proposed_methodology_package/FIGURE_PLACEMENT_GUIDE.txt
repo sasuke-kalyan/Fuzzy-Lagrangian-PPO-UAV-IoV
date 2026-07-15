@@ -1,0 +1,16 @@
+FIGURE PLACEMENT GUIDE
+
+Figure 2 — Proposed system architecture
+Place in Section 5.4 immediately after the first paragraph that introduces the complete Fuzzy LP-PPO architecture.
+
+Figure 3 — Candidate evaluation trace-out diagram
+Place in Section 5.6 after Equations (11)–(13) and the paragraph describing candidate screening and ranking.
+
+Figure 4 — PPO training flowchart
+Place in Section 5.9 immediately after the paragraph introducing the complete training flow.
+
+Figure 5 — Sequence diagram
+Place in Section 5.9 after the paragraph describing the sequence of one vehicle-to-UAV selection decision.
+
+The figures are already embedded at these positions in proposed_methodology_copy_paste.docx.
+Remove the italic “PLACEMENT NOTE” lines after the material has been inserted into the final research paper.
