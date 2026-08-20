@@ -1,0 +1,30 @@
+\begin{table}[!t]
+\caption{Training hyperparameters of the proposed Fuzzy Lagrangian PPO (Fuzzy LP-PPO) model.}
+\label{tab:fuzzy_lp_ppo_hyperparameters}
+\centering
+\small
+\begin{tabular}{@{}ll@{}}
+\toprule
+Parameter & Value \\
+\midrule
+Learning algorithm & PPO (MlpPolicy) \\
+Learning rate & $3 \times 10^{-4}$ \\
+Effective rollout steps (n\_steps) & 200 \\
+Configured minibatch size & 64 transitions (final batch may be smaller) \\
+PPO epochs per update & 10 \\
+Discount factor ($\gamma$) & 0.99 \\
+GAE parameter ($\lambda$) & 0.95 \\
+PPO clipping parameter ($\epsilon$) & 0.20 \\
+Entropy coefficient & 0.02 \\
+Actor network architecture & 128--128 neurons \\
+Critic network architecture & 128--128 neurons \\
+Training episodes & 100 per scenario (default) \\
+Steps per episode & 50 \\
+Warm-start samples & 800 \\
+Warm-start epochs & 6 \\
+Warm-start minibatch size & 64 \\
+Gradient clipping norm & 0.5 \\
+Random seed & 42 (default) \\
+\bottomrule
+\end{tabular}
+\end{table}

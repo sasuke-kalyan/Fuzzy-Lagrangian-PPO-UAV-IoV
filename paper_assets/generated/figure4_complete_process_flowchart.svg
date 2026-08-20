@@ -1,0 +1,206 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1900" height="1400" viewBox="0 0 1900 1400">
+  <defs>
+    <style>
+      .title{font:700 34px Arial,sans-serif;fill:#17345c}
+      .sub{font:17px Arial,sans-serif;fill:#64748b}
+      .lane{font:700 21px Arial,sans-serif;fill:#17345c}
+      .head{font:700 17px Arial,sans-serif;fill:#17345c;text-anchor:middle}
+      .body{font:14px Arial,sans-serif;fill:#42546c;text-anchor:middle}
+      .tiny{font:13px Arial,sans-serif;fill:#52647b;text-anchor:middle}
+      .label{font:700 14px Arial,sans-serif;fill:#17345c}
+      .step{fill:#f4f7ff;stroke:#315b9d;stroke-width:2.5}
+      .data{fill:#effafa;stroke:#159497;stroke-width:2.5}
+      .execute{fill:#f1faf4;stroke:#198446;stroke-width:2.5}
+      .adapt{fill:#fff7ef;stroke:#e2711b;stroke-width:2.5}
+      .decision{fill:#fffaf0;stroke:#c68117;stroke-width:2.5}
+      .term{fill:#eaf7ee;stroke:#198446;stroke-width:2.5}
+      .flow{fill:none;stroke:#17345c;stroke-width:3;marker-end:url(#arrow)}
+      .yes{fill:none;stroke:#198446;stroke-width:3;marker-end:url(#greenArrow)}
+      .no{fill:none;stroke:#d45b45;stroke-width:3;marker-end:url(#redArrow)}
+      .feedback{fill:none;stroke:#7d8899;stroke-width:2.5;stroke-dasharray:8 7;marker-end:url(#grayArrow)}
+    </style>
+    <marker id="arrow" markerWidth="11" markerHeight="11" refX="10" refY="3.5" orient="auto"><path d="M0 0 L10 3.5 L0 7 Z" fill="#17345c"/></marker>
+    <marker id="greenArrow" markerWidth="11" markerHeight="11" refX="10" refY="3.5" orient="auto"><path d="M0 0 L10 3.5 L0 7 Z" fill="#198446"/></marker>
+    <marker id="redArrow" markerWidth="11" markerHeight="11" refX="10" refY="3.5" orient="auto"><path d="M0 0 L10 3.5 L0 7 Z" fill="#d45b45"/></marker>
+    <marker id="grayArrow" markerWidth="11" markerHeight="11" refX="10" refY="3.5" orient="auto"><path d="M0 0 L10 3.5 L0 7 Z" fill="#7d8899"/></marker>
+  </defs>
+
+  <rect width="1900" height="1400" fill="#ffffff"/>
+  <text x="55" y="55" class="title">Figure 4. Complete Fuzzy LP-PPO UAV-Selection Process</text>
+  <text x="55" y="88" class="sub">End-to-end flow from scenario initialization to online decisions, constraint adaptation, PPO training, and model storage</text>
+
+  <!-- setup lane -->
+  <rect x="45" y="115" width="1810" height="155" rx="18" fill="#f8fafc" stroke="#c7d2e1" stroke-width="2"/>
+  <text x="70" y="148" class="lane">A. SCENARIO AND POLICY INITIALIZATION</text>
+
+  <rect x="75" y="175" width="150" height="60" rx="30" class="term"/>
+  <text x="150" y="211" class="head">START</text>
+
+  <rect x="285" y="165" width="260" height="80" rx="12" class="step"/>
+  <text x="415" y="197" class="head">Select scenario</text>
+  <text x="415" y="222" class="tiny">urban · suburban · emergency</text>
+
+  <rect x="605" y="165" width="310" height="80" rx="12" class="adapt"/>
+  <text x="760" y="195" class="head">Initialize actor, critic, and λ</text>
+  <text x="760" y="220" class="tiny">persistent multipliers clipped to [0,10]</text>
+
+  <rect x="975" y="165" width="300" height="80" rx="12" class="data"/>
+  <text x="1125" y="195" class="head">Fuzzy-guided warm start</text>
+  <text x="1125" y="220" class="tiny">800 states · 6 cloning epochs</text>
+
+  <rect x="1335" y="165" width="430" height="80" rx="12" class="step"/>
+  <text x="1550" y="195" class="head">Begin episode and reset environment</text>
+  <text x="1550" y="220" class="tiny">initialize 8 UAVs, active vehicle, energy, and timestep</text>
+
+  <path d="M225 205 H285" class="flow"/>
+  <path d="M545 205 H605" class="flow"/>
+  <path d="M915 205 H975" class="flow"/>
+  <path d="M1275 205 H1335" class="flow"/>
+
+  <!-- online decision lane -->
+  <rect x="45" y="290" width="1810" height="610" rx="18" fill="#f9fbfe" stroke="#c7d2e1" stroke-width="2"/>
+  <text x="70" y="325" class="lane">B. PER-DECISION UAV SELECTION AND COMMUNICATION</text>
+
+  <rect x="75" y="375" width="260" height="105" rx="12" class="data"/>
+  <text x="205" y="405" class="head">Measure all vehicle–UAV links</text>
+  <text x="205" y="431" class="tiny">distance · signal · delay · PDR</text>
+  <text x="205" y="454" class="tiny">residual energy</text>
+
+  <rect x="405" y="340" width="300" height="105" rx="12" class="data"/>
+  <text x="555" y="370" class="head">Construct 34-D observation</text>
+  <text x="555" y="396" class="tiny">2 vehicle-position features</text>
+  <text x="555" y="419" class="tiny">8 × (relative x/y, signal, energy)</text>
+
+  <rect x="405" y="500" width="300" height="130" rx="12" class="data"/>
+  <text x="555" y="530" class="head">Assess candidate UAVs</text>
+  <text x="555" y="556" class="tiny">range ≤500 m · delay ≤95 ms</text>
+  <text x="555" y="579" class="tiny">signal ≥0.10 · energy ≥20%</text>
+  <text x="555" y="604" class="tiny">compute clipped fuzzy-risk priority</text>
+
+  <polygon points="835,500 925,565 835,630 745,565" class="decision"/>
+  <text x="835" y="555" class="head">Any feasible</text>
+  <text x="835" y="578" class="head">candidate?</text>
+
+  <rect x="745" y="685" width="270" height="70" rx="12" class="adapt"/>
+  <text x="880" y="713" class="head">Fallback</text>
+  <text x="880" y="738" class="tiny">retain all UAVs to avoid empty set</text>
+
+  <rect x="1015" y="500" width="280" height="130" rx="12" class="data"/>
+  <text x="1155" y="530" class="head">Create ranked UAV list</text>
+  <text x="1155" y="556" class="tiny">hard-screen result + fuzzy priority</text>
+  <text x="1155" y="579" class="tiny">+ composite candidate score</text>
+  <text x="1155" y="604" class="tiny">rank is recomputed each decision</text>
+
+  <rect x="1015" y="340" width="280" height="105" rx="12" class="step"/>
+  <text x="1155" y="370" class="head">PPO selects rank action</text>
+  <text x="1155" y="396" class="tiny">training: sample from policy</text>
+  <text x="1155" y="419" class="tiny">evaluation: highest probability</text>
+
+  <rect x="1365" y="420" width="280" height="120" rx="12" class="step"/>
+  <text x="1505" y="450" class="head">Rank-to-UAV mapping</text>
+  <text x="1505" y="476" class="tiny">rank index + current ranked list</text>
+  <text x="1505" y="501" class="tiny">→ effective physical UAV u*</text>
+
+  <rect x="1365" y="590" width="280" height="105" rx="12" class="execute"/>
+  <text x="1505" y="620" class="head">Execute selected V2U link</text>
+  <text x="1505" y="646" class="tiny">communicate and consume 1–3</text>
+  <text x="1505" y="669" class="tiny">energy units on selected UAV</text>
+
+  <rect x="1365" y="745" width="280" height="105" rx="12" class="execute"/>
+  <text x="1505" y="775" class="head">Compute QoS and reward</text>
+  <text x="1505" y="801" class="tiny">signal · delay · PDR · energy</text>
+  <text x="1505" y="824" class="tiny">task + fuzzy priority − penalty</text>
+
+  <rect x="1015" y="745" width="280" height="105" rx="12" class="adapt"/>
+  <text x="1155" y="775" class="head">Update persistent multipliers</text>
+  <text x="1155" y="801" class="tiny">λ ← clip(λ + 0.03 × violation,</text>
+  <text x="1155" y="824" class="tiny">0, 10); penalty applies next decision</text>
+
+  <rect x="655" y="760" width="290" height="90" rx="12" class="step"/>
+  <text x="800" y="790" class="head">Store transition and update state</text>
+  <text x="800" y="816" class="tiny">(s, rank, reward, s′, terminal)</text>
+  <text x="800" y="839" class="tiny">move vehicle · advance timestep</text>
+
+  <polygon points="470,755 570,805 470,855 370,805" class="decision"/>
+  <text x="470" y="798" class="head">Episode</text>
+  <text x="470" y="821" class="head">finished?</text>
+
+  <!-- online arrows -->
+  <path d="M1550 245 V275 H25 V427 H75" class="flow"/>
+  <path d="M335 410 H370 V392 H405" class="flow"/>
+  <path d="M335 445 H370 V565 H405" class="flow"/>
+  <path d="M705 565 H745" class="flow"/>
+  <path d="M925 565 H1015" class="yes"/>
+  <text x="952" y="550" class="label" fill="#198446">YES</text>
+  <path d="M835 630 V685" class="no"/>
+  <text x="850" y="664" class="label" fill="#d45b45">NO</text>
+  <path d="M1015 720 H1050 V630 H1155" class="flow"/>
+  <path d="M705 392 H1015" class="flow"/>
+  <text x="820" y="381" class="tiny">34-D state only</text>
+  <path d="M1295 392 H1325 V455 H1365" class="flow"/>
+  <text x="1302" y="380" class="tiny">rank index</text>
+  <path d="M1295 565 H1325 V505 H1365" class="flow"/>
+  <text x="1305" y="580" class="tiny">ranked list</text>
+  <path d="M1505 540 V590" class="flow"/>
+  <path d="M1505 695 V745" class="flow"/>
+  <path d="M1365 798 H1295" class="flow"/>
+  <path d="M1015 798 H945" class="flow"/>
+  <path d="M655 805 H570" class="flow"/>
+  <path d="M470 755 V720 H205 V480" class="no"/>
+  <text x="485" y="739" class="label" fill="#d45b45">NO: next decision</text>
+
+  <!-- training lane -->
+  <rect x="45" y="925" width="1810" height="405" rx="18" fill="#fffaf5" stroke="#edc49c" stroke-width="2"/>
+  <text x="70" y="960" class="lane">C. PPO UPDATE, EPISODE/SCENARIO CONTROL, AND OUTPUT</text>
+
+  <rect x="250" y="1000" width="280" height="90" rx="12" class="adapt"/>
+  <text x="390" y="1032" class="head">Compute GAE and returns</text>
+  <text x="390" y="1059" class="tiny">from stored rollout transitions</text>
+
+  <rect x="590" y="1000" width="280" height="90" rx="12" class="adapt"/>
+  <text x="730" y="1032" class="head">Update PPO actor and critic</text>
+  <text x="730" y="1059" class="tiny">10 PPO optimization epochs</text>
+
+  <rect x="930" y="1000" width="270" height="90" rx="12" class="step"/>
+  <text x="1065" y="1032" class="head">Log episode metrics</text>
+  <text x="1065" y="1059" class="tiny">reward · QoS · UAV · energy · λ</text>
+
+  <polygon points="1370,985 1470,1045 1370,1105 1270,1045" class="decision"/>
+  <text x="1370" y="1038" class="head">All episodes</text>
+  <text x="1370" y="1061" class="head">complete?</text>
+
+  <rect x="1515" y="1140" width="290" height="80" rx="12" class="execute"/>
+  <text x="1660" y="1170" class="head">Save scenario policy and logs</text>
+  <text x="1660" y="1196" class="tiny">model · metrics · evaluation files</text>
+
+  <polygon points="1240,1135 1340,1190 1240,1245 1140,1190" class="decision"/>
+  <text x="1240" y="1183" class="head">More</text>
+  <text x="1240" y="1206" class="head">scenarios?</text>
+
+  <rect x="835" y="1160" width="180" height="60" rx="30" class="term"/>
+  <text x="925" y="1196" class="head">END</text>
+
+  <!-- training/control arrows -->
+  <path d="M470 855 V1045 H250" class="yes"/>
+  <text x="485" y="884" class="label" fill="#198446">YES</text>
+  <path d="M530 1045 H590" class="flow"/>
+  <path d="M870 1045 H930" class="flow"/>
+  <path d="M1200 1045 H1270" class="flow"/>
+  <path d="M1370 985 V945 H1740 V245 H1550" class="no"/>
+  <text x="1390" y="973" class="label" fill="#d45b45">NO: next episode</text>
+  <path d="M1470 1045 H1660 V1140" class="yes"/>
+  <text x="1490" y="1030" class="label" fill="#198446">YES</text>
+  <path d="M1515 1190 H1340" class="flow"/>
+  <path d="M1140 1190 H1015" class="no"/>
+  <text x="1050" y="1175" class="label" fill="#d45b45">NO</text>
+  <path d="M1240 1135 V1120 H1830 V260 H415 V245" class="yes"/>
+  <text x="1255" y="1122" class="label" fill="#198446">YES: next scenario</text>
+
+  <!-- notes / legend -->
+  <rect x="70" y="1265" width="1760" height="42" rx="8" fill="#ffffff" stroke="#d5dde8"/>
+  <rect x="100" y="1277" width="48" height="18" rx="4" class="data"/><text x="165" y="1292" class="tiny" text-anchor="start">measurement / ranking</text>
+  <rect x="390" y="1277" width="48" height="18" rx="4" class="step"/><text x="455" y="1292" class="tiny" text-anchor="start">PPO / control process</text>
+  <polygon points="710,1276 728,1286 710,1296 692,1286" class="decision"/><text x="750" y="1292" class="tiny" text-anchor="start">decision</text>
+  <rect x="925" y="1277" width="48" height="18" rx="4" class="execute"/><text x="990" y="1292" class="tiny" text-anchor="start">communication / output</text>
+  <rect x="1270" y="1277" width="48" height="18" rx="4" class="adapt"/><text x="1335" y="1292" class="tiny" text-anchor="start">training / adaptation</text>
+</svg>

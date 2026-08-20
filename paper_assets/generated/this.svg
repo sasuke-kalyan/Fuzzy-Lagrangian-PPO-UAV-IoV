@@ -1,0 +1,223 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2000" height="1220" viewBox="0 0 2000 1220">
+  <defs>
+    <style>
+      .title{font:700 30px Arial,sans-serif;fill:#17345c}
+      .sub{font:15px Arial,sans-serif;fill:#68778b}
+      .lane{font:700 20px Arial,sans-serif;fill:#17345c}
+      .head{font:700 18px Arial,sans-serif;fill:#17345c}
+      .body{font:14px Arial,sans-serif;fill:#33455c}
+      .small{font:12px Arial,sans-serif;fill:#52647b}
+      .tag{font:700 16px Arial,sans-serif;fill:#fff}
+      .blue{fill:#f4f7ff;stroke:#315b9d;stroke-width:2}
+      .cyan{fill:#effafa;stroke:#159497;stroke-width:2}
+      .green{fill:#f2faf4;stroke:#198446;stroke-width:2}
+      .orange{fill:#fff7ef;stroke:#e2711b;stroke-width:2}
+      .navyLine{fill:none;stroke:#17345c;stroke-width:3;marker-end:url(#navy)}
+      .stateLine{fill:none;stroke:#2e64db;stroke-width:3;marker-end:url(#state)}
+      .greenLine{fill:none;stroke:#198446;stroke-width:3;marker-end:url(#green)}
+      .orangeLine{fill:none;stroke:#e2711b;stroke-width:3;marker-end:url(#orange)}
+      .dashLine{fill:none;stroke:#7d8899;stroke-width:2.5;stroke-dasharray:8 7;marker-end:url(#gray)}
+    </style>
+    <marker id="navy" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L9,3 L0,6 Z" fill="#17345c"/></marker>
+    <marker id="state" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L9,3 L0,6 Z" fill="#2e64db"/></marker>
+    <marker id="green" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L9,3 L0,6 Z" fill="#198446"/></marker>
+    <marker id="orange" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L9,3 L0,6 Z" fill="#e2711b"/></marker>
+    <marker id="gray" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L9,3 L0,6 Z" fill="#7d8899"/></marker>
+  </defs>
+
+  <rect width="2000" height="1220" fill="#fff"/>
+  <text x="48" y="52" class="title">Figure 3. Fuzzy LP-PPO System Architecture</text>
+  <text x="48" y="80" class="sub">Online UAV selection, communication, constraint adaptation, training, and recording workflow</text>
+
+  <rect x="35" y="105" width="1930" height="715" rx="18" fill="#f9fbfe" stroke="#c5d1e0" stroke-width="2"/>
+  <text x="65" y="140" class="lane">ONLINE DECISION AND COMMUNICATION FLOW</text>
+
+  <!-- A -->
+  <rect x="65" y="175" width="260" height="510" rx="15" class="blue"/>
+  <circle cx="92" cy="202" r="18" fill="#315b9d"/><text x="86" y="208" class="tag">A</text>
+  <text x="122" y="208" class="head">Dynamic UAV–IoV</text><text x="122" y="231" class="head">Environment</text>
+  <line x1="88" y1="249" x2="302" y2="249" stroke="#c7d5e8"/>
+  <text x="90" y="282" class="body">• Urban canyon, suburban</text>
+  <text x="106" y="305" class="body">crossroads, emergency response</text>
+  <text x="90" y="343" class="body">• Eight candidate UAVs (U1–U8)</text>
+  <text x="90" y="375" class="body">• One representative active vehicle</text>
+  <text x="90" y="407" class="body">• Vehicle/UAV positions and energy</text>
+  <text x="90" y="439" class="body">• Scenario focus and decision step</text>
+  <rect x="92" y="482" width="205" height="50" fill="#59616d"/>
+  <line x1="105" y1="507" x2="285" y2="507" stroke="#fff" stroke-width="3" stroke-dasharray="20 14"/>
+  <rect x="175" y="468" width="52" height="73" rx="10" fill="none" stroke="#35b6c8" stroke-width="4"/>
+  <text x="105" y="575" class="head">Environment state update</text>
+  <text x="92" y="607" class="small">vehicle mobility · selected-UAV energy</text>
+  <text x="92" y="630" class="small">next decision state</text>
+
+  <!-- B -->
+  <rect x="370" y="175" width="270" height="240" rx="15" class="cyan"/>
+  <circle cx="397" cy="202" r="18" fill="#159497"/><text x="391" y="208" class="tag">B</text>
+  <text x="427" y="208" class="head">Link-Measurement Engine</text>
+  <line x1="393" y1="229" x2="617" y2="229" stroke="#b8dddd"/>
+  <text x="397" y="263" class="body">For every vehicle–UAV pair:</text>
+  <text x="397" y="294" class="body">• distance · signal · delay</text>
+  <text x="397" y="323" class="body">• PDR · residual UAV energy</text>
+  <text x="397" y="359" class="small">complete measurements feed ranking;</text>
+  <text x="397" y="382" class="small">only selected fields form PPO state</text>
+
+  <!-- C -->
+  <rect x="690" y="175" width="275" height="240" rx="15" class="cyan"/>
+  <circle cx="717" cy="202" r="18" fill="#159497"/><text x="711" y="208" class="tag">C</text>
+  <text x="747" y="208" class="head">Observation Constructor</text>
+  <line x1="713" y1="229" x2="942" y2="229" stroke="#b8dddd"/>
+  <text x="717" y="263" class="body">34-D PPO observation:</text>
+  <text x="717" y="294" class="body">• 2 vehicle-position features</text>
+  <text x="717" y="323" class="body">• 8 × 4 UAV features:</text>
+  <text x="735" y="348" class="small">relative x/y · signal · normalized energy</text>
+  <text x="717" y="382" class="small">Delay, PDR, fuzzy priority, and λ</text>
+  <text x="717" y="402" class="small">are not part of the observation.</text>
+
+  <!-- D -->
+  <rect x="690" y="465" width="375" height="285" rx="15" class="cyan"/>
+  <circle cx="717" cy="492" r="18" fill="#159497"/><text x="711" y="498" class="tag">D</text>
+  <text x="747" y="498" class="head">Candidate Assessment and Ranking</text>
+  <line x1="713" y1="519" x2="1042" y2="519" stroke="#b8dddd"/>
+  <text x="717" y="553" class="body">D1. Hard screen:</text>
+  <text x="735" y="578" class="small">range ≤ 500 m · delay ≤ 95 ms</text>
+  <text x="735" y="599" class="small">signal ≥ 0.10 · energy ≥ 20%</text>
+  <text x="717" y="630" class="body">D2. Clipped fuzzy-risk priority:</text>
+  <text x="735" y="655" class="small">delay · PDR · signal · energy + emergency boost</text>
+  <text x="717" y="686" class="body">D3. Composite ranking → ranked UAV list</text>
+  <text x="717" y="718" class="small">Fallback: retain all UAVs if no candidate passes.</text>
+
+  <!-- E -->
+  <rect x="1015" y="175" width="270" height="240" rx="15" class="blue"/>
+  <circle cx="1042" cy="202" r="18" fill="#17345c"/><text x="1036" y="208" class="tag">E</text>
+  <text x="1072" y="208" class="head">PPO Actor–Critic</text>
+  <line x1="1038" y1="229" x2="1262" y2="229" stroke="#c7d5e8"/>
+  <text x="1042" y="265" class="body">Input: 34-D observation</text>
+  <text x="1042" y="296" class="body">Output: probability over 8 ranks</text>
+  <text x="1042" y="330" class="small">actor and critic: 128–128 neurons</text>
+  <text x="1042" y="354" class="small">training samples a rank</text>
+  <text x="1042" y="378" class="small">evaluation uses highest-probability rank</text>
+
+  <!-- F -->
+  <rect x="1115" y="465" width="300" height="210" rx="15" class="blue"/>
+  <circle cx="1142" cy="492" r="18" fill="#17345c"/><text x="1136" y="498" class="tag">F</text>
+  <text x="1172" y="498" class="head">Rank-to-UAV Mapping</text>
+  <line x1="1138" y1="519" x2="1392" y2="519" stroke="#c7d5e8"/>
+  <text x="1142" y="557" class="body">Input 1: PPO rank index</text>
+  <text x="1142" y="587" class="body">Input 2: ranked UAV list from D</text>
+  <text x="1142" y="620" class="body">Output: effective physical UAV u*</text>
+  <text x="1142" y="650" class="small">Rank is not a permanent UAV identity.</text>
+
+  <!-- G -->
+  <rect x="1455" y="175" width="225" height="240" rx="15" class="green"/>
+  <circle cx="1482" cy="202" r="18" fill="#198446"/><text x="1476" y="208" class="tag">G</text>
+  <text x="1512" y="208" class="head">Communication</text><text x="1512" y="231" class="head">Execution</text>
+  <line x1="1478" y1="249" x2="1657" y2="249" stroke="#c4dccb"/>
+  <text x="1482" y="290" class="body">• establish V2U link with u*</text>
+  <text x="1482" y="321" class="body">• consume 1–3 energy units</text>
+  <text x="1482" y="352" class="body">• update selected-UAV energy</text>
+  <text x="1482" y="386" class="small">communication metrics produced</text>
+
+  <!-- H -->
+  <rect x="1455" y="465" width="300" height="210" rx="15" class="green"/>
+  <circle cx="1482" cy="492" r="18" fill="#198446"/><text x="1476" y="498" class="tag">H</text>
+  <text x="1512" y="498" class="head">QoS Outcome and Reward</text>
+  <line x1="1478" y1="519" x2="1732" y2="519" stroke="#c4dccb"/>
+  <text x="1482" y="557" class="body">• selected-link signal · delay · PDR</text>
+  <text x="1482" y="587" class="body">• pre-drain energy used in reward</text>
+  <text x="1482" y="617" class="body">• post-drain remaining energy logged</text>
+  <text x="1482" y="648" class="small">task + QoS + fuzzy priority − adaptive penalty</text>
+
+  <!-- I -->
+  <rect x="1795" y="275" width="160" height="400" rx="15" class="green"/>
+  <circle cx="1822" cy="302" r="18" fill="#198446"/><text x="1818" y="308" class="tag">I</text>
+  <text x="1852" y="308" class="head">Record</text>
+  <line x1="1818" y1="329" x2="1932" y2="329" stroke="#c4dccb"/>
+  <text x="1820" y="363" class="small">effective UAV u*</text>
+  <text x="1820" y="387" class="small">selected-link QoS</text>
+  <text x="1820" y="411" class="small">pre/post energy</text>
+  <text x="1820" y="435" class="small">reward</text>
+  <text x="1820" y="459" class="small">constraint violations</text>
+  <text x="1820" y="483" class="small">decision timestamp</text>
+  <text x="1820" y="507" class="small">terminal flag</text>
+  <line x1="1818" y1="535" x2="1932" y2="535" stroke="#c4dccb"/>
+  <text x="1820" y="568" class="head">Next state</text>
+  <text x="1820" y="598" class="small">vehicle mobility</text>
+  <text x="1820" y="622" class="small">energy update</text>
+  <text x="1820" y="646" class="small">decision step +1</text>
+
+  <!-- Correct online arrows -->
+  <path d="M325 295 H370" class="navyLine"/>
+  <path d="M640 295 H690" class="navyLine"/>
+  <path d="M505 415 V605 H690" class="navyLine"/>
+  <text x="527" y="590" class="small">complete measurements</text>
+  <path d="M965 295 H1015" class="stateLine"/>
+  <text x="968" y="281" class="small">34-D state</text>
+  <path d="M1150 415 V465" class="navyLine"/>
+  <text x="1165" y="447" class="small">rank index</text>
+  <path d="M1065 605 H1115" class="navyLine"/>
+  <text x="1072" y="590" class="small">ranked list</text>
+  <path d="M1415 570 H1435 V295 H1455" class="greenLine"/>
+  <path d="M1568 415 V465" class="greenLine"/>
+  <path d="M1755 570 H1795" class="greenLine"/>
+  <path d="M1875 675 V755 H195 V685" class="dashLine"/>
+  <text x="1515" y="748" class="small">next-decision mobility and energy state</text>
+
+  <!-- bottom lane -->
+  <rect x="35" y="845" width="1930" height="300" rx="18" fill="#fffaf5" stroke="#edc49c" stroke-width="2"/>
+  <text x="65" y="880" class="lane">TRAINING, CONSTRAINT ADAPTATION, AND RECORDING</text>
+
+  <!-- J -->
+  <rect x="70" y="915" width="540" height="190" rx="15" class="orange"/>
+  <circle cx="97" cy="942" r="18" fill="#e2711b"/><text x="92" y="948" class="tag">J</text>
+  <text x="127" y="948" class="head">Persistent Lagrangian Multiplier Controller</text>
+  <line x1="93" y1="969" x2="587" y2="969" stroke="#ecc9aa"/>
+  <text x="97" y="1001" class="body">Soft constraints: delay ≤ 95 ms · PDR ≥ 55%</text>
+  <text x="97" y="1030" class="body">energy ≥ 20% · signal ≥ 0.10</text>
+  <text x="97" y="1061" class="body">λ ← clip(λ + 0.03 × violation, 0, 10)</text>
+  <text x="97" y="1088" class="small">increase on violation · unchanged when satisfied · retained across resets</text>
+
+  <!-- K -->
+  <rect x="730" y="915" width="540" height="190" rx="15" class="orange"/>
+  <circle cx="757" cy="942" r="18" fill="#e2711b"/><text x="751" y="948" class="tag">K</text>
+  <text x="787" y="948" class="head">Scenario-Specific PPO Training</text>
+  <line x1="753" y1="969" x2="1247" y2="969" stroke="#ecc9aa"/>
+  <text x="757" y="1001" class="body">• warm start: 800 states and 6 cloning epochs</text>
+  <text x="757" y="1030" class="body">• 100 episodes × 50 decisions per scenario</text>
+  <text x="757" y="1059" class="body">• 200-step rollout · GAE · 10 PPO update epochs</text>
+  <text x="757" y="1088" class="small">separate actor–critic policy saved for each scenario</text>
+
+  <!-- L -->
+  <rect x="1390" y="915" width="540" height="190" rx="15" class="orange"/>
+  <circle cx="1417" cy="942" r="18" fill="#e2711b"/><text x="1411" y="948" class="tag">L</text>
+  <text x="1447" y="948" class="head">Logging, Model Storage, and Evaluation</text>
+  <line x1="1413" y1="969" x2="1907" y2="969" stroke="#ecc9aa"/>
+  <text x="1417" y="1001" class="body">• reward, timing, selected UAV, QoS, energy, multipliers</text>
+  <text x="1417" y="1030" class="body">• scenario-specific model and episode-log files</text>
+  <text x="1417" y="1059" class="body">• graphs, tables, baselines, and constraint analysis</text>
+
+  <!-- Correct adaptation/training/logging arrows -->
+  <path d="M1605 675 V805 H340 V915" class="orangeLine"/>
+  <text x="825" y="798" class="small">constraint violations after each decision</text>
+  <path d="M610 1010 H665 V780 H1425 V620 H1455" class="orangeLine"/>
+  <text x="850" y="773" class="small">adaptive penalty for subsequent reward calculations only</text>
+  <!-- Training updates the PPO parameters through the clear gap between D and F.
+       The route enters E from its left edge so it cannot be mistaken for rank flow. -->
+  <path d="M1088 915 V440 H995 V360 H1015" class="dashLine"/>
+  <text x="812" y="432" class="small">trained actor–critic parameters</text>
+  <!-- The completed decision record supplies both the rollout transition and the
+       persistent log. Multipliers are logged directly by J, not via I. -->
+  <path d="M1955 610 H1972 V875 H1000 V915" class="dashLine"/>
+  <text x="1160" y="868" class="small">rollout transition: state · action · reward · next state · terminal flag</text>
+  <path d="M1875 675 V895 H1660 V915" class="dashLine"/>
+  <path d="M610 1080 V1128 H1660 V1105" class="dashLine"/>
+  <text x="815" y="1122" class="small">persistent multiplier values for logging and evaluation</text>
+  <path d="M1270 1030 H1390" class="dashLine"/>
+
+  <!-- legend -->
+  <rect x="40" y="1165" width="1920" height="38" rx="8" fill="#fff" stroke="#d3dbe6"/>
+  <line x1="70" y1="1184" x2="120" y2="1184" stroke="#17345c" stroke-width="3"/><text x="132" y="1189" class="small">online processing</text>
+  <line x1="360" y1="1184" x2="410" y2="1184" stroke="#2e64db" stroke-width="3"/><text x="422" y="1189" class="small">PPO state</text>
+  <line x1="630" y1="1184" x2="680" y2="1184" stroke="#198446" stroke-width="3"/><text x="692" y="1189" class="small">communication/outcome</text>
+  <line x1="970" y1="1184" x2="1020" y2="1184" stroke="#e2711b" stroke-width="3"/><text x="1032" y="1189" class="small">constraint adaptation</text>
+  <line x1="1325" y1="1184" x2="1375" y2="1184" stroke="#7d8899" stroke-width="3" stroke-dasharray="8 7"/><text x="1387" y="1189" class="small">state/model/logging interface</text>
+</svg>

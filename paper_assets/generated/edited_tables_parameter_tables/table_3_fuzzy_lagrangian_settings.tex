@@ -1,0 +1,30 @@
+\begin{table}[!t]
+\caption{Rule-based fuzzy-priority heuristic and adaptive Lagrangian settings of the proposed Fuzzy LP-PPO method.}
+\label{tab:fuzzy_lagrangian_settings}
+\centering
+\small
+\begin{tabular}{@{}lll@{}}
+\toprule
+Component & Parameter & Value \\
+\midrule
+Rule-based fuzzy-priority heuristic & Delay-urgency weight & 0.35 \\
+& PDR-risk weight & 0.25 \\
+& Signal-risk weight & 0.25 \\
+& Energy-risk weight & 0.15 \\
+& Emergency-scenario contribution & 0.10 (active for dynamic adaptation) \\
+& Delay urgency activation/saturation range & 55--100 ms \\
+& PDR-risk activation/saturation thresholds & 55\% / 48\% \\
+& Signal-risk activation/saturation thresholds & 0.18 / 0.05 \\
+& Energy-risk activation threshold & 35\% residual energy \\
+Adaptive Lagrangian & Delay multiplier initialization & 0.35 \\
+& PDR multiplier initialization & 0.20 \\
+& Energy multiplier initialization & 0.60 \\
+& Signal multiplier initialization & 0.35 \\
+& Multiplier learning rate & 0.03 \\
+& Maximum communication delay & 95 ms \\
+& Minimum PDR & 55\% \\
+& Minimum residual energy & 20\% \\
+& Minimum signal strength & 0.10 \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,166 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="960" viewBox="0 0 1800 960">
+  <defs>
+    <style>
+      .title{font:700 26px Arial,sans-serif;fill:#17345c}
+      .h{font:700 17px Arial,sans-serif;fill:#17345c}
+      .b{font:14px Arial,sans-serif;fill:#24344d}
+      .s{font:12px Arial,sans-serif;fill:#44546a}
+      .green{fill:#167c3b}.orange{fill:#e56b1f}.navy{fill:#17345c}
+      .card{fill:#f7faff;stroke:#17345c;stroke-width:2}
+      .gcard{fill:#f5fbf6;stroke:#167c3b;stroke-width:2}
+      .ocard{fill:#fff8f3;stroke:#e56b1f;stroke-width:2}
+      .flow{fill:none;stroke:#17345c;stroke-width:3;marker-end:url(#an)}
+      .candidate{fill:none;stroke:#2864dc;stroke-width:2;stroke-dasharray:7 6}
+      .link{fill:none;stroke:#167c3b;stroke-width:3;marker-end:url(#ag)}
+      .feedback{fill:none;stroke:#e56b1f;stroke-width:3;marker-end:url(#ao)}
+    </style>
+    <marker id="an" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L9,3 L0,6 Z" fill="#17345c"/></marker>
+    <marker id="ag" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L9,3 L0,6 Z" fill="#167c3b"/></marker>
+    <marker id="ao" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L9,3 L0,6 Z" fill="#e56b1f"/></marker>
+    <g id="drone">
+      <line x1="-25" y1="-8" x2="25" y2="-8" stroke="#17345c" stroke-width="3"/>
+      <ellipse cx="-30" cy="-10" rx="12" ry="4" fill="none" stroke="#17345c" stroke-width="2"/>
+      <ellipse cx="30" cy="-10" rx="12" ry="4" fill="none" stroke="#17345c" stroke-width="2"/>
+      <rect x="-14" y="-13" width="28" height="17" rx="5" fill="#dceeff" stroke="#17345c" stroke-width="2"/>
+      <line x1="-9" y1="4" x2="-15" y2="16" stroke="#17345c" stroke-width="2"/>
+      <line x1="9" y1="4" x2="15" y2="16" stroke="#17345c" stroke-width="2"/>
+      <circle cx="0" cy="7" r="4" fill="#35b6c8" stroke="#17345c"/>
+    </g>
+    <g id="car">
+      <path d="M-34,8 L-26,-8 L16,-8 L31,8 Z" fill="#fff" stroke="#17345c" stroke-width="2"/>
+      <rect x="-38" y="7" width="74" height="19" rx="7" fill="#eef2f6" stroke="#17345c" stroke-width="2"/>
+      <circle cx="-23" cy="27" r="7" fill="#59616d"/><circle cx="22" cy="27" r="7" fill="#59616d"/>
+    </g>
+  </defs>
+
+  <rect width="1800" height="960" fill="#fff"/>
+  <text x="52" y="55" class="title">Fuzzy LP-PPO UAV Selection: Topology and Implemented Decision Flow</text>
+
+  <!-- Environment -->
+  <rect x="42" y="85" width="505" height="690" rx="14" class="card"/>
+  <text x="68" y="122" class="h">Dynamic UAV–IoV Environment</text>
+  <text x="68" y="147" class="s">Eight physical candidate UAVs (U1–U8)</text>
+
+  <g transform="translate(95 195)"><use href="#drone"/><text x="-10" y="38" class="b">U1</text></g>
+  <g transform="translate(155 195)"><use href="#drone"/><text x="-10" y="38" class="b">U2</text></g>
+  <g transform="translate(215 195)"><use href="#drone"/><text x="-10" y="38" class="b">U3</text></g>
+  <g transform="translate(275 195)"><use href="#drone"/><text x="-10" y="38" class="b">U4</text></g>
+  <g transform="translate(335 195)"><use href="#drone"/><text x="-10" y="38" class="b">U5</text></g>
+  <g transform="translate(395 195)"><use href="#drone"/><text x="-10" y="38" class="b">U6</text></g>
+  <g transform="translate(455 195)"><use href="#drone"/><text x="-10" y="38" class="b">U7</text></g>
+  <g transform="translate(515 195)"><use href="#drone"/><text x="-10" y="38" class="b">U8</text></g>
+
+  <!-- Candidate links -->
+  <path d="M292 475 L95 225" class="candidate"/><path d="M292 475 L155 225" class="candidate"/>
+  <path d="M292 475 L215 225" class="candidate"/><path d="M292 475 L275 225" class="candidate"/>
+  <path d="M292 475 L335 225" class="candidate"/><path d="M292 475 L395 225" class="candidate"/>
+  <path d="M292 475 L455 225" class="candidate"/><path d="M292 475 L515 225" class="candidate"/>
+
+  <rect x="65" y="485" width="455" height="60" fill="#59616d"/>
+  <line x1="80" y1="515" x2="505" y2="515" stroke="#fff" stroke-width="3" stroke-dasharray="24 18"/>
+  <g transform="translate(132 493) scale(.72)"><use href="#car"/></g>
+  <g transform="translate(292 493) scale(.82)"><use href="#car"/></g>
+  <rect x="245" y="451" width="94" height="82" rx="12" fill="none" stroke="#35b6c8" stroke-width="4"/>
+  <g transform="translate(450 493) scale(.72)"><use href="#car"/></g>
+  <text x="220" y="572" class="h">Representative active vehicle</text>
+  <text x="150" y="597" class="s">One active vehicle is served per selection decision</text>
+
+  <rect x="102" y="630" width="382" height="103" rx="12" class="card"/>
+  <text x="205" y="663" class="h">34-dimensional PPO observation</text>
+  <text x="132" y="690" class="b">2 vehicle-position features + 8 × 4 UAV features:</text>
+  <text x="158" y="716" class="b">relative x · relative y · signal · normalized energy</text>
+
+  <!-- Main processing modules -->
+  <text x="590" y="104" class="h">Per-decision processing</text>
+  <g>
+    <rect x="590" y="130" width="180" height="198" rx="14" class="card"/>
+    <text x="620" y="170" class="h">1. Link Measurements</text>
+    <text x="620" y="205" class="b">distance</text><text x="620" y="230" class="b">signal</text>
+    <text x="620" y="255" class="b">delay</text><text x="620" y="280" class="b">PDR</text>
+    <text x="620" y="305" class="b">residual energy</text>
+
+    <rect x="805" y="130" width="190" height="198" rx="14" class="card"/>
+    <text x="830" y="170" class="h">2. Hard Feasibility</text>
+    <text x="830" y="198" class="h">Screen</text>
+    <text x="830" y="230" class="b">range ≤ 500 m</text><text x="830" y="255" class="b">delay ≤ 95 ms</text>
+    <text x="830" y="280" class="b">signal ≥ 0.10</text><text x="830" y="305" class="b">energy ≥ 20%</text>
+
+    <rect x="1030" y="130" width="195" height="198" rx="14" class="card"/>
+    <text x="1053" y="170" class="h">3. Clipped Fuzzy-Risk</text>
+    <text x="1053" y="198" class="h">Priority</text>
+    <text x="1053" y="235" class="b">delay · PDR</text><text x="1053" y="262" class="b">signal · energy</text>
+    <text x="1053" y="298" class="s">weighted clipped risks</text>
+
+    <rect x="1260" y="130" width="175" height="198" rx="14" class="card"/>
+    <text x="1287" y="170" class="h">4. Candidate Ranking</text>
+    <text x="1287" y="214" class="b">retained UAVs</text><text x="1287" y="239" class="b">ordered by</text>
+    <text x="1287" y="264" class="b">composite score</text>
+
+    <rect x="1470" y="130" width="170" height="198" rx="14" class="card"/>
+    <text x="1494" y="170" class="h">5. PPO Ranked Action</text>
+    <text x="1494" y="218" class="b">action = position</text><text x="1494" y="244" class="b">in ranked list</text>
+    <text x="1494" y="286" class="s">policy uses 34-D state</text>
+
+    <rect x="1470" y="370" width="170" height="150" rx="14" class="card"/>
+    <text x="1490" y="411" class="h">6. Rank-to-UAV</text><text x="1490" y="438" class="h">Mapping</text>
+    <text x="1490" y="480" class="b">rank → physical UAV u*</text>
+  </g>
+  <path d="M770 225 H805" class="flow"/><path d="M995 225 H1030" class="flow"/>
+  <path d="M1225 225 H1260" class="flow"/>
+  <!-- Candidate ranking and PPO produce parallel inputs to rank-to-UAV mapping. -->
+  <path d="M1347 328 V445 H1470" class="flow"/>
+  <text x="1358" y="430" class="s">ranked UAV list</text>
+  <path d="M1555 328 V370" class="flow"/>
+  <text x="1568" y="352" class="s">rank index</text>
+  <path d="M547 270 H590" class="flow"/>
+  <!-- The 34-D observation feeds PPO directly; it is not produced by ranking. -->
+  <path d="M484 680 H570 V465 H1448 V250 H1470" class="flow"/>
+  <rect x="1082" y="438" width="170" height="24" fill="#fff"/>
+  <text x="1095" y="455" class="s">34-D state directly to PPO</text>
+
+  <!-- Fallback note -->
+  <rect x="805" y="365" width="420" height="72" rx="12" fill="#fff" stroke="#17345c" stroke-width="2" stroke-dasharray="6 5"/>
+  <text x="832" y="396" class="b">Fallback: if no UAV passes the hard screen,</text>
+  <text x="832" y="421" class="b">all eight UAVs are retained to avoid an empty action set.</text>
+
+  <!-- Selected UAV, established link and outcomes -->
+  <rect x="1470" y="560" width="170" height="130" rx="14" class="gcard"/>
+  <text x="1493" y="595" class="h green">Example selected UAV u*</text>
+  <g transform="translate(1555 640) scale(.9)"><use href="#drone"/></g>
+  <path d="M1555 520 V560" class="link"/>
+
+  <!-- True selected-UAV to active-vehicle link -->
+  <path d="M1470 625 H1395 V800 H520 V570 H360 V493 H339" class="link"/>
+  <rect x="705" y="783" width="190" height="27" fill="#fff"/>
+  <text x="720" y="803" class="h green">Established V2U link</text>
+
+  <rect x="1030" y="500" width="300" height="130" rx="14" class="gcard"/>
+  <text x="1112" y="535" class="h green">QoS Outcome and Reward</text>
+  <text x="1062" y="570" class="b">signal · delay · PDR · remaining energy</text>
+  <text x="1140" y="600" class="b">reward and constraint violations</text>
+  <path d="M1470 640 H1365 V565 H1330" class="link"/>
+  <text x="1350" y="550" class="s green">communication metrics</text>
+
+  <rect x="1030" y="650" width="410" height="135" rx="14" class="ocard"/>
+  <text x="1092" y="685" class="h orange">Persistent Lagrangian Multipliers</text>
+  <text x="1090" y="716" class="b">λdelay · λPDR · λenergy · λsignal</text>
+  <text x="1054" y="746" class="s">updated after every decision; increase on violation;</text>
+  <text x="1054" y="770" class="s">unchanged when satisfied; retained across resets; clipped to [0,10]</text>
+
+  <!-- Connected constraint and adaptive-penalty loop -->
+  <path d="M1180 630 V650" class="feedback"/>
+  <text x="1195" y="642" class="s orange">constraint violations</text>
+  <path d="M1030 720 H965 V575 H1030" class="feedback"/>
+  <rect x="790" y="544" width="205" height="48" fill="#fff"/>
+  <text x="804" y="562" class="s orange">adaptive penalty for subsequent</text>
+  <text x="840" y="583" class="s orange">reward calculations</text>
+
+  <!-- Legend -->
+  <rect x="42" y="840" width="1716" height="78" rx="12" fill="#fff" stroke="#17345c" stroke-width="2"/>
+  <line x1="90" y1="878" x2="170" y2="878" class="candidate"/><text x="188" y="884" class="b">Candidate vehicle–UAV link</text>
+  <line x1="470" y1="878" x2="550" y2="878" stroke="#167c3b" stroke-width="3"/><text x="568" y="884" class="b">Established V2U link</text>
+  <line x1="820" y1="878" x2="900" y2="878" stroke="#e56b1f" stroke-width="3"/><text x="918" y="884" class="b">Constraint-feedback path</text>
+  <rect x="1245" y="856" width="70" height="43" rx="8" fill="none" stroke="#35b6c8" stroke-width="3"/>
+  <g transform="translate(1280 863) scale(.45)"><use href="#car"/></g>
+  <text x="1332" y="884" class="b">Representative active vehicle</text>
+</svg>

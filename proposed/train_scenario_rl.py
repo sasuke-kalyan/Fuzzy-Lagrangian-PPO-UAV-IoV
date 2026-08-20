@@ -107,7 +107,7 @@ def train_one_scenario(
         env,
         learning_rate=DEFAULT_PPO_LEARNING_RATE,
         n_steps=min(DEFAULT_PPO_N_STEPS, STEPS_PER_EPISODE * 4),
-        batch_size=64,
+        batch_size=DEFAULT_PPO_BATCH_SIZE,
         n_epochs=DEFAULT_PPO_N_EPOCHS,
         gamma=0.99,
         gae_lambda=0.95,

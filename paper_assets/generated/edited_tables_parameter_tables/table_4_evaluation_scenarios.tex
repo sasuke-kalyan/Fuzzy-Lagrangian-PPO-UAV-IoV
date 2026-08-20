@@ -1,0 +1,17 @@
+\begin{table}[!t]
+\caption{Dataset-based evaluation scenarios for the proposed Fuzzy Lagrangian PPO UAV--IoV system.}
+\label{tab:evaluation_scenarios}
+\centering
+\small
+\begin{tabular}{@{}p{0.16\linewidth}p{0.08\linewidth}p{0.41\linewidth}p{0.27\linewidth}@{}}
+\toprule
+Scenario & Vehicles & Mobility and traffic condition & Evaluation focus \\
+\midrule
+Urban Canyon & 20 & 60--100 km/h; high task rate; dense parallel-road topology & Link-quality and throughput-proxy analysis under dense mobility \\
+Suburban Crossroads & 15 & 20--50 km/h; medium task rate; sparse road-grid topology & UAV energy and path-efficiency analysis \\
+Emergency Response & 15 & 30--70 km/h; low baseline rate; labelled burst phase from step 16; no added vehicles & Adaptation to an emergency-labelled scenario condition \\
+\bottomrule
+\end{tabular}
+\par\vspace{0.5ex}
+\footnotesize\textit{Note:} Each scenario uses an operational area of 2,000 $\times$ 2,000 m$^2$, eight candidate UAVs, 50 simulation steps per episode, and 100 training episodes by default. Vehicle counts and speed ranges apply to the generated evaluation datasets; the PPO environment represents one moving vehicle and eight candidate UAVs.
+\end{table}

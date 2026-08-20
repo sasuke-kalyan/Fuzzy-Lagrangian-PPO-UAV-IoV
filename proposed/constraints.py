@@ -1,15 +1,15 @@
-"""
-Constraint definitions for UAV-IoV (delay, PDR, energy).
-Violations are >= 0; 0 means satisfied.
+"""Active UAV-IoV QoS constraints used by the Lagrangian updates.
 
-Thresholds loosened for 2000x2000 m RL env — heavy penalties caused negative rewards.
+Violations are non-negative and are deliberately inside the communication
+model's attainable range, so every multiplier can receive a learning signal.
+The values match the hard candidate-screening thresholds.
 """
 
-# Looser QoS thresholds (aligned with env link statistics)
-DELAY_MAX_MS = 100.0
-PDR_MIN_PCT = 48.0
-ENERGY_MIN = 8.0
-SIGNAL_MIN = 0.05
+# Active QoS thresholds aligned with hard candidate screening.
+DELAY_MAX_MS = 95.0
+PDR_MIN_PCT = 55.0
+ENERGY_MIN = 20.0
+SIGNAL_MIN = 0.10
 
 
 def violation_delay(delay: float) -> float:

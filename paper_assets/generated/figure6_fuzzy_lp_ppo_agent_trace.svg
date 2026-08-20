@@ -1,0 +1,237 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2200" height="1250" viewBox="0 0 2200 1250">
+  <defs>
+    <style>
+      .title{font:700 32px Arial,sans-serif;fill:#17345c}
+      .sub{font:15px Arial,sans-serif;fill:#65758a}
+      .lane{font:700 18px Arial,sans-serif;fill:#17345c}
+      .head{font:700 17px Arial,sans-serif;fill:#17345c;text-anchor:middle}
+      .body{font:14px Arial,sans-serif;fill:#3e5169;text-anchor:middle}
+      .small{font:12px Arial,sans-serif;fill:#52647b;text-anchor:middle}
+      .tiny{font:11px Arial,sans-serif;fill:#52647b;text-anchor:middle}
+      .raw{fill:#f4f7ff;stroke:#315b9d;stroke-width:2}
+      .state{fill:#effafa;stroke:#159497;stroke-width:2}
+      .rank{fill:#fff7ef;stroke:#df841d;stroke-width:2}
+      .agent{fill:#f3f5ff;stroke:#384f9c;stroke-width:2}
+      .out{fill:#f1faf4;stroke:#198446;stroke-width:2}
+      .adapt{fill:#fff4ee;stroke:#df651e;stroke-width:2}
+      .line{fill:none;stroke:#17345c;stroke-width:3;marker-end:url(#navy)}
+      .stateLine{fill:none;stroke:#159497;stroke-width:3;marker-end:url(#teal)}
+      .rankLine{fill:none;stroke:#df841d;stroke-width:3;marker-end:url(#orange)}
+      .outLine{fill:none;stroke:#198446;stroke-width:3;marker-end:url(#green)}
+      .adaptLine{fill:none;stroke:#df651e;stroke-width:3;marker-end:url(#red)}
+      .learnLine{fill:none;stroke:#7d5bb4;stroke-width:2.5;stroke-dasharray:8 6;marker-end:url(#purple)}
+      .feedback{fill:none;stroke:#7d8899;stroke-width:2.5;stroke-dasharray:8 6;marker-end:url(#gray)}
+    </style>
+    <marker id="navy" markerWidth="11" markerHeight="11" refX="10" refY="3.5" orient="auto"><path d="M0 0 L10 3.5 L0 7 Z" fill="#17345c"/></marker>
+    <marker id="teal" markerWidth="11" markerHeight="11" refX="10" refY="3.5" orient="auto"><path d="M0 0 L10 3.5 L0 7 Z" fill="#159497"/></marker>
+    <marker id="orange" markerWidth="11" markerHeight="11" refX="10" refY="3.5" orient="auto"><path d="M0 0 L10 3.5 L0 7 Z" fill="#df841d"/></marker>
+    <marker id="green" markerWidth="11" markerHeight="11" refX="10" refY="3.5" orient="auto"><path d="M0 0 L10 3.5 L0 7 Z" fill="#198446"/></marker>
+    <marker id="red" markerWidth="11" markerHeight="11" refX="10" refY="3.5" orient="auto"><path d="M0 0 L10 3.5 L0 7 Z" fill="#df651e"/></marker>
+    <marker id="purple" markerWidth="11" markerHeight="11" refX="10" refY="3.5" orient="auto"><path d="M0 0 L10 3.5 L0 7 Z" fill="#7d5bb4"/></marker>
+    <marker id="gray" markerWidth="11" markerHeight="11" refX="10" refY="3.5" orient="auto"><path d="M0 0 L10 3.5 L0 7 Z" fill="#7d8899"/></marker>
+  </defs>
+
+  <rect width="2200" height="1250" fill="#fff"/>
+  <text x="55" y="53" class="title">Figure 6. Working of the Fuzzy LP-PPO UAV-Selection Agent</text>
+  <text x="55" y="82" class="sub">One-decision trace showing state construction, candidate ranking, actor–critic inference, communication, constraint adaptation, and on-policy learning</text>
+
+  <!-- environment -->
+  <rect x="45" y="120" width="335" height="770" rx="18" fill="#fafcff" stroke="#bcc9da" stroke-width="2"/>
+  <text x="212" y="154" class="lane">DYNAMIC ENVIRONMENT</text>
+
+  <rect x="75" y="185" width="275" height="95" rx="10" class="raw"/>
+  <text x="212" y="216" class="head">Representative vehicle</text>
+  <text x="212" y="244" class="body">position xv(t), yv(t)</text>
+  <text x="212" y="267" class="small">mobility and scenario context</text>
+
+  <rect x="75" y="315" width="275" height="135" rx="10" class="raw"/>
+  <text x="212" y="346" class="head">Eight candidate UAVs</text>
+  <text x="212" y="374" class="body">U1, U2, …, U8</text>
+  <text x="212" y="400" class="small">positions xu(t), yu(t), altitude zu</text>
+  <text x="212" y="425" class="small">residual energy Eu(t)</text>
+
+  <rect x="75" y="485" width="275" height="165" rx="10" class="raw"/>
+  <text x="212" y="516" class="head">Per-link measurements</text>
+  <text x="212" y="544" class="body">distance du(t) · signal Su(t)</text>
+  <text x="212" y="570" class="body">delay Du(t) · PDR Pu(t)</text>
+  <text x="212" y="598" class="small">computed for every vehicle–UAV pair</text>
+  <text x="212" y="624" class="small">before selecting a communication link</text>
+
+  <rect x="75" y="690" width="275" height="150" rx="10" class="out"/>
+  <text x="212" y="721" class="head">Environment update</text>
+  <text x="212" y="749" class="body">vehicle movement</text>
+  <text x="212" y="775" class="body">selected-UAV energy drain</text>
+  <text x="212" y="803" class="small">next state s(t+1)</text>
+
+  <!-- feature preparation -->
+  <rect x="425" y="120" width="420" height="770" rx="18" fill="#fbfefe" stroke="#b9d9dc" stroke-width="2"/>
+  <text x="635" y="154" class="lane">FEATURE PREPARATION</text>
+
+  <rect x="455" y="185" width="360" height="225" rx="12" class="state"/>
+  <text x="635" y="217" class="head">34-D observation constructor</text>
+  <text x="635" y="247" class="body">2 normalized vehicle-position features</text>
+  <text x="635" y="276" class="body">8 × 4 UAV features:</text>
+  <text x="635" y="303" class="small">relative x · relative y · signal</text>
+  <text x="635" y="328" class="small">normalized residual energy</text>
+  <line x1="490" y1="349" x2="780" y2="349" stroke="#afd4d7"/>
+  <text x="635" y="374" class="small">Output: s(t), 34 real-valued features</text>
+  <text x="635" y="397" class="tiny">Delay, PDR, fuzzy priority, and λ are excluded.</text>
+
+  <rect x="455" y="455" width="360" height="365" rx="12" class="rank"/>
+  <text x="635" y="487" class="head">Candidate assessment and ranking</text>
+
+  <rect x="485" y="520" width="300" height="85" rx="8" fill="#fff" stroke="#df841d"/>
+  <text x="635" y="548" class="head">Hard feasibility mask M(t)</text>
+  <text x="635" y="575" class="small">d≤500 m · D≤95 ms · S≥0.10 · E≥20%</text>
+
+  <rect x="485" y="630" width="300" height="80" rx="8" fill="#fff" stroke="#df841d"/>
+  <text x="635" y="658" class="head">Clipped fuzzy-risk priority F(t)</text>
+  <text x="635" y="685" class="small">delay · PDR · signal · energy + emergency</text>
+
+  <rect x="485" y="735" width="300" height="60" rx="8" fill="#fff" stroke="#df841d"/>
+  <text x="635" y="761" class="head">Composite ranking</text>
+  <text x="635" y="783" class="small">Output: current ranked list R(t)</text>
+
+  <!-- actor critic agent -->
+  <rect x="890" y="120" width="660" height="770" rx="18" fill="#fbfbff" stroke="#c5c9e6" stroke-width="2"/>
+  <text x="1220" y="154" class="lane">PPO ACTOR–CRITIC AGENT</text>
+
+  <rect x="925" y="190" width="590" height="265" rx="13" class="agent"/>
+  <text x="1220" y="221" class="head">Actor network πθ(a|s)</text>
+  <text x="1220" y="247" class="small">Input: 34-D observation</text>
+
+  <!-- actor neural network -->
+  <g fill="#dbe5ff" stroke="#384f9c" stroke-width="1.5">
+    <circle cx="1000" cy="300" r="11"/><circle cx="1000" cy="340" r="11"/><circle cx="1000" cy="380" r="11"/>
+    <circle cx="1120" cy="280" r="11"/><circle cx="1120" cy="320" r="11"/><circle cx="1120" cy="360" r="11"/><circle cx="1120" cy="400" r="11"/>
+    <circle cx="1240" cy="280" r="11"/><circle cx="1240" cy="320" r="11"/><circle cx="1240" cy="360" r="11"/><circle cx="1240" cy="400" r="11"/>
+  </g>
+  <g fill="#dff4e5" stroke="#198446" stroke-width="1.5">
+    <circle cx="1380" cy="275" r="10"/><circle cx="1380" cy="307" r="10"/><circle cx="1380" cy="339" r="10"/><circle cx="1380" cy="371" r="10"/><circle cx="1380" cy="403" r="10"/>
+  </g>
+  <g stroke="#8b98b0" stroke-width="1" opacity=".7">
+    <path d="M1011 300 L1109 280 M1011 300 L1109 320 M1011 300 L1109 360 M1011 340 L1109 280 M1011 340 L1109 320 M1011 340 L1109 360 M1011 340 L1109 400 M1011 380 L1109 320 M1011 380 L1109 360 M1011 380 L1109 400"/>
+    <path d="M1131 280 L1229 280 M1131 280 L1229 320 M1131 320 L1229 280 M1131 320 L1229 320 M1131 320 L1229 360 M1131 360 L1229 320 M1131 360 L1229 360 M1131 360 L1229 400 M1131 400 L1229 360 M1131 400 L1229 400"/>
+    <path d="M1251 280 L1370 275 M1251 280 L1370 307 M1251 320 L1370 307 M1251 320 L1370 339 M1251 360 L1370 339 M1251 360 L1370 371 M1251 400 L1370 371 M1251 400 L1370 403"/>
+  </g>
+  <text x="1000" y="427" class="tiny">34 inputs</text>
+  <text x="1120" y="427" class="tiny">128</text>
+  <text x="1240" y="427" class="tiny">128</text>
+  <text x="1380" y="427" class="tiny">8 rank probabilities</text>
+
+  <rect x="925" y="490" width="590" height="230" rx="13" class="agent"/>
+  <text x="1220" y="521" class="head">Critic network Vφ(s)</text>
+  <text x="1220" y="547" class="small">Input: same 34-D observation</text>
+  <g fill="#e7e1f5" stroke="#7d5bb4" stroke-width="1.5">
+    <circle cx="1000" cy="610" r="11"/><circle cx="1000" cy="650" r="11"/>
+    <circle cx="1130" cy="590" r="11"/><circle cx="1130" cy="625" r="11"/><circle cx="1130" cy="660" r="11"/><circle cx="1130" cy="695" r="11"/>
+    <circle cx="1260" cy="590" r="11"/><circle cx="1260" cy="625" r="11"/><circle cx="1260" cy="660" r="11"/><circle cx="1260" cy="695" r="11"/>
+    <circle cx="1400" cy="643" r="13" fill="#f4e6c5" stroke="#c3841d"/>
+  </g>
+  <g stroke="#9c91b9" stroke-width="1" opacity=".7">
+    <path d="M1011 610 L1119 590 M1011 610 L1119 625 M1011 610 L1119 660 M1011 650 L1119 625 M1011 650 L1119 660 M1011 650 L1119 695"/>
+    <path d="M1141 590 L1249 590 M1141 590 L1249 625 M1141 625 L1249 590 M1141 625 L1249 625 M1141 625 L1249 660 M1141 660 L1249 625 M1141 660 L1249 660 M1141 660 L1249 695 M1141 695 L1249 660 M1141 695 L1249 695"/>
+    <path d="M1271 590 L1387 643 M1271 625 L1387 643 M1271 660 L1387 643 M1271 695 L1387 643"/>
+  </g>
+  <text x="1000" y="704" class="tiny">34 inputs</text>
+  <text x="1130" y="704" class="tiny">128</text>
+  <text x="1260" y="704" class="tiny">128</text>
+  <text x="1400" y="674" class="tiny">value V(s)</text>
+
+  <rect x="1000" y="760" width="440" height="90" rx="11" class="agent"/>
+  <text x="1220" y="791" class="head">Action rule</text>
+  <text x="1220" y="818" class="body">training: sample rank · evaluation: arg max rank</text>
+  <text x="1220" y="842" class="small">action is a ranked position, not a permanent UAV ID</text>
+
+  <!-- execution and outcomes -->
+  <rect x="1595" y="120" width="560" height="770" rx="18" fill="#fbfefc" stroke="#bdd8c6" stroke-width="2"/>
+  <text x="1875" y="154" class="lane">EXECUTION AND FEEDBACK</text>
+
+  <rect x="1630" y="195" width="490" height="115" rx="12" class="out"/>
+  <text x="1875" y="226" class="head">Rank-to-UAV mapping</text>
+  <text x="1875" y="254" class="body">index k = a(t) mod |R(t)|</text>
+  <text x="1875" y="281" class="small">effective physical UAV u* = R(t)[k]</text>
+
+  <rect x="1630" y="345" width="490" height="120" rx="12" class="out"/>
+  <text x="1875" y="376" class="head">Execute selected V2U link</text>
+  <text x="1875" y="404" class="body">communication using u*</text>
+  <text x="1875" y="431" class="small">consume 1–3 energy units on selected UAV</text>
+
+  <rect x="1630" y="500" width="490" height="140" rx="12" class="out"/>
+  <text x="1875" y="531" class="head">QoS outcome and reward r(t)</text>
+  <text x="1875" y="559" class="body">selected-link signal · delay · PDR</text>
+  <text x="1875" y="586" class="body">task + QoS + fuzzy priority − adaptive penalty</text>
+  <text x="1875" y="613" class="small">pre-drain energy in reward; post-drain energy logged</text>
+
+  <rect x="1630" y="675" width="490" height="160" rx="12" class="adapt"/>
+  <text x="1875" y="706" class="head">Persistent Lagrangian controller</text>
+  <text x="1875" y="734" class="body">violations: delay · PDR · energy · signal</text>
+  <text x="1875" y="762" class="body">λ(t+1) = clip[λ(t) + 0.03g(t), 0, 10]</text>
+  <text x="1875" y="790" class="small">retained across resets; penalty affects later rewards</text>
+
+  <!-- main inference arrows -->
+  <path d="M350 232 H455" class="stateLine"/>
+  <path d="M350 382 H405 V287 H455" class="stateLine"/>
+  <path d="M350 565 H455" class="rankLine"/>
+  <path d="M350 407 H405 V690 H455" class="rankLine"/>
+  <path d="M815 290 H925" class="stateLine"/>
+  <path d="M815 330 H865 V610 H925" class="stateLine"/>
+  <path d="M1390 403 H1530 V805 H1440" class="line"/>
+  <path d="M1440 805 H1570 V252 H1630" class="line"/>
+  <path d="M815 765 H1570 V282 H1630" class="rankLine"/>
+  <path d="M1875 310 V345" class="outLine"/>
+  <path d="M1875 465 V500" class="outLine"/>
+  <path d="M1875 640 V675" class="adaptLine"/>
+  <path d="M2120 755 H2160 V570 H2120" class="adaptLine"/>
+
+  <!-- learning lane -->
+  <rect x="45" y="930" width="2110" height="245" rx="18" fill="#fcfaff" stroke="#d2c7e6" stroke-width="2"/>
+  <text x="75" y="966" class="lane">ON-POLICY LEARNING TRACE</text>
+
+  <rect x="115" y="1000" width="410" height="115" rx="11" fill="#fff" stroke="#7d5bb4" stroke-width="2"/>
+  <text x="320" y="1031" class="head">Store transition</text>
+  <text x="320" y="1059" class="body">(s(t), a(t), r(t), s(t+1), terminal)</text>
+  <text x="320" y="1087" class="small">retain across 50-step episode boundaries</text>
+
+  <rect x="650" y="1000" width="330" height="115" rx="11" fill="#fff" stroke="#7d5bb4" stroke-width="2"/>
+  <text x="815" y="1031" class="head">200-step rollout buffer</text>
+  <text x="815" y="1059" class="body">on-policy transitions only</text>
+  <text x="815" y="1087" class="small">no replay memory</text>
+
+  <rect x="1105" y="1000" width="360" height="115" rx="11" fill="#fff" stroke="#7d5bb4" stroke-width="2"/>
+  <text x="1285" y="1031" class="head">GAE and PPO optimization</text>
+  <text x="1285" y="1059" class="body">advantages · returns · clipped objective</text>
+  <text x="1285" y="1087" class="small">10 PPO epochs, then clear buffer</text>
+
+  <rect x="1590" y="1000" width="440" height="115" rx="11" fill="#fff" stroke="#7d5bb4" stroke-width="2"/>
+  <text x="1810" y="1031" class="head">Update scenario-specific parameters</text>
+  <text x="1810" y="1059" class="body">actor θ and critic φ</text>
+  <text x="1810" y="1087" class="small">updated policy used by subsequent decisions</text>
+
+  <path d="M525 1057 H650" class="learnLine"/>
+  <path d="M980 1057 H1105" class="learnLine"/>
+  <path d="M1465 1057 H1590" class="learnLine"/>
+  <path d="M1875 835 V900 H320 V1000" class="learnLine"/>
+  <path d="M1810 1000 V915 H1220 V890" class="learnLine"/>
+  <path d="M2120 570 H2140 V900 H320 V1000" class="learnLine"/>
+
+  <!-- environment/state feedback -->
+  <path d="M2120 405 H2180 V915 H212 V840" class="outLine"/>
+  <path d="M212 690 V665 H40 V232 H75" class="feedback"/>
+
+  <!-- labels and legend -->
+  <text x="870" y="273" class="small">34-D state</text>
+  <text x="1510" y="791" class="small">rank action</text>
+  <text x="1585" y="309" class="small">current R(t)</text>
+  <text x="2020" y="895" class="small">reward / transition</text>
+  <text x="2150" y="651" class="small">adaptive penalty</text>
+  <text x="1370" y="908" class="small">updated θ and φ parameters</text>
+  <text x="420" y="917" class="small">constraint and reward feedback</text>
+
+  <rect x="65" y="1192" width="2070" height="40" rx="8" fill="#fff" stroke="#d8e0ea"/>
+  <line x1="100" y1="1212" x2="150" y2="1212" stroke="#159497" stroke-width="3"/><text x="235" y="1217" class="small">PPO observation path</text>
+  <line x1="450" y1="1212" x2="500" y2="1212" stroke="#df841d" stroke-width="3"/><text x="590" y="1217" class="small">candidate-ranking path</text>
+  <line x1="830" y1="1212" x2="880" y2="1212" stroke="#198446" stroke-width="3"/><text x="965" y="1217" class="small">communication/state path</text>
+  <line x1="1225" y1="1212" x2="1275" y2="1212" stroke="#df651e" stroke-width="3"/><text x="1360" y="1217" class="small">constraint adaptation</text>
+  <line x1="1610" y1="1212" x2="1660" y2="1212" stroke="#7d5bb4" stroke-width="3" stroke-dasharray="8 6"/><text x="1750" y="1217" class="small">PPO learning update</text>
+</svg>

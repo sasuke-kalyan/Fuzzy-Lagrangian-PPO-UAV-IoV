@@ -1,0 +1,708 @@
+{
+  "scenario_id": "suburban_crossroads",
+  "scenario_name": "Suburban Crossroads",
+  "n_episodes": 100,
+  "steps_per_episode": 50,
+  "records": [
+    {
+      "Episode": 1,
+      "Total Reward": 8258.0773,
+      "Average Reward": 165.1615,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.8535
+    },
+    {
+      "Episode": 2,
+      "Total Reward": 7943.7193,
+      "Average Reward": 158.8744,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0727
+    },
+    {
+      "Episode": 3,
+      "Total Reward": 4391.1297,
+      "Average Reward": 87.8226,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0636
+    },
+    {
+      "Episode": 4,
+      "Total Reward": 5689.8667,
+      "Average Reward": 113.7973,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0625
+    },
+    {
+      "Episode": 5,
+      "Total Reward": 6054.553,
+      "Average Reward": 121.0911,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.1814
+    },
+    {
+      "Episode": 6,
+      "Total Reward": 5786.1501,
+      "Average Reward": 115.723,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0579
+    },
+    {
+      "Episode": 7,
+      "Total Reward": 5297.3807,
+      "Average Reward": 105.9476,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.062
+    },
+    {
+      "Episode": 8,
+      "Total Reward": 2254.4229,
+      "Average Reward": 45.0885,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0508
+    },
+    {
+      "Episode": 9,
+      "Total Reward": 5369.8364,
+      "Average Reward": 107.3967,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.2035
+    },
+    {
+      "Episode": 10,
+      "Total Reward": 5174.7992,
+      "Average Reward": 103.496,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0727
+    },
+    {
+      "Episode": 11,
+      "Total Reward": 3252.5267,
+      "Average Reward": 65.0505,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0566
+    },
+    {
+      "Episode": 12,
+      "Total Reward": 5539.5565,
+      "Average Reward": 110.7911,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0482
+    },
+    {
+      "Episode": 13,
+      "Total Reward": 5238.7721,
+      "Average Reward": 104.7754,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.2117
+    },
+    {
+      "Episode": 14,
+      "Total Reward": 4234.7264,
+      "Average Reward": 84.6945,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0611
+    },
+    {
+      "Episode": 15,
+      "Total Reward": 2845.4779,
+      "Average Reward": 56.9096,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0554
+    },
+    {
+      "Episode": 16,
+      "Total Reward": 5841.913,
+      "Average Reward": 116.8383,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0633
+    },
+    {
+      "Episode": 17,
+      "Total Reward": 7126.5961,
+      "Average Reward": 142.5319,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.1832
+    },
+    {
+      "Episode": 18,
+      "Total Reward": 3643.2917,
+      "Average Reward": 72.8658,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0579
+    },
+    {
+      "Episode": 19,
+      "Total Reward": 2210.2616,
+      "Average Reward": 44.2052,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0548
+    },
+    {
+      "Episode": 20,
+      "Total Reward": 5066.6362,
+      "Average Reward": 101.3327,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0607
+    },
+    {
+      "Episode": 21,
+      "Total Reward": 5487.2963,
+      "Average Reward": 109.7459,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.1854
+    },
+    {
+      "Episode": 22,
+      "Total Reward": 7067.7837,
+      "Average Reward": 141.3557,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0584
+    },
+    {
+      "Episode": 23,
+      "Total Reward": 7681.7176,
+      "Average Reward": 153.6344,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0539
+    },
+    {
+      "Episode": 24,
+      "Total Reward": 7176.7618,
+      "Average Reward": 143.5352,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.056
+    },
+    {
+      "Episode": 25,
+      "Total Reward": 5924.9264,
+      "Average Reward": 118.4985,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.163
+    },
+    {
+      "Episode": 26,
+      "Total Reward": 3429.4245,
+      "Average Reward": 68.5885,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0559
+    },
+    {
+      "Episode": 27,
+      "Total Reward": 4736.9774,
+      "Average Reward": 94.7395,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0578
+    },
+    {
+      "Episode": 28,
+      "Total Reward": 3537.1058,
+      "Average Reward": 70.7421,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0559
+    },
+    {
+      "Episode": 29,
+      "Total Reward": 5199.8088,
+      "Average Reward": 103.9962,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.1666
+    },
+    {
+      "Episode": 30,
+      "Total Reward": 4183.8828,
+      "Average Reward": 83.6777,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0578
+    },
+    {
+      "Episode": 31,
+      "Total Reward": 2295.204,
+      "Average Reward": 45.9041,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0538
+    },
+    {
+      "Episode": 32,
+      "Total Reward": 3270.2486,
+      "Average Reward": 65.405,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0494
+    },
+    {
+      "Episode": 33,
+      "Total Reward": 7915.0191,
+      "Average Reward": 158.3004,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.149
+    },
+    {
+      "Episode": 34,
+      "Total Reward": 4428.6023,
+      "Average Reward": 88.572,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0527
+    },
+    {
+      "Episode": 35,
+      "Total Reward": 7229.1884,
+      "Average Reward": 144.5838,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0504
+    },
+    {
+      "Episode": 36,
+      "Total Reward": 1154.3042,
+      "Average Reward": 23.0861,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0518
+    },
+    {
+      "Episode": 37,
+      "Total Reward": 3188.3968,
+      "Average Reward": 63.7679,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.1547
+    },
+    {
+      "Episode": 38,
+      "Total Reward": 8402.0816,
+      "Average Reward": 168.0416,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0542
+    },
+    {
+      "Episode": 39,
+      "Total Reward": 2437.3002,
+      "Average Reward": 48.746,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0478
+    },
+    {
+      "Episode": 40,
+      "Total Reward": 7213.9964,
+      "Average Reward": 144.2799,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0526
+    },
+    {
+      "Episode": 41,
+      "Total Reward": 5285.7487,
+      "Average Reward": 105.715,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.1539
+    },
+    {
+      "Episode": 42,
+      "Total Reward": 4580.3449,
+      "Average Reward": 91.6069,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0498
+    },
+    {
+      "Episode": 43,
+      "Total Reward": 2759.8051,
+      "Average Reward": 55.1961,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0542
+    },
+    {
+      "Episode": 44,
+      "Total Reward": 4032.6913,
+      "Average Reward": 80.6538,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.055
+    },
+    {
+      "Episode": 45,
+      "Total Reward": 6998.3934,
+      "Average Reward": 139.9679,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.1572
+    },
+    {
+      "Episode": 46,
+      "Total Reward": 5806.2793,
+      "Average Reward": 116.1256,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0527
+    },
+    {
+      "Episode": 47,
+      "Total Reward": 5702.4591,
+      "Average Reward": 114.0492,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.051
+    },
+    {
+      "Episode": 48,
+      "Total Reward": 7796.022,
+      "Average Reward": 155.9204,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0527
+    },
+    {
+      "Episode": 49,
+      "Total Reward": 7133.1444,
+      "Average Reward": 142.6629,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.1657
+    },
+    {
+      "Episode": 50,
+      "Total Reward": 10129.4977,
+      "Average Reward": 202.59,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0531
+    },
+    {
+      "Episode": 51,
+      "Total Reward": 5365.3239,
+      "Average Reward": 107.3065,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0521
+    },
+    {
+      "Episode": 52,
+      "Total Reward": 7390.7699,
+      "Average Reward": 147.8154,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0529
+    },
+    {
+      "Episode": 53,
+      "Total Reward": 6700.1522,
+      "Average Reward": 134.003,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.1572
+    },
+    {
+      "Episode": 54,
+      "Total Reward": 4693.1969,
+      "Average Reward": 93.8639,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.07
+    },
+    {
+      "Episode": 55,
+      "Total Reward": 3922.4521,
+      "Average Reward": 78.449,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0772
+    },
+    {
+      "Episode": 56,
+      "Total Reward": 7419.024,
+      "Average Reward": 148.3805,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0781
+    },
+    {
+      "Episode": 57,
+      "Total Reward": 5946.6976,
+      "Average Reward": 118.934,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.2166
+    },
+    {
+      "Episode": 58,
+      "Total Reward": 11924.3565,
+      "Average Reward": 238.4871,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0718
+    },
+    {
+      "Episode": 59,
+      "Total Reward": 2858.0145,
+      "Average Reward": 57.1603,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0502
+    },
+    {
+      "Episode": 60,
+      "Total Reward": 8902.1504,
+      "Average Reward": 178.043,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0534
+    },
+    {
+      "Episode": 61,
+      "Total Reward": 6326.46,
+      "Average Reward": 126.5292,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.1948
+    },
+    {
+      "Episode": 62,
+      "Total Reward": 10848.992,
+      "Average Reward": 216.9798,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0594
+    },
+    {
+      "Episode": 63,
+      "Total Reward": 4736.6535,
+      "Average Reward": 94.7331,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0552
+    },
+    {
+      "Episode": 64,
+      "Total Reward": 9482.3878,
+      "Average Reward": 189.6478,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0667
+    },
+    {
+      "Episode": 65,
+      "Total Reward": 4632.6892,
+      "Average Reward": 92.6538,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.1938
+    },
+    {
+      "Episode": 66,
+      "Total Reward": 9237.902,
+      "Average Reward": 184.758,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0676
+    },
+    {
+      "Episode": 67,
+      "Total Reward": 5223.333,
+      "Average Reward": 104.4667,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.067
+    },
+    {
+      "Episode": 68,
+      "Total Reward": 2677.8672,
+      "Average Reward": 53.5573,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0631
+    },
+    {
+      "Episode": 69,
+      "Total Reward": 5964.6998,
+      "Average Reward": 119.294,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.1975
+    },
+    {
+      "Episode": 70,
+      "Total Reward": 3540.8172,
+      "Average Reward": 70.8163,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0644
+    },
+    {
+      "Episode": 71,
+      "Total Reward": 4985.8789,
+      "Average Reward": 99.7176,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0643
+    },
+    {
+      "Episode": 72,
+      "Total Reward": 6814.1427,
+      "Average Reward": 136.2829,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0679
+    },
+    {
+      "Episode": 73,
+      "Total Reward": 4367.448,
+      "Average Reward": 87.349,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.1926
+    },
+    {
+      "Episode": 74,
+      "Total Reward": 3511.7457,
+      "Average Reward": 70.2349,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0624
+    },
+    {
+      "Episode": 75,
+      "Total Reward": 3664.2733,
+      "Average Reward": 73.2855,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0645
+    },
+    {
+      "Episode": 76,
+      "Total Reward": 4252.026,
+      "Average Reward": 85.0405,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0652
+    },
+    {
+      "Episode": 77,
+      "Total Reward": 5351.3138,
+      "Average Reward": 107.0263,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.1944
+    },
+    {
+      "Episode": 78,
+      "Total Reward": 2703.0155,
+      "Average Reward": 54.0603,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.06
+    },
+    {
+      "Episode": 79,
+      "Total Reward": 5345.5532,
+      "Average Reward": 106.9111,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0684
+    },
+    {
+      "Episode": 80,
+      "Total Reward": 6599.1783,
+      "Average Reward": 131.9836,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.072
+    },
+    {
+      "Episode": 81,
+      "Total Reward": 2898.6952,
+      "Average Reward": 57.9739,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.1983
+    },
+    {
+      "Episode": 82,
+      "Total Reward": 4932.9918,
+      "Average Reward": 98.6598,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0679
+    },
+    {
+      "Episode": 83,
+      "Total Reward": 8991.8029,
+      "Average Reward": 179.8361,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0692
+    },
+    {
+      "Episode": 84,
+      "Total Reward": 5997.6631,
+      "Average Reward": 119.9533,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0699
+    },
+    {
+      "Episode": 85,
+      "Total Reward": 8189.9575,
+      "Average Reward": 163.7992,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.1972
+    },
+    {
+      "Episode": 86,
+      "Total Reward": 6946.1028,
+      "Average Reward": 138.9221,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0679
+    },
+    {
+      "Episode": 87,
+      "Total Reward": 4188.9031,
+      "Average Reward": 83.7781,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0656
+    },
+    {
+      "Episode": 88,
+      "Total Reward": 6102.4781,
+      "Average Reward": 122.0496,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.069
+    },
+    {
+      "Episode": 89,
+      "Total Reward": 1603.6538,
+      "Average Reward": 32.0731,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.1874
+    },
+    {
+      "Episode": 90,
+      "Total Reward": 8392.9148,
+      "Average Reward": 167.8583,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0718
+    },
+    {
+      "Episode": 91,
+      "Total Reward": 3168.6924,
+      "Average Reward": 63.3738,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0667
+    },
+    {
+      "Episode": 92,
+      "Total Reward": 5667.1766,
+      "Average Reward": 113.3435,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0649
+    },
+    {
+      "Episode": 93,
+      "Total Reward": 7237.2948,
+      "Average Reward": 144.7459,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.1989
+    },
+    {
+      "Episode": 94,
+      "Total Reward": 3593.5322,
+      "Average Reward": 71.8706,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.065
+    },
+    {
+      "Episode": 95,
+      "Total Reward": 4708.6924,
+      "Average Reward": 94.1738,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0657
+    },
+    {
+      "Episode": 96,
+      "Total Reward": 5265.2007,
+      "Average Reward": 105.304,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0646
+    },
+    {
+      "Episode": 97,
+      "Total Reward": 8781.47,
+      "Average Reward": 175.6294,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.1949
+    },
+    {
+      "Episode": 98,
+      "Total Reward": 4195.2591,
+      "Average Reward": 83.9052,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0664
+    },
+    {
+      "Episode": 99,
+      "Total Reward": 6273.2391,
+      "Average Reward": 125.4648,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0693
+    },
+    {
+      "Episode": 100,
+      "Total Reward": 4973.8423,
+      "Average Reward": 99.4768,
+      "Scenario": "Suburban Crossroads",
+      "Training Time": 0.0645
+    }
+  ]
+}

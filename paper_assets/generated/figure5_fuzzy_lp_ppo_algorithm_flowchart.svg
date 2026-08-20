@@ -1,0 +1,173 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="2000" viewBox="0 0 1600 2000">
+  <defs>
+    <filter id="shadow" x="-15%" y="-15%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#27384f" flood-opacity=".20"/>
+    </filter>
+    <style>
+      .title{font:700 30px Arial,sans-serif;fill:#17345c}
+      .sub{font:15px Arial,sans-serif;fill:#64748b}
+      .head{font:700 18px Arial,sans-serif;fill:#17345c;text-anchor:middle}
+      .body{font:14px Arial,sans-serif;fill:#3f526b;text-anchor:middle}
+      .small{font:13px Arial,sans-serif;fill:#52647b;text-anchor:middle}
+      .label{font:700 14px Arial,sans-serif;fill:#17345c}
+      .process{fill:#f7f9fc;stroke:#48566a;stroke-width:2;filter:url(#shadow)}
+      .state{fill:#eef7fb;stroke:#225b80;stroke-width:2;filter:url(#shadow)}
+      .adapt{fill:#fff4df;stroke:#d89a22;stroke-width:2;filter:url(#shadow)}
+      .decision{fill:#eef5ff;stroke:#3872ad;stroke-width:2.5;filter:url(#shadow)}
+      .start{fill:#e4f4df;stroke:#5b9845;stroke-width:2;filter:url(#shadow)}
+      .stop{fill:#f9dedc;stroke:#cf655d;stroke-width:2;filter:url(#shadow)}
+      .arrow{fill:none;stroke:#111827;stroke-width:2.8;marker-end:url(#black)}
+      .yes{fill:none;stroke:#198446;stroke-width:2.8;marker-end:url(#green)}
+      .no{fill:none;stroke:#d45b45;stroke-width:2.8;marker-end:url(#red)}
+    </style>
+    <marker id="black" markerWidth="11" markerHeight="11" refX="10" refY="3.5" orient="auto"><path d="M0 0 L10 3.5 L0 7 Z" fill="#111827"/></marker>
+    <marker id="green" markerWidth="11" markerHeight="11" refX="10" refY="3.5" orient="auto"><path d="M0 0 L10 3.5 L0 7 Z" fill="#198446"/></marker>
+    <marker id="red" markerWidth="11" markerHeight="11" refX="10" refY="3.5" orient="auto"><path d="M0 0 L10 3.5 L0 7 Z" fill="#d45b45"/></marker>
+  </defs>
+
+  <rect width="1600" height="2000" fill="#fff"/>
+  <text x="70" y="52" class="title">Figure 5. Fuzzy LP-PPO Training and UAV-Selection Flowchart</text>
+  <text x="70" y="80" class="sub">Algorithm-level execution trace with decision, episode, and scenario loops</text>
+
+  <!-- start and initialization -->
+  <ellipse cx="150" cy="145" rx="75" ry="42" class="start"/>
+  <text x="150" y="152" class="head">Start</text>
+
+  <rect x="280" y="110" width="185" height="70" rx="9" class="adapt"/>
+  <text x="372" y="139" class="head">ω = 1</text>
+  <text x="372" y="163" class="small">scenario index</text>
+
+  <rect x="520" y="100" width="760" height="95" rx="12" class="process"/>
+  <text x="900" y="130" class="head">Select scenario ω and initialize the Fuzzy LP-PPO model</text>
+  <text x="900" y="157" class="body">actor θ · critic φ · persistent multipliers λ = [λD, λPDR, λE, λS]</text>
+  <text x="900" y="181" class="small">eight candidate UAVs; one active vehicle is served per decision</text>
+
+  <path d="M225 145 H280" class="arrow"/>
+  <path d="M465 145 H520" class="arrow"/>
+
+  <rect x="650" y="235" width="500" height="85" rx="10" class="state"/>
+  <text x="900" y="267" class="head">Fuzzy-guided policy warm start</text>
+  <text x="900" y="294" class="body">800 sampled states · 6 behavior-cloning epochs</text>
+  <path d="M900 195 V235" class="arrow"/>
+
+  <rect x="650" y="360" width="500" height="90" rx="10" class="adapt"/>
+  <text x="900" y="391" class="head">Set episode e = 0 and initialize rollout buffer</text>
+  <text x="900" y="418" class="body">retain λ across episode resets</text>
+  <path d="M900 320 V360" class="arrow"/>
+
+  <rect x="650" y="490" width="500" height="105" rx="10" class="process"/>
+  <text x="900" y="520" class="head">Reset environment for the new episode</text>
+  <text x="900" y="547" class="body">initialize vehicle/UAV positions and UAV energy</text>
+  <text x="900" y="574" class="body">set t = 0; keep the on-policy buffer across episode boundaries</text>
+  <path d="M900 450 V490" class="arrow"/>
+
+  <!-- online decision pipeline -->
+  <rect x="650" y="635" width="500" height="105" rx="10" class="state"/>
+  <text x="900" y="665" class="head">Acquire state and measure all 8 links</text>
+  <text x="900" y="692" class="body">distance · signal · delay · PDR · residual energy</text>
+  <text x="900" y="719" class="small">build 34-D state: 2 vehicle features + 8 × 4 UAV features</text>
+  <path d="M900 595 V635" class="arrow"/>
+
+  <rect x="650" y="780" width="500" height="120" rx="10" class="process"/>
+  <text x="900" y="810" class="head">Screen and rank candidate UAVs</text>
+  <text x="900" y="837" class="body">d ≤ 500 m · D ≤ 95 ms · S ≥ 0.10 · E ≥ 20%</text>
+  <text x="900" y="864" class="body">clipped fuzzy-risk priority + composite candidate score</text>
+  <text x="900" y="888" class="small">produce feasibility mask M(t) and ranked list R(t)</text>
+  <path d="M900 740 V780" class="arrow"/>
+
+  <polygon points="900,940 1035,1015 900,1090 765,1015" class="decision"/>
+  <text x="900" y="1008" class="head">Any feasible</text>
+  <text x="900" y="1032" class="head">UAV?</text>
+  <path d="M900 900 V940" class="arrow"/>
+
+  <rect x="430" y="972" width="250" height="86" rx="10" class="adapt"/>
+  <text x="555" y="1002" class="head">Fallback</text>
+  <text x="555" y="1028" class="body">retain all eight UAVs</text>
+  <text x="555" y="1050" class="small">avoid empty action set</text>
+  <path d="M765 1015 H680" class="no"/>
+  <text x="705" y="998" class="label" fill="#d45b45">No</text>
+
+  <rect x="650" y="1130" width="500" height="110" rx="10" class="process"/>
+  <text x="900" y="1160" class="head">PPO selects a ranked action a(t)</text>
+  <text x="900" y="1187" class="body">training: sample from πθ(a|s) · evaluation: arg max</text>
+  <text x="900" y="1214" class="small">map action position through R(t) → effective physical UAV u*</text>
+  <path d="M900 1090 V1130" class="yes"/>
+  <text x="915" y="1114" class="label" fill="#198446">Yes</text>
+  <path d="M555 1058 V1080 H780 V1130" class="arrow"/>
+
+  <rect x="650" y="1280" width="500" height="110" rx="10" class="state"/>
+  <text x="900" y="1310" class="head">Execute the selected V2U communication link</text>
+  <text x="900" y="1337" class="body">measure selected-link QoS and consume 1–3 energy units</text>
+  <text x="900" y="1364" class="small">calculate reward r(t) using pre-drain energy</text>
+  <path d="M900 1240 V1280" class="arrow"/>
+
+  <rect x="650" y="1430" width="500" height="120" rx="10" class="adapt"/>
+  <text x="900" y="1460" class="head">Update constraints, state, and transition</text>
+  <text x="900" y="1487" class="body">λ ← clip[λ + 0.03 × violation, 0, 10]</text>
+  <text x="900" y="1514" class="body">update energy, vehicle position, next state s(t+1)</text>
+  <text x="900" y="1538" class="small">store (s(t), a(t), r(t), s(t+1), terminal); set t ← t + 1</text>
+  <path d="M900 1390 V1430" class="arrow"/>
+
+  <!-- decision loop -->
+  <polygon points="430,1430 555,1490 430,1550 305,1490" class="decision"/>
+  <text x="430" y="1483" class="head">t &lt; H?</text>
+  <text x="430" y="1508" class="small">H = 50 decisions</text>
+  <path d="M650 1490 H555" class="arrow"/>
+
+  <path d="M430 1430 V685 H650" class="yes"/>
+  <text x="447" y="1412" class="label" fill="#198446">Yes: next decision</text>
+
+  <polygon points="900,1570 1040,1642 900,1714 760,1642" class="decision"/>
+  <text x="900" y="1635" class="head">K = 200 rollout</text>
+  <text x="900" y="1659" class="head">steps collected?</text>
+  <path d="M430 1550 V1642 H760" class="no"/>
+  <text x="447" y="1575" class="label" fill="#d45b45">No</text>
+
+  <rect x="1180" y="1640" width="350" height="85" rx="10" class="process"/>
+  <text x="1355" y="1670" class="head">Compute GAE and update PPO</text>
+  <text x="1355" y="1696" class="body">10 PPO epochs; clear rollout buffer</text>
+  <path d="M1040 1642 H1180" class="yes"/>
+  <text x="1080" y="1626" class="label" fill="#198446">Yes</text>
+
+  <rect x="650" y="1735" width="500" height="78" rx="10" class="adapt"/>
+  <text x="900" y="1766" class="head">Record episode metrics; set e ← e + 1</text>
+  <text x="900" y="1791" class="small">retain partial rollout data when K &lt; 200</text>
+  <path d="M900 1714 V1735" class="no"/>
+  <text x="915" y="1728" class="label" fill="#d45b45">No</text>
+  <path d="M1355 1725 H900 V1735" class="arrow"/>
+
+  <polygon points="430,1720 555,1780 430,1840 305,1780" class="decision"/>
+  <text x="430" y="1773" class="head">e &lt; N?</text>
+  <text x="430" y="1798" class="small">N = 100 episodes</text>
+  <path d="M650 1780 H555" class="arrow"/>
+
+  <path d="M430 1720 H250 V542 H650" class="yes"/>
+  <text x="265" y="1702" class="label" fill="#198446">Yes: next episode</text>
+
+  <rect x="650" y="1850" width="500" height="95" rx="10" class="process"/>
+  <text x="900" y="1880" class="head">Save scenario policy, logs, and evaluation metrics</text>
+  <text x="900" y="1907" class="body">reward · selected UAV · QoS · energy · multipliers</text>
+  <text x="900" y="1932" class="small">one actor–critic policy is stored for each scenario</text>
+  <path d="M430 1840 V1897 H650" class="no"/>
+  <text x="447" y="1865" class="label" fill="#d45b45">No</text>
+
+  <!-- scenario loop and stop -->
+  <polygon points="1320,1735 1450,1800 1320,1865 1190,1800" class="decision"/>
+  <text x="1320" y="1793" class="head">More</text>
+  <text x="1320" y="1818" class="head">scenarios?</text>
+  <path d="M1150 1897 H1170 V1800 H1190" class="arrow"/>
+
+  <rect x="1190" y="1535" width="260" height="78" rx="9" class="adapt"/>
+  <text x="1320" y="1566" class="head">Set ω ← ω + 1</text>
+  <text x="1320" y="1591" class="small">next scenario</text>
+  <path d="M1450 1800 H1550 V1574 H1450" class="yes"/>
+  <text x="1465" y="1785" class="label" fill="#198446">Yes</text>
+  <path d="M1450 1574 H1510 V147 H1280" class="yes"/>
+
+  <ellipse cx="1320" cy="1930" rx="85" ry="43" class="stop"/>
+  <text x="1320" y="1937" class="head">Stop</text>
+  <path d="M1320 1865 V1887" class="no"/>
+  <text x="1335" y="1885" class="label" fill="#d45b45">No</text>
+
+  <text x="70" y="1982" class="sub">The adaptive penalty produced by λ(t+1) is applied to subsequent reward calculations; delay, PDR, fuzzy priority, and λ are not elements of the 34-D observation.</text>
+</svg>

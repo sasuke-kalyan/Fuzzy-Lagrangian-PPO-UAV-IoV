@@ -1,0 +1,177 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2100" height="1080" viewBox="0 0 2100 1080">
+  <defs>
+    <style>
+      .title{font:700 31px Arial,sans-serif;fill:#17345c}
+      .sub{font:15px Arial,sans-serif;fill:#64748b}
+      .hdr{font:700 15px Arial,sans-serif;fill:#17345c;text-anchor:middle}
+      .cell{font:14px Arial,sans-serif;fill:#33455c;text-anchor:middle}
+      .small{font:12px Arial,sans-serif;fill:#52647b;text-anchor:middle}
+      .note{font:13px Arial,sans-serif;fill:#42546c}
+      .arrow{fill:none;stroke:#17345c;stroke-width:2.2;marker-end:url(#navy)}
+      .greenArrow{fill:none;stroke:#198446;stroke-width:2.5;marker-end:url(#green)}
+      .orangeArrow{fill:none;stroke:#e2711b;stroke-width:2.5;marker-end:url(#orange)}
+    </style>
+    <marker id="navy" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0 0 L9 3 L0 6 Z" fill="#17345c"/></marker>
+    <marker id="green" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0 0 L9 3 L0 6 Z" fill="#198446"/></marker>
+    <marker id="orange" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0 0 L9 3 L0 6 Z" fill="#e2711b"/></marker>
+  </defs>
+
+  <rect width="2100" height="1080" fill="#fff"/>
+  <text x="55" y="52" class="title">Figure 5. One-Decision Trace of Fuzzy LP-PPO UAV Selection</text>
+  <text x="55" y="80" class="sub">Illustrative trace at decision time t; values demonstrate the implemented transformations and are not experimental results</text>
+
+  <!-- column headings -->
+  <rect x="55" y="115" width="150" height="70" rx="10" fill="#f4f7ff" stroke="#315b9d" stroke-width="2"/>
+  <text x="130" y="144" class="hdr">Candidate</text><text x="130" y="166" class="hdr">UAV</text>
+
+  <rect x="245" y="115" width="500" height="70" rx="10" fill="#effafa" stroke="#159497" stroke-width="2"/>
+  <text x="495" y="143" class="hdr">Measured vehicle–UAV link vector</text>
+  <text x="495" y="166" class="small">distance d · signal S · delay D · PDR P · energy E%</text>
+
+  <rect x="785" y="115" width="230" height="70" rx="10" fill="#fff7ef" stroke="#e2711b" stroke-width="2"/>
+  <text x="900" y="143" class="hdr">Hard feasibility</text>
+  <text x="900" y="166" class="small">mask M = 0 or 1</text>
+
+  <rect x="1055" y="115" width="220" height="70" rx="10" fill="#fff7ef" stroke="#e2711b" stroke-width="2"/>
+  <text x="1165" y="143" class="hdr">Clipped fuzzy</text>
+  <text x="1165" y="166" class="small">0 ≤ priority F ≤ 1</text>
+
+  <rect x="1315" y="115" width="220" height="70" rx="10" fill="#effafa" stroke="#159497" stroke-width="2"/>
+  <text x="1425" y="143" class="hdr">Composite</text>
+  <text x="1425" y="166" class="small">candidate score C</text>
+
+  <rect x="1575" y="115" width="220" height="70" rx="10" fill="#f4f7ff" stroke="#315b9d" stroke-width="2"/>
+  <text x="1685" y="143" class="hdr">Position in current</text>
+  <text x="1685" y="166" class="small">feasible ranked list</text>
+
+  <rect x="1835" y="115" width="210" height="70" rx="10" fill="#f2faf4" stroke="#198446" stroke-width="2"/>
+  <text x="1940" y="143" class="hdr">Rank-to-UAV</text>
+  <text x="1940" y="166" class="small">mapping result</text>
+
+  <!-- row backgrounds -->
+  <g fill="#fbfdff" stroke="#d7e0eb">
+    <rect x="45" y="205" width="2010" height="70" rx="9"/>
+    <rect x="45" y="285" width="2010" height="70" rx="9"/>
+    <rect x="45" y="365" width="2010" height="70" rx="9"/>
+    <rect x="45" y="445" width="2010" height="70" rx="9"/>
+    <rect x="45" y="525" width="2010" height="70" rx="9"/>
+    <rect x="45" y="605" width="2010" height="70" rx="9"/>
+    <rect x="45" y="685" width="2010" height="70" rx="9"/>
+    <rect x="45" y="765" width="2010" height="70" rx="9"/>
+  </g>
+
+  <!-- failed row tint -->
+  <rect x="45" y="285" width="2010" height="70" rx="9" fill="#fff4f2" opacity=".85"/>
+  <rect x="45" y="445" width="2010" height="70" rx="9" fill="#fff4f2" opacity=".85"/>
+  <rect x="45" y="685" width="2010" height="70" rx="9" fill="#fff4f2" opacity=".85"/>
+  <!-- selected row -->
+  <rect x="45" y="525" width="2010" height="70" rx="9" fill="#edf9f0" stroke="#198446" stroke-width="2.5"/>
+
+  <!-- Candidate labels -->
+  <g class="cell" font-weight="700">
+    <text x="130" y="247">U1</text><text x="130" y="327">U2</text>
+    <text x="130" y="407">U3</text><text x="130" y="487">U4</text>
+    <text x="130" y="567">U5</text><text x="130" y="647">U6</text>
+    <text x="130" y="727">U7</text><text x="130" y="807">U8</text>
+  </g>
+
+  <!-- measurements -->
+  <g class="cell">
+    <text x="495" y="247">420 m · 0.22 · 60 ms · 92% · 70%</text>
+    <text x="495" y="327">560 m · 0.14 · 88 ms · 70% · 62%</text>
+    <text x="495" y="407">310 m · 0.30 · 42 ms · 97% · 56%</text>
+    <text x="495" y="487">470 m · 0.09 · 70 ms · 82% · 65%</text>
+    <text x="495" y="567">250 m · 0.25 · 55 ms · 94% · 38%</text>
+    <text x="495" y="647">490 m · 0.12 · 94 ms · 58% · 24%</text>
+    <text x="495" y="727">380 m · 0.17 · 82 ms · 72% · 18%</text>
+    <text x="495" y="807">445 m · 0.15 · 90 ms · 60% · 45%</text>
+  </g>
+
+  <!-- feasibility -->
+  <g class="cell" font-weight="700">
+    <text x="900" y="247" fill="#198446">M1 = 1 (retain)</text>
+    <text x="900" y="319" fill="#d45b45">M2 = 0</text><text x="900" y="340" class="small" fill="#d45b45">range violation</text>
+    <text x="900" y="407" fill="#198446">M3 = 1 (retain)</text>
+    <text x="900" y="479" fill="#d45b45">M4 = 0</text><text x="900" y="500" class="small" fill="#d45b45">signal violation</text>
+    <text x="900" y="567" fill="#198446">M5 = 1 (retain)</text>
+    <text x="900" y="647" fill="#198446">M6 = 1 (retain)</text>
+    <text x="900" y="719" fill="#d45b45">M7 = 0</text><text x="900" y="740" class="small" fill="#d45b45">energy violation</text>
+    <text x="900" y="807" fill="#198446">M8 = 1 (retain)</text>
+  </g>
+
+  <!-- fuzzy values -->
+  <g class="cell">
+    <text x="1165" y="247">F1 = 0.22</text><text x="1165" y="327">F2 = 0.61</text>
+    <text x="1165" y="407">F3 = 0.05</text><text x="1165" y="487">F4 = 0.46</text>
+    <text x="1165" y="567">F5 = 0.15</text><text x="1165" y="647">F6 = 0.74</text>
+    <text x="1165" y="727">F7 = 0.69</text><text x="1165" y="807">F8 = 0.58</text>
+  </g>
+
+  <!-- composite scores -->
+  <g class="cell">
+    <text x="1425" y="247">C1 = 0.71</text><text x="1425" y="327" fill="#9a5b55">excluded</text>
+    <text x="1425" y="407">C3 = 0.82</text><text x="1425" y="487" fill="#9a5b55">excluded</text>
+    <text x="1425" y="567">C5 = 0.77</text><text x="1425" y="647">C6 = 0.60</text>
+    <text x="1425" y="727" fill="#9a5b55">excluded</text><text x="1425" y="807">C8 = 0.52</text>
+  </g>
+
+  <!-- ranked positions -->
+  <g class="cell" font-weight="700">
+    <text x="1685" y="247">rank 3</text><text x="1685" y="327">—</text>
+    <text x="1685" y="407">rank 1</text><text x="1685" y="487">—</text>
+    <text x="1685" y="567" fill="#198446">rank 2</text><text x="1685" y="647">rank 4</text>
+    <text x="1685" y="727">—</text><text x="1685" y="807">rank 5</text>
+  </g>
+
+  <!-- mapping column -->
+  <g class="cell">
+    <text x="1940" y="247">not selected</text><text x="1940" y="327">screened out</text>
+    <text x="1940" y="407">not selected</text><text x="1940" y="487">screened out</text>
+    <rect x="1855" y="540" width="170" height="40" rx="8" fill="#dff4e5" stroke="#198446" stroke-width="2"/>
+    <text x="1940" y="566" font-weight="700" fill="#13743b">SELECTED U5</text>
+    <text x="1940" y="647">not selected</text><text x="1940" y="727">screened out</text>
+    <text x="1940" y="807">not selected</text>
+  </g>
+
+  <!-- repeated horizontal transformations -->
+  <g class="arrow" opacity=".7">
+    <path d="M205 240 H245"/><path d="M745 240 H785"/><path d="M1015 240 H1055"/><path d="M1275 240 H1315"/><path d="M1535 240 H1575"/><path d="M1795 240 H1835"/>
+    <path d="M205 320 H245"/><path d="M745 320 H785"/><path d="M1015 320 H1055"/><path d="M1275 320 H1315"/><path d="M1535 320 H1575"/><path d="M1795 320 H1835"/>
+    <path d="M205 400 H245"/><path d="M745 400 H785"/><path d="M1015 400 H1055"/><path d="M1275 400 H1315"/><path d="M1535 400 H1575"/><path d="M1795 400 H1835"/>
+    <path d="M205 480 H245"/><path d="M745 480 H785"/><path d="M1015 480 H1055"/><path d="M1275 480 H1315"/><path d="M1535 480 H1575"/><path d="M1795 480 H1835"/>
+    <path d="M205 560 H245"/><path d="M745 560 H785"/><path d="M1015 560 H1055"/><path d="M1275 560 H1315"/><path d="M1535 560 H1575"/><path d="M1795 560 H1835"/>
+    <path d="M205 640 H245"/><path d="M745 640 H785"/><path d="M1015 640 H1055"/><path d="M1275 640 H1315"/><path d="M1535 640 H1575"/><path d="M1795 640 H1835"/>
+    <path d="M205 720 H245"/><path d="M745 720 H785"/><path d="M1015 720 H1055"/><path d="M1275 720 H1315"/><path d="M1535 720 H1575"/><path d="M1795 720 H1835"/>
+    <path d="M205 800 H245"/><path d="M745 800 H785"/><path d="M1015 800 H1055"/><path d="M1275 800 H1315"/><path d="M1535 800 H1575"/><path d="M1795 800 H1835"/>
+  </g>
+
+  <!-- lower trace summary, analogous to final decoding result in the base paper -->
+  <rect x="55" y="875" width="1990" height="150" rx="14" fill="#f8fafc" stroke="#c6d2e1" stroke-width="2"/>
+  <text x="85" y="905" class="note" font-weight="700">Final trace for this decision:</text>
+
+  <rect x="85" y="930" width="300" height="60" rx="9" fill="#f4f7ff" stroke="#315b9d" stroke-width="2"/>
+  <text x="235" y="954" class="hdr">PPO output</text><text x="235" y="976" class="small">action a(t) = 1 (zero-based)</text>
+
+  <rect x="445" y="930" width="420" height="60" rx="9" fill="#effafa" stroke="#159497" stroke-width="2"/>
+  <text x="655" y="954" class="hdr">Current feasible ranked list</text>
+  <text x="655" y="976" class="small">[U3, U5, U1, U6, U8]</text>
+
+  <rect x="925" y="930" width="270" height="60" rx="9" fill="#eaf7ee" stroke="#198446" stroke-width="2"/>
+  <text x="1060" y="954" class="hdr">Mapped physical UAV</text>
+  <text x="1060" y="976" class="small">a(t) = 1 → second entry → U5</text>
+
+  <rect x="1255" y="930" width="360" height="60" rx="9" fill="#eaf7ee" stroke="#198446" stroke-width="2"/>
+  <text x="1435" y="954" class="hdr">Execute V2U link and reward</text>
+  <text x="1435" y="976" class="small">QoS(U5) · energy drain · reward r(t)</text>
+
+  <rect x="1675" y="930" width="330" height="60" rx="9" fill="#fff7ef" stroke="#e2711b" stroke-width="2"/>
+  <text x="1840" y="954" class="hdr">Constraint adaptation</text>
+  <text x="1840" y="976" class="small">violations → persistent λ update</text>
+
+  <path d="M385 960 H445" class="arrow"/>
+  <path d="M865 960 H925" class="greenArrow"/>
+  <path d="M1195 960 H1255" class="greenArrow"/>
+  <path d="M1615 960 H1675" class="orangeArrow"/>
+
+  <text x="55" y="1055" class="sub">Hard screen: d ≤ 500 m, D ≤ 95 ms, S ≥ 0.10, E ≥ 20%. PPO action denotes a position in the current ranked list—not a permanent UAV identifier.</text>
+</svg>

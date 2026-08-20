@@ -1,0 +1,27 @@
+\begin{table}[!t]
+\caption{Experimental configuration of the proposed Fuzzy Lagrangian PPO UAV--IoV system.}
+\label{tab:experimental_configuration}
+\centering
+\small
+\begin{tabular}{@{}lll@{}}
+\toprule
+According to & Attribute & Value \\
+\midrule
+Simulation infrastructure & Operational area & 2,000 $\times$ 2,000 m$^2$ \\
+& Candidate UAVs & 8 \\
+& UAV altitude & 80--200 m \\
+& Communication range & 500 m \\
+& Initial UAV energy & 30--50 internal energy units \\
+& Energy drain per selected step & 1--3 internal energy units \\
+& Observation dimension & 34 \\
+& Action space & 8 discrete ranked UAV-candidate actions \\
+QoS constraints & Maximum communication delay & 95 ms \\
+& Minimum packet delivery ratio & 55\% \\
+& Minimum residual energy & 20\% \\
+& Minimum signal strength & 0.10 \\
+Adaptive Lagrangian & Initial multipliers (delay / PDR / energy / signal) & 0.35 / 0.20 / 0.60 / 0.35 \\
+& Multiplier update step size & 0.03 \\
+& Multiplier bounds & [0, 10] \\
+\bottomrule
+\end{tabular}
+\end{table}

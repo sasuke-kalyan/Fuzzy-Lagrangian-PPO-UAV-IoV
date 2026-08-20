@@ -53,6 +53,8 @@ class UAVIoVEnv(gym.Env):
         self._vehicle_xy = np.zeros(2, dtype=np.float64)
         self._uav_positions = np.zeros((self.NUM_UAVS, 3), dtype=np.float64)
         self._uav_energies = np.zeros(self.NUM_UAVS, dtype=np.float64)
+        # Multipliers intentionally persist across episode resets. Resetting
+        # them every 50 steps would prevent long-horizon dual adaptation.
         self._lagrangian = {
             "delay": 0.35,
             "pdr": 0.20,
@@ -72,12 +74,6 @@ class UAVIoVEnv(gym.Env):
             self._area_size = float(self._scenario.area_size)
 
         self._step_count = 0
-        self._lagrangian = {
-            "delay": 0.35,
-            "pdr": 0.20,
-            "energy": 0.60,
-            "signal": 0.35,
-        }
         area = self._area_size
         self._vehicle_xy = self._rng.uniform(0, area, size=2)
 

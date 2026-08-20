@@ -89,14 +89,26 @@ def tokens_in_name(path: Path, tokens: tuple[str, ...]) -> bool:
 
 
 def discover_lp_log(scenario_key: str) -> Path | None:
-    logs_dir = ROOT / "UAV_IOV" / "results" / "training_logs"
     tokens = SCENARIOS[scenario_key]["lp_tokens"]
 
-    candidates = sorted(logs_dir.glob("*episode_rewards.json"))
-    matches = [p for p in candidates if tokens_in_name(p, tokens)]
+    # Search multiple plausible locations for the proposed method training logs.
+    candidate_dirs = [
+        ROOT / "UAV_IOV" / "results" / "training_logs",
+        ROOT / "proposed" / "results" / "training_logs",
+        ROOT / "proposed" / "results",
+    ]
+
+    matches: list[Path] = []
+    for logs_dir in candidate_dirs:
+        if not logs_dir.exists():
+            continue
+        candidates = sorted(logs_dir.glob("*episode_rewards.json"))
+        matches.extend([p for p in candidates if tokens_in_name(p, tokens)])
 
     if not matches:
-        print(f"WARNING: No Fuzzy LP-PPO log found for {scenario_key}")
+        print(
+            f"WARNING: No Fuzzy LP-PPO log found for {scenario_key}; searched: {', '.join(str(p) for p in candidate_dirs)}"
+        )
         return None
 
     return matches[0]
